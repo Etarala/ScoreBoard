@@ -35,8 +35,8 @@ btn_score_right_down = buttons("down", 715, 230)
 btn_score_left_up = buttons("up", 300, 300)
 btn_score_left_down = buttons("down", 450, 300)
 
-btn_start = buttons("start", 400, 400)
-#btn_stop = buttons("stop", 300, 300)
+btn_start = buttons("start", 366, 400)
+#btn_stop = buttons("stop", 366, 395)
 
 
 window.mainloop()
