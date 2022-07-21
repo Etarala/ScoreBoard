@@ -6,10 +6,10 @@ window.title("Score Panel")
 window.geometry('800x500')
 window.resizable(width=0, height=0)
 window['bg'] = 'white'
-img_arrow_up = image = ImageTk.PhotoImage(file="pict/up.jpg")
-img_arrow_down = image = ImageTk.PhotoImage(file="pict/down.jpg")
-img_start = image = ImageTk.PhotoImage(file="pict/start.png")
-img_stop = image = ImageTk.PhotoImage(file="pict/stop.png")
+img_arrow_up = ImageTk.PhotoImage(file="pict/up.jpg")
+img_arrow_down = ImageTk.PhotoImage(file="pict/down.jpg")
+img_start = ImageTk.PhotoImage(file="pict/start.png")
+img_stop = ImageTk.PhotoImage(file="pict/stop.png")
 
 def buttons(direction, x, y):
     if direction == 'up':
@@ -32,8 +32,8 @@ btn_score_left_down = buttons("down", 25, 230)
 btn_score_right_up = buttons("up", 715, 100)
 btn_score_right_down = buttons("down", 715, 230)
 
-btn_score_left_up = buttons("up", 300, 300)
-btn_score_left_down = buttons("down", 450, 300)
+btn_score_period_up = buttons("up", 300, 300)
+btn_score_period_down = buttons("down", 450, 300)
 
 btn_start = buttons("start", 366, 400)
 #btn_stop = buttons("stop", 366, 395)

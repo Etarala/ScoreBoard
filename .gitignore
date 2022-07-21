@@ -1,5 +1,5 @@
 # created by virtualenv automatically
 config.py
 .idea/
-/venv/
+venv/
 __pycache__/config.cpython-39.pyc
