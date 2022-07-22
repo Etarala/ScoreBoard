@@ -30,6 +30,7 @@ img_stop = ImageTk.PhotoImage(file="pict/stop.png")
 
 
 def buttons(direction, x, y):
+    global btn
     if direction == 'up':
         btn = Button(window, text="+", font=("digital numbers", 30), command=lambda: print('click'), relief='flat',
                      borderwidth=0)
