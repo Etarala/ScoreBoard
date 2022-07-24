@@ -7,11 +7,11 @@ window.geometry('815x500')
 window.resizable(width=0, height=0)
 # window['bg'] = '#404040'
 
-C = Canvas(window, bg="blue", height=815, width=500)
+#C = Canvas(window, bg="blue", height=815, width=500)
 fon = PhotoImage(file="pict/layer.png")
 background_label = Label(window, image=fon)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
-C.pack()
+#C.pack()
 
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
@@ -21,46 +21,154 @@ filemenu.add_command(label="Bullits")
 
 mainmenu.add_cascade(label="Game", menu=filemenu)
 
-"""
-img_arrow_up = ImageTk.PhotoImage(file="pict/up.jpg")
-img_arrow_down = ImageTk.PhotoImage(file="pict/down.jpg")
-img_start = ImageTk.PhotoImage(file="pict/start.png")
-img_stop = ImageTk.PhotoImage(file="pict/stop.png")
-"""
+#Define variables
+score_team1 = 0
+score_team2 = 0
+period = 1
+main_timer = 0
+
+#Score team left
+def nClick_score_left_up():
+    global score_team1
+    score_team1 += 1
+    lbl_score_left.config(text=score_team1)
+def nClick_score_left_down():
+    global score_team1
+    score_team1 -= 1
+    if score_team1 < 0:
+        score_team1 = 0
+    lbl_score_left.config(text=score_team1)
+
+btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_left_up, relief='flat', borderwidth=0)
+btn_score_left_up.place(x=60, y=80, width=40, height=40)
+btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_score_left_down, relief='flat', borderwidth=0)
+btn_score_left_down.place(x=60, y=280, width=40, height=40)
 
 
-def buttons(direction, x, y):
-    global btn
-    if direction == 'up':
-        btn = Button(window, text="+", font=("digital numbers", 30), command=lambda: print('click'), relief='flat',
-                     borderwidth=0)
-        btn.place(x=x, y=y, width=40, height=40)
-    elif direction == 'down':
-        btn = Button(window, text="-", font=("digital numbers", 30), command=lambda: print('click'), relief='flat',
-                     borderwidth=0)
-        btn.place(x=x, y=y, width=40, height=40)
-    elif direction == 'start':
-        btn = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: print('click'),
-                     relief='flat',
-                     bg='black', fg='#fe0000', borderwidth=0)
-        btn.place(x=x, y=y)
-    elif direction == 'penalty':
-        btn = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
+#Score team right
+def nClick_score_right_up():
+    global score_team2
+    score_team2 += 1
+    lbl_score_right.config(text=score_team2)
+def nClick_score_right_down():
+    global score_team2
+    score_team2 -= 1
+    if score_team2 < 0:
+        score_team2 = 0
+    lbl_score_right.config(text=score_team2)
+
+btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_right_up, relief='flat', borderwidth=0)
+btn_score_left_up.place(x=715, y=80, width=40, height=40)
+btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_score_right_down, relief='flat', borderwidth=0)
+btn_score_left_down.place(x=715, y=280, width=40, height=40)
+
+
+#Current Game Perion
+def nClick_period_up():
+    global period
+    period += 1
+    lbl_period.config(text=period)
+def nClick_period_down():
+    global period
+    period -= 1
+    if period < 0:
+        period = 0
+    lbl_period.config(text=period)
+
+btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_period_up, relief='flat', borderwidth=0)
+btn_score_left_up.place(x=450, y=400, width=40, height=40)
+btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_period_down, relief='flat', borderwidth=0)
+btn_score_left_down.place(x=320, y=400, width=40, height=40)
+
+
+#Penalty
+def penalty_left_first():
+    pass
+def penalty_left_second():
+    pass
+
+btn_penalty_left_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-        btn.place(x=x, y=y)
-    elif direction == 'reset':
-        btn = Button(window, text="RESET TIMER", font=("square sans serif 7", 17), command=lambda: print('click'),
-                     relief='flat',
-                     bg='black', fg='#00fffe', borderwidth=0)
-        btn.place(x=x, y=y)
-    elif direction == 'new':
-        btn = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=lambda: print('click'),
-                     relief='flat',
-                     bg='black', fg='#00fffe', borderwidth=0)
-        btn.place(x=x, y=y)
+btn_penalty_left_first.place(x=130, y=370)
+btn_penalty_left_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
+                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
+btn_penalty_left_second.place(x=130, y=420)
+
+def penalty_right_first():
+    pass
+def penalty_right_second():
+    pass
+
+btn_penalty_right_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
+                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
+btn_penalty_right_first.place(x=580, y=370)
+btn_penalty_right_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
+                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
+btn_penalty_right_second.place(x=580, y=420)
 
 
-# Add buttons default period time
+#Timer period
+def nClick_minutes_up():
+    global main_timer
+    main_timer += 1
+    lbl_timer.config(text=main_timer)
+def nClick_minutes_down():
+    global main_timer
+    main_timer -= 1
+    if main_timer < 0:
+        main_timer = 0
+    lbl_timer.config(text=main_timer)
+
+btn_minutes_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_minutes_up, relief='flat', borderwidth=0)
+btn_minutes_up.place(x=305, y=180, width=40, height=40)
+btn_minutes_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_minutes_down, relief='flat', borderwidth=0)
+btn_minutes_down.place(x=275, y=180, width=40, height=40)
+
+def nClick_seconds_up():
+    global main_timer
+    main_timer += 1
+    lbl_timer.config(text=main_timer)
+def nClick_seconds_down():
+    global main_timer
+    main_timer -= 1
+    if main_timer < 0:
+        main_timer = 0
+    lbl_timer.config(text=main_timer)
+
+btn_seconds_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_seconds_up, relief='flat', borderwidth=0)
+btn_seconds_up.place(x=500, y=180, width=40, height=40)
+btn_seconds_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_seconds_down, relief='flat', borderwidth=0)
+btn_seconds_down.place(x=470, y=180, width=40, height=40)
+
+
+#Reset main timer
+def reset_main_timer():
+    pass
+
+btn_reset_main_timer = Button(window, text="RESET TIMER", font=("square sans serif 7", 17), command=lambda: print('click'),relief='flat',
+                     bg='black', fg='#00fffe', borderwidth=0)
+btn_reset_main_timer.place(x=220, y=290)
+
+
+#New game
+def new_game():
+    pass
+
+btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=lambda: print('click'), relief='flat',
+                     bg='black', fg='#00fffe', borderwidth=0)
+btn_new_game.place(x=460, y=290)
+
+
+#Start_Pause Main Timer
+def start_main_timer():
+    pass
+
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: print('click'),
+                     relief='flat', bg='black', fg='#fe0000', borderwidth=0)
+btn_start_main_timer.place(x=275, y=230)
+
+
+# Add radiobuttons default period time
 var = IntVar()
 var.set(20)
 rad1 = Radiobutton(window, text='05:00', value=5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
@@ -115,31 +223,5 @@ lbl_penalty_right1.place(x=688, y=360)
 lbl_penalty_right2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_right2.place(x=688, y=410)
 
-# Add buttons
-btn_score_left_up = buttons("up", 60, 80)
-btn_score_left_down = buttons("down", 60, 280)
-
-btn_score_right_up = buttons("up", 715, 80)
-btn_score_right_down = buttons("down", 715, 280)
-
-btn_period_up = buttons("up", 450, 400)
-btn_period_down = buttons("down", 320, 400)
-
-btn_penalty_left_start1 = buttons("penalty", 130, 370)
-btn_penalty_left_start2 = buttons("penalty", 130, 420)
-
-btn_penalty_right_start1 = buttons("penalty", 580, 370)
-btn_penalty_right_start2 = buttons("penalty", 580, 420)
-
-btn_minutes_up = buttons("up", 305, 180)
-btn_minutes_down = buttons("down", 275, 180)
-btn_seconds_up = buttons("up", 500, 180)
-btn_seconds_down = buttons("down", 470, 180)
-
-btn_reset = buttons("reset", 220, 290)
-
-btn_new = buttons("new", 460, 290)
-
-btn_start = buttons("start", 275, 230)
 
 window.mainloop()
