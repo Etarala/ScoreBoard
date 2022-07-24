@@ -1,11 +1,16 @@
 from tkinter import *
 from PIL import ImageTk, Image
+import datetime
+import time
+import sys
+import os
 
 window = Tk()
 window.title("Score Panel")
 window.geometry('815x500')
 window.resizable(width=0, height=0)
 # window['bg'] = '#404040'
+
 
 #C = Canvas(window, bg="blue", height=815, width=500)
 fon = PhotoImage(file="pict/layer.png")
@@ -44,6 +49,9 @@ btn_score_left_up.place(x=60, y=80, width=40, height=40)
 btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_score_left_down, relief='flat', borderwidth=0)
 btn_score_left_down.place(x=60, y=280, width=40, height=40)
 
+lbl_score_left = Label(window, text="00", bg="black", fg="#feba00", font=("digital numbers", 75))
+lbl_score_left.place(x=5, y=130, width=150, height=140)
+
 
 #Score team right
 def nClick_score_right_up():
@@ -62,8 +70,11 @@ btn_score_left_up.place(x=715, y=80, width=40, height=40)
 btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_score_right_down, relief='flat', borderwidth=0)
 btn_score_left_down.place(x=715, y=280, width=40, height=40)
 
+lbl_score_right = Label(window, text="00", bg="black", fg="#feba00", font=("digital numbers", 75))
+lbl_score_right.place(x=660, y=130, width=150, height=140)
 
-#Current Game Perion
+
+#Game Period
 def nClick_period_up():
     global period
     period += 1
@@ -80,8 +91,14 @@ btn_score_left_up.place(x=450, y=400, width=40, height=40)
 btn_score_left_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_period_down, relief='flat', borderwidth=0)
 btn_score_left_down.place(x=320, y=400, width=40, height=40)
 
+lbl_period_name = Label(window, text="Period", bg="#404040", fg="white", font=("square sans serif 7", 24))
+lbl_period_name.place(x=340, y=460)
 
-#Penalty
+lbl_period = Label(window, text="1", bg="black", fg="#03bd02", font=("digital numbers", 60))
+lbl_period.place(x=367, y=360, width=75, height=100)
+
+
+#Penalty Team Left
 def penalty_left_first():
     pass
 def penalty_left_second():
@@ -94,6 +111,16 @@ btn_penalty_left_second = Button(window, text="START", font=("square sans serif 
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_left_second.place(x=130, y=420)
 
+lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
+lbl_penalty_name_left.place(x=45, y=460)
+
+lbl_penalty_left1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
+lbl_penalty_left1.place(x=10, y=360)
+
+lbl_penalty_left2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
+lbl_penalty_left2.place(x=10, y=410)
+
+#Penalty Team Right
 def penalty_right_first():
     pass
 def penalty_right_second():
@@ -102,12 +129,21 @@ def penalty_right_second():
 btn_penalty_right_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_right_first.place(x=580, y=370)
+
 btn_penalty_right_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_right_second.place(x=580, y=420)
 
+lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
+lbl_penalty_name_right.place(x=615, y=460)
 
-#Timer period
+lbl_penalty_right1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
+lbl_penalty_right1.place(x=688, y=360)
+
+lbl_penalty_right2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
+lbl_penalty_right2.place(x=688, y=410)
+
+#Timer
 def nClick_minutes_up():
     global main_timer
     main_timer += 1
@@ -140,6 +176,9 @@ btn_seconds_up.place(x=500, y=180, width=40, height=40)
 btn_seconds_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_seconds_down, relief='flat', borderwidth=0)
 btn_seconds_down.place(x=470, y=180, width=40, height=40)
 
+lbl_timer = Label(window, text=main_timer, bg="black", fg="#fe0000", font=("digital numbers", 60))
+lbl_timer.place(x=250, y=70, width=320, height=100)
+
 
 #Reset main timer
 def reset_main_timer():
@@ -153,25 +192,45 @@ btn_reset_main_timer.place(x=220, y=290)
 #New game
 def new_game():
     pass
+    '''global score_team1
+    score_team1 = 0
+    global score_team2
+    score_team2 = 0
+    global period
+    period = 1
+    global main_timer
+    main_timer = 0'''
 
-btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=lambda: print('click'), relief='flat',
+
+btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=new_game, relief='flat',
                      bg='black', fg='#00fffe', borderwidth=0)
 btn_new_game.place(x=460, y=290)
 
 
 #Start_Pause Main Timer
-def start_main_timer():
-    pass
+def start_main_timer(timer=3):
+    global main_timer
+    while timer:
+        m, s = divmod(timer, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+        time.sleep(1)
+        timer -= 1
+        main_timer = timer
+        lbl_timer.config(text=main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: print('click'),
+
+
+
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=start_main_timer,
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
 
 # Add radiobuttons default period time
+time_period_5 = datetime.time(0,5,0)
 var = IntVar()
 var.set(20)
-rad1 = Radiobutton(window, text='05:00', value=5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad1 = Radiobutton(window, text='05:00', value=time_period_5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad2 = Radiobutton(window, text='10:00', value=10, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad3 = Radiobutton(window, text='15:00', value=15, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad4 = Radiobutton(window, text='20:00', value=20, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
@@ -188,40 +247,6 @@ team1.place(x=5, y=20, width=380, height=40)
 team2 = Entry(window, width=20, bg="black", fg="#feba00", justify="center", font=("square sans serif 7", 20))
 team2.insert(0, "TEAM 2")
 team2.place(x=428, y=20, width=380, height=40)
-
-# Add labels
-lbl_period_name = Label(window, text="Period", bg="#404040", fg="white", font=("square sans serif 7", 24))
-lbl_period_name.place(x=340, y=460)
-
-lbl_score_left = Label(window, text="00", bg="black", fg="#feba00", font=("digital numbers", 75))
-lbl_score_left.place(x=5, y=130, width=150, height=140)
-
-lbl_score_right = Label(window, text="00", bg="black", fg="#feba00", font=("digital numbers", 75))
-lbl_score_right.place(x=660, y=130, width=150, height=140)
-
-lbl_period = Label(window, text="1", bg="black", fg="#03bd02", font=("digital numbers", 60))
-lbl_period.place(x=367, y=360, width=75, height=100)
-
-lbl_timer = Label(window, text="20:00", bg="black", fg="#fe0000", font=("digital numbers", 60))
-lbl_timer.place(x=250, y=70, width=320, height=100)
-
-lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
-lbl_penalty_name_left.place(x=45, y=460)
-
-lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
-lbl_penalty_name_right.place(x=615, y=460)
-
-lbl_penalty_left1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
-lbl_penalty_left1.place(x=10, y=360)
-
-lbl_penalty_left2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
-lbl_penalty_left2.place(x=10, y=410)
-
-lbl_penalty_right1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
-lbl_penalty_right1.place(x=688, y=360)
-
-lbl_penalty_right2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
-lbl_penalty_right2.place(x=688, y=410)
 
 
 window.mainloop()
