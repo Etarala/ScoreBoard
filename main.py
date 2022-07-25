@@ -144,17 +144,17 @@ lbl_penalty_right1.place(x=688, y=360)
 lbl_penalty_right2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_right2.place(x=688, y=410)
 
-#Timer
+#Main Timer
 def nClick_minutes_up():
-    global main_timer
-    main_timer += 1
-    lbl_timer.config(text=main_timer)
+    global period_time
+    period_time += 60
+    lbl_timer.config(text=period_time)
 def nClick_minutes_down():
-    global main_timer
-    main_timer -= 1
-    if main_timer < 0:
-        main_timer = 0
-    lbl_timer.config(text=main_timer)
+    global period_time
+    period_time -= 60
+    if period_time < 0:
+        period_time = 0
+    lbl_timer.config(text=period_time)
 
 btn_minutes_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_minutes_up, relief='flat', borderwidth=0)
 btn_minutes_up.place(x=305, y=180, width=40, height=40)
@@ -162,15 +162,15 @@ btn_minutes_down = Button(window, text="-", font=("digital numbers", 30), comman
 btn_minutes_down.place(x=275, y=180, width=40, height=40)
 
 def nClick_seconds_up():
-    global main_timer
-    main_timer += 1
-    lbl_timer.config(text=main_timer)
+    global period_time
+    period_time += 1
+    lbl_timer.config(text=period_time)
 def nClick_seconds_down():
-    global main_timer
-    main_timer -= 1
-    if main_timer < 0:
-        main_timer = 0
-    lbl_timer.config(text=main_timer)
+    global period_time
+    period_time -= 1
+    if period_time < 0:
+        period_time = 0
+    lbl_timer.config(text=period_time)
 
 btn_seconds_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_seconds_up, relief='flat', borderwidth=0)
 btn_seconds_up.place(x=500, y=180, width=40, height=40)
@@ -238,22 +238,18 @@ btn_start_main_timer.place(x=275, y=230)
 
 # Add radiobuttons default period time
 
-def get_time_period(get_time):
-    global period_time
-    if get_time == 300:
-        period_time = 299
-    elif get_time == 600:
-        period_time = 599
-    elif get_time == 900:
-        period_time = 899
-    elif get_time == 1200:
-        period_time = 1199
-
 def check():
     radio_button = var.get()
     global period_time
     period_time = radio_button
-    get_time_period(period_time)
+    if var.get() == 300:
+        period_time = 298
+    elif var.get() == 600:
+        period_time = 598
+    elif var.get() == 900:
+        period_time = 898
+    elif var.get() == 1200:
+        period_time = 1198
 
 
 var = IntVar()
