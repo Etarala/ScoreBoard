@@ -1,6 +1,4 @@
 from tkinter import *
-
-from PIL import ImageTk, Image
 import datetime
 import time
 from time import strftime
@@ -210,38 +208,11 @@ btn_new_game.place(x=460, y=290)
 
 
 #Start_Pause Main Timer
-"""def dot():
-    dots = [":", " "]
-    seconds = strftime("%S")
-    if (int(seconds) % 2) == 0:
-        dt_1 = str(dots[0])
-        return (dt_1)
-    else:
-        dt_2 = str(dots[1])
-        return (dt_2)"""
 
+def start_main_timer():
+    pass
 
-
-'''def start_main_timer(sec=3):
-    global main_timer
-    while sec:
-        m, s = divmod(sec, 60)
-        main_timer = '{:02d}:{:02d}'.format(m, s)
-        lbl_timer.config(text=main_timer)
-        print(main_timer)
-        time.sleep(1)
-        sec -= 1'''
-def update_timer(global_timer=10):
-  if global_timer > 0:
-    global_timer = global_timer - 1
-    window.after(1000, update_timer)
-    lbl_timer.config(text=global_timer)
-
-
-"""def start_main_timer():
-    pass"""
-
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=update_timer(10),
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=start_main_timer,
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
