@@ -1,63 +1,44 @@
-from tkinter.ttk import *
-from time import strftime
+# Подключаем модуль для работы со временем
+import time
 
-root = Tk()
-root.title("Clock")
+# Подключаем потоки
+from threading import Thread
 
+# Делаем отдельную функцию с напоминанием
+def remind():
+    # Спрашиваем текст напоминания, который нужно потом показать пользователю
+    print("О чём вам напомнить?")
+    # Ждём ответа пользователя и результат помещаем в строковую переменную text
+    text = str(input())
+    # Спрашиваем про время
+    print("Через сколько минут?")
+    # Тут будем хранить время, через которое нужно показать напоминание
+    local_time = float(input())
+    # Переводим минуты в секунды
+    local_time = local_time * 60
+    # Ждём нужное количество секунд, программа в это время ничего не делает
+    time.sleep(local_time)
+    # Показываем текст напоминания
+    print(text)
 
-def dot():
-    dots = [":", " "]
-    seconds = strftime("%S")
-    if (int(seconds) % 2) == 0:
-        dt_1 = str(dots[0])
-        return (dt_1)
-    else:
-        dt_2 = str(dots[1])
-        return (dt_2)
+# Создаём новый поток
+th = Thread(target=remind, args=())
+# И запускаем его
+th.start()
 
-
-def time():
-    string = strftime("%I{0}%M{1}%S %p".format(dot(), dot()))
-    label.config(text=string)
-    label.after(1000, time)
-
-
-# bg = #1B1E26
-# fg = #FFE222
-label = Label(root, font=("digital numbers", 70), background="#1B1E26", foreground="#FFE222")
-label.pack(anchor="center")
-label.master.overrideredirect(True)
-label.master.geometry('+10+930')
-# label.master.wm_attributes("-transparentcolor","#FFE221")
-# label.master.wm_attributes("-alpha",0.5)
-label.master.wm_attributes("-topmost", True)
-label.master.lift()
-time()
-
-ws = root.winfo_screenwidth()
-hs = root.winfo_screenheight()
-print(ws, 'x', hs)
-mainloop()
+# Пока работает поток, выведем что-то на экран через 20 секунд после запуска
+time.sleep(20)
+print("Пока поток работает, мы можем сделать что-нибудь ещё.\n")
 
 
 
-***********************************************************
 
-from tkinter import *
-
-root = Tk()
-root.geometry("200x200")
-root.title("My Button Increaser")
-
-global counter
-counter = 0
-
-def nClick():
-    global counter
-    counter += 1
-    mButton1.config(text = counter)
-
-mButton1 = Button(text = counter, command = nClick, fg = "darkgreen", bg = "white")
-mButton1.pack()
-
-root.mainloop()
+def start_main_timer(timer=3):
+    global main_timer
+    while timer:
+        m, s = divmod(timer, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+        time.sleep(1)
+        timer -= 1
+        main_timer = timer
+        lbl_timer.config(text=main_timer)

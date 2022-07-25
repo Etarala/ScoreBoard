@@ -1,7 +1,7 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import datetime
 import time
+from time import strftime
 import sys
 import os
 
@@ -222,11 +222,6 @@ def start_main_timer(timer=3):
     lbl_timer.config(text=main_timer)
 
     window.after(1000, update_main_timer)
-
-
-
-
-
 
 btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=start_main_timer,
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
