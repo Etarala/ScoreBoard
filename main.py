@@ -212,7 +212,7 @@ btn_new_game.place(x=460, y=290)
 #Start_Pause Main Timer
 def update_main_timer():
     global main_timer
-    if main_timer > 0:
+    if main_timer >= 0:
         m, s = divmod(main_timer, 60)
         min_sec_format = '{:02d}:{:02d}'.format(m, s)
         main_timer = main_timer - 1
@@ -230,16 +230,15 @@ def start_main_timer(timer=3):
 
     window.after(1000, update_main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(100),
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(10),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
 
 # Add radiobuttons default period time
-time_period_5 = datetime.time(0,5,0)
 var = IntVar()
 var.set(20)
-rad1 = Radiobutton(window, text='05:00', value=time_period_5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad1 = Radiobutton(window, text='05:00', value=5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad2 = Radiobutton(window, text='10:00', value=10, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad3 = Radiobutton(window, text='15:00', value=15, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad4 = Radiobutton(window, text='20:00', value=20, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
