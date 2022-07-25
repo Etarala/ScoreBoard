@@ -30,8 +30,9 @@ mainmenu.add_cascade(label="Game", menu=filemenu)
 score_team1 = 0
 score_team2 = 0
 period = 1
-main_timer = 0
 
+period_time = 0
+main_timer = period_time
 #Score team left
 def nClick_score_left_up():
     global score_team1
@@ -176,7 +177,7 @@ btn_seconds_up.place(x=500, y=180, width=40, height=40)
 btn_seconds_down = Button(window, text="-", font=("digital numbers", 30), command=nClick_seconds_down, relief='flat', borderwidth=0)
 btn_seconds_down.place(x=470, y=180, width=40, height=40)
 
-lbl_timer = Label(window, text=main_timer, bg="black", fg="#fe0000", font=("digital numbers", 60))
+lbl_timer = Label(window, text=period_time, bg="black", fg="#fe0000", font=("digital numbers", 60))
 lbl_timer.place(x=250, y=70, width=320, height=100)
 
 
@@ -211,37 +212,56 @@ btn_new_game.place(x=460, y=290)
 
 #Start_Pause Main Timer
 def update_main_timer():
-    global main_timer
-    if main_timer >= 0:
-        m, s = divmod(main_timer, 60)
+    global period_time
+    if period_time >= 0:
+        m, s = divmod(period_time, 60)
         min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        main_timer = main_timer - 1
+        period_time = period_time - 1
         lbl_timer.config(text=min_sec_format)
 
         window.after(1000, update_main_timer)
 
 
 def start_main_timer(timer=3):
-    global main_timer
-    m, s = divmod(main_timer, 60)
+    global period_time
+    m, s = divmod(period_time+1, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    main_timer = timer
+    period_time = timer
     lbl_timer.config(text=min_sec_format)
 
     window.after(1000, update_main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(10),
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(period_time),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
 
 # Add radiobuttons default period time
+
+def get_time_period(get_time):
+    global period_time
+    if get_time == 300:
+        period_time = 299
+    elif get_time == 600:
+        period_time = 599
+    elif get_time == 900:
+        period_time = 899
+    elif get_time == 1200:
+        period_time = 1199
+
+def check():
+    radio_button = var.get()
+    global period_time
+    period_time = radio_button
+    get_time_period(period_time)
+
+
 var = IntVar()
-var.set(20)
-rad1 = Radiobutton(window, text='05:00', value=5, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad2 = Radiobutton(window, text='10:00', value=10, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad3 = Radiobutton(window, text='15:00', value=15, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad4 = Radiobutton(window, text='20:00', value=20, variable=var, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+var.set(0)
+rad1 = Radiobutton(window, text='05:00', value=300, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad2 = Radiobutton(window, text='10:00', value=600, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad3 = Radiobutton(window, text='15:00', value=900, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad4 = Radiobutton(window, text='20:00', value=1200, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad1.place(x=175, y=70)
 rad2.place(x=175, y=95)
 rad3.place(x=175, y=120)
