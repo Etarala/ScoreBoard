@@ -206,24 +206,31 @@ btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17),
                      bg='black', fg='#00fffe', borderwidth=0)
 btn_new_game.place(x=460, y=290)
 
+
+
+
+#Start_Pause Main Timer
 def update_main_timer():
     global main_timer
     if main_timer > 0:
+        m, s = divmod(main_timer, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
         main_timer = main_timer - 1
-        lbl_timer.config(text=main_timer)
+        lbl_timer.config(text=min_sec_format)
 
         window.after(1000, update_main_timer)
 
 
-#Start_Pause Main Timer
 def start_main_timer(timer=3):
     global main_timer
+    m, s = divmod(main_timer, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
     main_timer = timer
-    lbl_timer.config(text=main_timer)
+    lbl_timer.config(text=min_sec_format)
 
     window.after(1000, update_main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(5),
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(100),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
