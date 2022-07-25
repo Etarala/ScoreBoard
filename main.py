@@ -223,7 +223,7 @@ def start_main_timer(timer=3):
 
     window.after(1000, update_main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=start_main_timer,
+btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(5),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=275, y=230)
 
