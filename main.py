@@ -9,14 +9,10 @@ window = Tk()
 window.title("Score Panel")
 window.geometry('815x500')
 window.resizable(width=0, height=0)
-# window['bg'] = '#404040'
 
-
-#C = Canvas(window, bg="blue", height=815, width=500)
 fon = PhotoImage(file="pict/layer.png")
 background_label = Label(window, image=fon)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
-#C.pack()
 
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
@@ -30,9 +26,13 @@ mainmenu.add_cascade(label="Game", menu=filemenu)
 score_team1 = 0
 score_team2 = 0
 period = 1
-
 period_time = 0
-main_timer = period_time
+paused_main_timer = False
+paused_left_timer1 = False
+paused_left_timer2 = False
+paused_right_timer1 = False
+paused_right_timer2 = False
+
 #Score team left
 def nClick_score_left_up():
     global score_team1
@@ -112,14 +112,15 @@ btn_penalty_left_second = Button(window, text="START", font=("square sans serif 
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_left_second.place(x=130, y=420)
 
-lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
-lbl_penalty_name_left.place(x=45, y=460)
-
 lbl_penalty_left1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_left1.place(x=10, y=360)
 
 lbl_penalty_left2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_left2.place(x=10, y=410)
+
+lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
+lbl_penalty_name_left.place(x=45, y=460)
+
 
 #Penalty Team Right
 def penalty_right_first():
@@ -135,14 +136,14 @@ btn_penalty_right_second = Button(window, text="START", font=("square sans serif
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_right_second.place(x=580, y=420)
 
-lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
-lbl_penalty_name_right.place(x=615, y=460)
-
 lbl_penalty_right1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_right1.place(x=688, y=360)
 
 lbl_penalty_right2 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_right2.place(x=688, y=410)
+
+lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
+lbl_penalty_name_right.place(x=615, y=460)
 
 #Main Timer
 def nClick_minutes_up():
@@ -243,9 +244,16 @@ def start_main_timer(timer=3):
 
     window.after(1000, update_main_timer)
 
-btn_start_main_timer = Button(window, text="START/PAUSE", font=("square sans serif 7", 20), command=lambda: start_main_timer(period_time),
+btn_start_main_timer = Button(window, text="START", font=("square sans serif 7", 20), command=lambda: start_main_timer(period_time),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
-btn_start_main_timer.place(x=275, y=230)
+btn_start_main_timer.place(x=265, y=230)
+
+def pause():
+    pass
+
+btn_start_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command=lambda: pause(),
+                     relief='flat', bg='black', fg='#fe0000', borderwidth=0)
+btn_start_main_timer.place(x=410, y=230)
 
 
 # Add radiobuttons default period time
