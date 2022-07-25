@@ -148,13 +148,20 @@ lbl_penalty_right2.place(x=688, y=410)
 def nClick_minutes_up():
     global period_time
     period_time += 60
-    lbl_timer.config(text=period_time)
+    m, s = divmod(period_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format)
+
+
 def nClick_minutes_down():
     global period_time
     period_time -= 60
     if period_time < 0:
         period_time = 0
-    lbl_timer.config(text=period_time)
+    m, s = divmod(period_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format)
+
 
 btn_minutes_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_minutes_up, relief='flat', borderwidth=0)
 btn_minutes_up.place(x=305, y=180, width=40, height=40)
@@ -164,13 +171,18 @@ btn_minutes_down.place(x=275, y=180, width=40, height=40)
 def nClick_seconds_up():
     global period_time
     period_time += 1
-    lbl_timer.config(text=period_time)
+    m, s = divmod(period_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format)
+
 def nClick_seconds_down():
     global period_time
     period_time -= 1
     if period_time < 0:
         period_time = 0
-    lbl_timer.config(text=period_time)
+    m, s = divmod(period_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format)
 
 btn_seconds_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_seconds_up, relief='flat', borderwidth=0)
 btn_seconds_up.place(x=500, y=180, width=40, height=40)
