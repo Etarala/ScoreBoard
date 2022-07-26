@@ -229,8 +229,9 @@ def update_main_timer():
     global paused_main_timer
 
     if paused_main_timer:
+        btn_pause_main_timer.config(bg='yellow')
         return
-
+    btn_pause_main_timer.config(bg='black')
     period_time = period_time - 1
 
     if period_time >= 0:
@@ -263,9 +264,9 @@ def pause():
         update_main_timer()
 
 
-btn_start_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
+btn_pause_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
-btn_start_main_timer.place(x=410, y=230)
+btn_pause_main_timer.place(x=410, y=230)
 
 
 # Add radiobuttons default period time
