@@ -227,14 +227,19 @@ btn_new_game.place(x=460, y=290)
 def update_main_timer():
     global period_time
     global paused_main_timer
-    if not paused_main_timer:
-        if period_time >= 0:
-            m, s = divmod(period_time, 60)
-            min_sec_format = '{:02d}:{:02d}'.format(m, s)
-            period_time = period_time - 1
-            lbl_timer.config(text=min_sec_format)
 
-            window.after(1000, update_main_timer)
+    if paused_main_timer:
+        return
+
+    period_time = period_time - 1
+
+    if period_time >= 0:
+        m, s = divmod(period_time, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+
+        lbl_timer.config(text=min_sec_format)
+
+        window.after(1000, update_main_timer)
 
 
 def start_main_timer(timer=3):
@@ -253,8 +258,10 @@ btn_start_main_timer.place(x=265, y=230)
 def pause():
     global paused_main_timer
     paused_main_timer = not paused_main_timer
-    if paused_main_timer:
+
+    if not paused_main_timer:
         update_main_timer()
+
 
 btn_start_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
