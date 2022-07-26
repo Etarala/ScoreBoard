@@ -27,6 +27,7 @@ score_team1 = 0
 score_team2 = 0
 period = 1
 period_time = 0
+game_started = False
 paused_main_timer = False
 paused_left_timer1 = False
 paused_left_timer2 = False
@@ -227,7 +228,6 @@ btn_new_game.place(x=460, y=290)
 def update_main_timer():
     global period_time
     global paused_main_timer
-
     if paused_main_timer:
         btn_pause_main_timer.config(bg='yellow')
         return
@@ -243,14 +243,19 @@ def update_main_timer():
         window.after(1000, update_main_timer)
 
 
-def start_main_timer(timer=3):
+def start_main_timer(timer):
     global period_time
-    m, s = divmod(period_time+1, 60)
-    min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    period_time = timer
-    lbl_timer.config(text=min_sec_format)
+    global game_started
+    if game_started:
+        return
+    else:
+        game_started = True
+        m, s = divmod(period_time+1, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+        period_time = timer
+        lbl_timer.config(text=min_sec_format)
 
-    window.after(1000, update_main_timer)
+        window.after(1000, update_main_timer)
 
 btn_start_main_timer = Button(window, text="START", font=("square sans serif 7", 20), command=lambda: start_main_timer(period_time),
                      relief='flat', bg='black', fg='#fe0000', borderwidth=0)
