@@ -27,12 +27,20 @@ score_team1 = 0
 score_team2 = 0
 period = 1
 period_time = 0
+penalty_left_first_time = 118
+penalty_left_second_time = 118
+penalty_right_first_time = 118
+penalty_right_second_time = 118
 game_started = False
 paused_main_timer = False
-paused_left_timer1 = False
-paused_left_timer2 = False
-paused_right_timer1 = False
-paused_right_timer2 = False
+penalty_left_first_started = False
+penalty_left_second_started = False
+penalty_right_first_started = False
+penalty_right_second_started = False
+paused_penalty_left_first = True
+paused_penalty_left_second = False
+paused_penalty_right_first = False
+paused_penalty_right_second = False
 
 #Score team left
 def nClick_score_left_up():
@@ -101,14 +109,48 @@ lbl_period.place(x=367, y=360, width=75, height=100)
 
 
 #Penalty Team Left
-def penalty_left_first():
-    pass
-def penalty_left_second():
+def update_penalty_left_first_timer():
+    global penalty_left_first_time
+    global paused_main_timer
+    if not paused_penalty_left_first:
+
+        return
+
+    #btn_pause_main_timer.config(bg='black')
+    penalty_left_first_time = penalty_left_first_time - 1
+    if penalty_left_first_time >= 0:
+        m, s = divmod(penalty_left_first_time, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+        lbl_penalty_left1.config(text=min_sec_format)
+        window.after(1000, update_penalty_left_first_timer)
+
+
+def start_penalty_left_first(timer=119):
+    global penalty_left_first_time
+    global penalty_left_first_started
+    global paused_main_timer
+    if paused_main_timer:
+        paused_main_timer = False
+        update_main_timer()
+    if penalty_left_first_started:
+
+        return
+    else:
+        penalty_left_first_started = True
+        btn_penalty_left_first.config(fg='#fe0000')
+        m, s = divmod(penalty_left_first_time+1, 60)
+        min_sec_format = '{:02d}:{:02d}'.format(m, s)
+        penalty_left_first_time = timer
+        lbl_penalty_left1.config(text=min_sec_format)
+        window.after(1000, update_penalty_left_first_timer)
+
+
+def start_penalty_left_second():
     pass
 
-btn_penalty_left_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
+btn_penalty_left_first = Button(window, text="*", font=("square sans serif 7", 18), command=start_penalty_left_first,
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-btn_penalty_left_first.place(x=130, y=370)
+btn_penalty_left_first.place(x=130, y=365)
 btn_penalty_left_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_left_second.place(x=130, y=420)
@@ -124,10 +166,13 @@ lbl_penalty_name_left.place(x=45, y=460)
 
 
 #Penalty Team Right
-def penalty_right_first():
+def start_penalty_right_first():
     pass
-def penalty_right_second():
+
+def start_penalty_right_second():
     pass
+
+
 
 btn_penalty_right_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
@@ -263,8 +308,12 @@ btn_start_main_timer.place(x=265, y=230)
 
 def pause():
     global paused_main_timer
+    global paused_penalty_left_first
     paused_main_timer = not paused_main_timer
+    paused_penalty_left_first = not paused_penalty_left_first
 
+    if not paused_penalty_left_first:
+        update_penalty_left_first_timer()
     if not paused_main_timer:
         update_main_timer()
 
