@@ -22,27 +22,25 @@ filemenu.add_command(label="Bullits")
 
 mainmenu.add_cascade(label="Game", menu=filemenu)
 
-#Define variables
+# Define variables
 score_team1 = 0
 score_team2 = 0
 period = 1
 period_time = 0
-penalty_left_first_time = 118
+penalty_left_first_time = 120
 penalty_left_second_time = 118
 penalty_right_first_time = 118
 penalty_right_second_time = 118
 game_started = False
 paused_main_timer = False
 penalty_left_first_started = False
+penalty_left_first_paused = True
 penalty_left_second_started = False
 penalty_right_first_started = False
 penalty_right_second_started = False
-paused_penalty_left_first = True
-paused_penalty_left_second = False
-paused_penalty_right_first = False
-paused_penalty_right_second = False
 
-#Score team left
+
+# Score team left
 def nClick_score_left_up():
     global score_team1
     score_team1 += 1
@@ -63,7 +61,7 @@ lbl_score_left = Label(window, text="00", bg="black", fg="#feba00", font=("digit
 lbl_score_left.place(x=5, y=130, width=150, height=140)
 
 
-#Score team right
+# Score team right
 def nClick_score_right_up():
     global score_team2
     score_team2 += 1
@@ -84,7 +82,7 @@ lbl_score_right = Label(window, text="00", bg="black", fg="#feba00", font=("digi
 lbl_score_right.place(x=660, y=130, width=150, height=140)
 
 
-#Game Period
+# Game Period
 def nClick_period_up():
     global period
     period += 1
@@ -108,49 +106,38 @@ lbl_period = Label(window, text="1", bg="black", fg="#03bd02", font=("digital nu
 lbl_period.place(x=367, y=360, width=75, height=100)
 
 
-#Penalty Team Left
+# Penalty Team Left
 def update_penalty_left_first_timer():
     global penalty_left_first_time
     global paused_main_timer
-    if not paused_penalty_left_first:
-
-        return
-
-    #btn_pause_main_timer.config(bg='black')
-    penalty_left_first_time = penalty_left_first_time - 1
-    if penalty_left_first_time >= 0:
-        m, s = divmod(penalty_left_first_time, 60)
-        min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        lbl_penalty_left1.config(text=min_sec_format)
-        window.after(1000, update_penalty_left_first_timer)
-
-
-def start_penalty_left_first(timer=119):
-    global penalty_left_first_time
     global penalty_left_first_started
-    global paused_main_timer
-    if paused_main_timer:
-        paused_main_timer = False
-        update_main_timer()
+    #btn_pause_main_timer.config(bg='black')
     if penalty_left_first_started:
+        penalty_left_first_time = penalty_left_first_time - 1
+        if penalty_left_first_time >= 0:
+            m, s = divmod(penalty_left_first_time, 60)
+            min_sec_format = '{:02d}:{:02d}'.format(m, s)
+            lbl_penalty_left1.config(text=min_sec_format)
+            window.after(1000, update_penalty_left_first_timer)
 
-        return
-    else:
-        penalty_left_first_started = True
-        btn_penalty_left_first.config(fg='#fe0000')
-        m, s = divmod(penalty_left_first_time+1, 60)
-        min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        penalty_left_first_time = timer
-        lbl_penalty_left1.config(text=min_sec_format)
-        window.after(1000, update_penalty_left_first_timer)
 
 
 def start_penalty_left_second():
     pass
 
-btn_penalty_left_first = Button(window, text="*", font=("square sans serif 7", 18), command=start_penalty_left_first,
-                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-btn_penalty_left_first.place(x=130, y=365)
+def chk_penalty_left_first():
+    check1left = chk_penalty_left_first_state.get()
+    global penalty_left_first_started
+    penalty_left_first_started = check1left
+
+
+chk_penalty_left_first_state = BooleanVar()
+chk_penalty_left_first_state.set(False)
+chk_penalty_left_first = Checkbutton(window, text='1', var=chk_penalty_left_first_state, command=chk_penalty_left_first, font=("square sans serif 7", 18))
+chk_penalty_left_first.place(x=130, y=365)
+#btn_penalty_left_first = Button(window, text="*", font=("square sans serif 7", 18), command=start_penalty_left_first,
+                     #relief='flat', bg='black', fg='#03bd02', borderwidth=0)
+#btn_penalty_left_first.place(x=130, y=365)
 btn_penalty_left_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_left_second.place(x=130, y=420)
@@ -165,7 +152,7 @@ lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", 
 lbl_penalty_name_left.place(x=45, y=460)
 
 
-#Penalty Team Right
+# Penalty Team Right
 def start_penalty_right_first():
     pass
 
@@ -191,7 +178,7 @@ lbl_penalty_right2.place(x=688, y=410)
 lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white", font=("square sans serif 7", 20))
 lbl_penalty_name_right.place(x=615, y=460)
 
-#Main Timer
+# Main Timer
 def nClick_minutes_up():
     global period_time
     period_time += 60
@@ -240,7 +227,7 @@ lbl_timer = Label(window, text=period_time, bg="black", fg="#fe0000", font=("dig
 lbl_timer.place(x=250, y=70, width=320, height=100)
 
 
-#Reset main timer
+# Reset main timer
 def reset_main_timer():
     pass
 
@@ -249,7 +236,7 @@ btn_reset_main_timer = Button(window, text="RESET TIMER", font=("square sans ser
 btn_reset_main_timer.place(x=220, y=290)
 
 
-#New game
+# New game
 def new_game():
     pass
     '''global score_team1
@@ -269,7 +256,7 @@ btn_new_game.place(x=460, y=290)
 
 
 
-#Start_Pause Main Timer
+# Start_Pause Main Timer
 def update_main_timer():
     global period_time
     global paused_main_timer
@@ -308,14 +295,20 @@ btn_start_main_timer.place(x=265, y=230)
 
 def pause():
     global paused_main_timer
-    global paused_penalty_left_first
+    global penalty_left_first_paused
+    global penalty_left_first_started
     paused_main_timer = not paused_main_timer
-    paused_penalty_left_first = not paused_penalty_left_first
 
-    if not paused_penalty_left_first:
+    if penalty_left_first_started:
+        penalty_left_first_paused = False
         update_penalty_left_first_timer()
+
+
+
     if not paused_main_timer:
         update_main_timer()
+    print("started", penalty_left_first_started)
+    print("paused", penalty_left_first_paused)
 
 
 btn_pause_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
@@ -325,7 +318,7 @@ btn_pause_main_timer.place(x=410, y=230)
 
 # Add radiobuttons default period time
 
-def check():
+def check_radio_btn():
     radio_button = var.get()
     global period_time
     period_time = radio_button
@@ -341,10 +334,10 @@ def check():
 
 var = IntVar()
 var.set(0)
-rad1 = Radiobutton(window, text='05:00', value=300, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad2 = Radiobutton(window, text='10:00', value=600, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad3 = Radiobutton(window, text='15:00', value=900, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
-rad4 = Radiobutton(window, text='20:00', value=1200, variable=var, command=check, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad1 = Radiobutton(window, text='05:00', value=300, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad2 = Radiobutton(window, text='10:00', value=600, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad3 = Radiobutton(window, text='15:00', value=900, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
+rad4 = Radiobutton(window, text='20:00', value=1200, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00", selectcolor='black', font=("arial", 12))
 rad1.place(x=175, y=70)
 rad2.place(x=175, y=95)
 rad3.place(x=175, y=120)
