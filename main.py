@@ -128,13 +128,15 @@ def start_penalty_left_second():
 def chk_penalty_left_first():
     check1left = chk_penalty_left_first_state.get()
     global penalty_left_first_started
+    global penalty_left_first_paused
     penalty_left_first_started = check1left
+    penalty_left_first_paused = not penalty_left_first_started
 
 
 chk_penalty_left_first_state = BooleanVar()
 chk_penalty_left_first_state.set(False)
-chk_penalty_left_first = Checkbutton(window, text='1', var=chk_penalty_left_first_state, command=chk_penalty_left_first, font=("square sans serif 7", 18))
-chk_penalty_left_first.place(x=130, y=365)
+chk_penalty_left_first_btn = Checkbutton(window, text='1', var=chk_penalty_left_first_state, command=chk_penalty_left_first, font=("square sans serif 7", 18))
+chk_penalty_left_first_btn.place(x=130, y=365)
 #btn_penalty_left_first = Button(window, text="*", font=("square sans serif 7", 18), command=start_penalty_left_first,
                      #relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 #btn_penalty_left_first.place(x=130, y=365)
@@ -298,15 +300,17 @@ def pause():
     global penalty_left_first_paused
     global penalty_left_first_started
     paused_main_timer = not paused_main_timer
-
-    if penalty_left_first_started:
-        penalty_left_first_paused = False
-        update_penalty_left_first_timer()
-
-
-
     if not paused_main_timer:
         update_main_timer()
+    if penalty_left_first_started:
+        update_penalty_left_first_timer()
+    if not penalty_left_first_paused:
+        return
+
+
+
+
+
     print("started", penalty_left_first_started)
     print("paused", penalty_left_first_paused)
 
