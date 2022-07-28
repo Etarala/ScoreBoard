@@ -431,7 +431,7 @@ def reset_main_timer():
 
 btn_reset_main_timer = Button(window, text="RESET TIMERS", font=("square sans serif 7", 17), command=reset_main_timer,relief='flat',
                      bg='black', fg='#00fffe', borderwidth=0)
-btn_reset_main_timer.place(x=220, y=290)
+btn_reset_main_timer.place(x=180, y=290)
 
 
 # New game
@@ -492,7 +492,7 @@ def new_game():
 
 btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=new_game, relief='flat',
                      bg='black', fg='#00fffe', borderwidth=0)
-btn_new_game.place(x=460, y=290)
+btn_new_game.place(x=440, y=290)
 
 
 # Start_Pause Main Timer
