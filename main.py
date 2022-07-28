@@ -384,11 +384,52 @@ lbl_timer = Label(window, text=period_time, bg="black", fg="#fe0000", font=("dig
 lbl_timer.place(x=250, y=70, width=320, height=100)
 
 
-# Reset main timer
+# Reset timers
 def reset_main_timer():
-    pass
+    global period_time
+    global paused_main_timer
+    global game_started
+    global penalty_left_first_time
+    global penalty_left_second_time
+    global penalty_right_first_time
+    global penalty_right_second_time
+    global penalty_left_first_paused
+    global penalty_left_second_paused
+    global penalty_right_first_paused
+    global penalty_right_second_paused
+    global penalty_left_first_started
+    global penalty_left_second_started
+    global penalty_right_first_started
+    global penalty_right_second_started
+    period_time = 0
+    lbl_timer.config(text="00:00")
+    var.set(0)
+    game_started = False
+    paused_main_timer = False
+    btn_pause_main_timer.config(bg='black')
+    penalty_left_first_time = 120
+    penalty_left_second_time = 120
+    penalty_right_first_time = 120
+    penalty_right_second_time = 120
+    lbl_penalty_left1.config(text="02:00")
+    lbl_penalty_left2.config(text="02:00")
+    lbl_penalty_right1.config(text="02:00")
+    lbl_penalty_right2.config(text="02:00")
+    chk_penalty_left_first_state.set(False)
+    chk_penalty_left_second_state.set(False)
+    chk_penalty_right_first_state.set(False)
+    chk_penalty_right_second_state.set(False)
+    penalty_left_first_paused = True
+    penalty_left_second_paused = True
+    penalty_right_first_paused = True
+    penalty_right_second_paused = True
+    penalty_left_first_started = False
+    penalty_left_second_started = False
+    penalty_right_first_started = False
+    penalty_right_second_started = False
 
-btn_reset_main_timer = Button(window, text="RESET TIMER", font=("square sans serif 7", 17), command=lambda: print('click'),relief='flat',
+
+btn_reset_main_timer = Button(window, text="RESET TIMERS", font=("square sans serif 7", 17), command=reset_main_timer,relief='flat',
                      bg='black', fg='#00fffe', borderwidth=0)
 btn_reset_main_timer.place(x=220, y=290)
 
