@@ -1,4 +1,5 @@
 from tkinter import *
+import codecs
 
 window = Tk()
 window.title("Score Panel")
@@ -560,9 +561,9 @@ def update_main_timer():
             file.write(str(period))
         team1_write = team1.get()
         team2_write = team2.get()
-        with open("output/team1.txt", "w", encoding='utf-8') as file:
+        with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
             file.write(str(team1_write))
-        with open("output/team2.txt", "w", encoding='utf-8') as file:
+        with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
             file.write(str(team2_write))
 
 
@@ -633,12 +634,12 @@ def check_radio_btn():
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     with open("output/main_timer.txt", "w") as file:
         file.write(str(min_sec_format))
-    """team1_write = team1.get()
+    team1_write = team1.get()
     team2_write = team2.get()
-    with open("output/team1.txt", "w", encoding='utf-8') as file:
+    with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
         file.write(str(team1_write))
-    with open("output/team2.txt", "w", encoding='utf-8') as file:
-        file.write(str(team2_write))"""
+    with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
+        file.write(str(team2_write))
 
 
 var = IntVar()
