@@ -28,17 +28,19 @@ score_team2 = 0
 period = 1
 period_time = 0
 penalty_left_first_time = 120
-penalty_left_second_time = 118
-penalty_right_first_time = 118
-penalty_right_second_time = 118
+penalty_left_second_time = 120
+penalty_right_first_time = 120
+penalty_right_second_time = 120
 game_started = False
 paused_main_timer = False
 penalty_left_first_started = False
 penalty_left_first_paused = True
 penalty_left_second_started = False
+penalty_left_second_paused = True
 penalty_right_first_started = False
+penalty_right_first_paused = True
 penalty_right_second_started = False
-
+penalty_right_second_paused = True
 
 # Score team left
 def nClick_score_left_up():
@@ -111,7 +113,6 @@ def update_penalty_left_first_timer():
     global penalty_left_first_time
     global paused_main_timer
     global penalty_left_first_started
-    #btn_pause_main_timer.config(bg='black')
     if not paused_main_timer and penalty_left_first_started:
         penalty_left_first_time = penalty_left_first_time - 1
         if penalty_left_first_time >= 0:
@@ -120,10 +121,6 @@ def update_penalty_left_first_timer():
             lbl_penalty_left1.config(text=min_sec_format)
             window.after(1000, update_penalty_left_first_timer)
 
-
-
-def start_penalty_left_second():
-    pass
 
 def chk_penalty_left_first():
     check1left = chk_penalty_left_first_state.get()
@@ -163,9 +160,63 @@ btn_penalty_left_first_down = Button(window, text="-", font=("digital numbers", 
 btn_penalty_left_first_down.place(x=173, y=365, width=35, height=35)
 
 
-btn_penalty_left_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
-                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-btn_penalty_left_second.place(x=130, y=420)
+
+
+
+
+def update_penalty_left_second_timer():
+    global penalty_left_second_time
+    global paused_main_timer
+    global penalty_left_second_started
+    if not paused_main_timer and penalty_left_second_started:
+        penalty_left_second_time = penalty_left_second_time - 1
+        if penalty_left_second_time >= 0:
+            m, s = divmod(penalty_left_second_time, 60)
+            min_sec_format = '{:02d}:{:02d}'.format(m, s)
+            lbl_penalty_left2.config(text=min_sec_format)
+            window.after(1000, update_penalty_left_second_timer)
+
+
+def chk_penalty_left_second():
+    check2left = chk_penalty_left_second_state.get()
+    global penalty_left_second_started
+    global penalty_left_second_paused
+    penalty_left_second_started = check2left
+    penalty_left_second_paused = not penalty_left_second_started
+
+
+chk_penalty_left_second_state = BooleanVar()
+chk_penalty_left_second_state.set(False)
+chk_penalty_left_second_btn = Checkbutton(window, text='', var=chk_penalty_left_second_state, command=chk_penalty_left_second, bg="#404040", fg="#03bd02", selectcolor='black', font=("square sans serif 7", 25))
+chk_penalty_left_second_btn.place(x=130, y=410)
+
+def nClick_penalty_left_second_minutes_up():
+    global penalty_left_second_time
+    penalty_left_second_time += 60
+    m, s = divmod(penalty_left_second_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left2.config(text=min_sec_format)
+
+
+def nClick_penalty_left_second_minutes_down():
+    global penalty_left_second_time
+    penalty_left_second_time -= 60
+    if penalty_left_second_time < 0:
+        penalty_left_second_time = 0
+    m, s = divmod(penalty_left_second_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left2.config(text=min_sec_format)
+
+
+
+btn_penalty_left_second_up = Button(window, text="+", font=("digital numbers", 22), command=nClick_penalty_left_second_minutes_up,
+                     relief='flat', borderwidth=0)
+btn_penalty_left_second_up.place(x=208, y=414, width=35, height=35)
+btn_penalty_left_second_down = Button(window, text="-", font=("digital numbers", 22), command= nClick_penalty_left_second_minutes_down,
+                     relief='flat', borderwidth=0)
+btn_penalty_left_second_down.place(x=173, y=414, width=35, height=35)
+
+
 
 lbl_penalty_left1 = Label(window, text="02:00", bg="black", fg="#feba00", font=("digital numbers", 20))
 lbl_penalty_left1.place(x=10, y=360)
@@ -322,11 +373,15 @@ def pause():
     global paused_main_timer
     global penalty_left_first_paused
     global penalty_left_first_started
+    global penalty_left_second_paused
+    global penalty_left_second_started
     paused_main_timer = not paused_main_timer
     if not paused_main_timer:
         update_main_timer()
         if penalty_left_first_started:
             update_penalty_left_first_timer()
+        if penalty_left_second_started:
+            update_penalty_left_second_timer()
 
 
 btn_pause_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
