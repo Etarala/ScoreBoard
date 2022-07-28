@@ -135,11 +135,34 @@ def chk_penalty_left_first():
 
 chk_penalty_left_first_state = BooleanVar()
 chk_penalty_left_first_state.set(False)
-chk_penalty_left_first_btn = Checkbutton(window, text='1', var=chk_penalty_left_first_state, command=chk_penalty_left_first, font=("square sans serif 7", 18))
-chk_penalty_left_first_btn.place(x=130, y=365)
-#btn_penalty_left_first = Button(window, text="*", font=("square sans serif 7", 18), command=start_penalty_left_first,
-                     #relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-#btn_penalty_left_first.place(x=130, y=365)
+chk_penalty_left_first_btn = Checkbutton(window, text='', var=chk_penalty_left_first_state, command=chk_penalty_left_first, bg="#404040", fg="#03bd02", selectcolor='black', font=("square sans serif 7", 25))
+chk_penalty_left_first_btn.place(x=130, y=360)
+
+def nClick_penalty_left_first_minutes_up():
+    global penalty_left_first_time
+    penalty_left_first_time += 60
+    m, s = divmod(penalty_left_first_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left1.config(text=min_sec_format)
+
+
+def nClick_penalty_left_first_minutes_down():
+    global penalty_left_first_time
+    penalty_left_first_time -= 60
+    if penalty_left_first_time < 0:
+        penalty_left_first_time = 0
+    m, s = divmod(penalty_left_first_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left1.config(text=min_sec_format)
+
+btn_penalty_left_first_up = Button(window, text="+", font=("digital numbers", 22), command=nClick_penalty_left_first_minutes_up,
+                     relief='flat', borderwidth=0)
+btn_penalty_left_first_up.place(x=208, y=365, width=35, height=35)
+btn_penalty_left_first_down = Button(window, text="-", font=("digital numbers", 22), command= nClick_penalty_left_first_minutes_down,
+                     relief='flat', borderwidth=0)
+btn_penalty_left_first_down.place(x=173, y=365, width=35, height=35)
+
+
 btn_penalty_left_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
                      relief='flat', bg='black', fg='#03bd02', borderwidth=0)
 btn_penalty_left_second.place(x=130, y=420)
@@ -304,13 +327,6 @@ def pause():
         update_main_timer()
         if penalty_left_first_started:
             update_penalty_left_first_timer()
-
-
-
-
-
-    print("started", penalty_left_first_started)
-    print("paused", penalty_left_first_paused)
 
 
 btn_pause_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command = pause,
