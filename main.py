@@ -434,12 +434,6 @@ def reset_main_timer():
     penalty_left_second_started = False
     penalty_right_first_started = False
     penalty_right_second_started = False
-    with open("output/score_team1.txt", "w") as file:
-        file.write("0")
-    with open("output/score_team2.txt", "w") as file:
-        file.write("0")
-    with open("output/period.txt", "w") as file:
-        file.write("1")
     with open("output/main_timer.txt", "w") as file:
         file.write("00:00")
     with open("output/penalty_left_first.txt", "w") as file:
