@@ -221,13 +221,7 @@ lbl_penalty_name_left = Label(window, text="Penalty", bg="#404040", fg="white", 
 lbl_penalty_name_left.place(x=45, y=460)
 
 
-
-
-
-
 # Penalty Team Right
-
-
 
 def update_penalty_right_first_timer():
     global penalty_right_first_time
@@ -341,25 +335,6 @@ lbl_penalty_name_right = Label(window, text="Penalty", bg="#404040", fg="white",
 lbl_penalty_name_right.place(x=615, y=460)
 
 
-
-
-
-
-
-
-
-
-
-"""btn_penalty_right_first = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
-                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-btn_penalty_right_first.place(x=580, y=370)
-
-btn_penalty_right_second = Button(window, text="START", font=("square sans serif 7", 15), command=lambda: print('click'),
-                     relief='flat', bg='black', fg='#03bd02', borderwidth=0)
-btn_penalty_right_second.place(x=580, y=420)"""
-
-
-
 # Main Timer
 def nClick_minutes_up():
     global period_time
@@ -434,8 +409,6 @@ def new_game():
 btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=new_game, relief='flat',
                      bg='black', fg='#00fffe', borderwidth=0)
 btn_new_game.place(x=460, y=290)
-
-
 
 
 # Start_Pause Main Timer
