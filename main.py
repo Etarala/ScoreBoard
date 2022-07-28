@@ -485,7 +485,7 @@ def new_game():
     score_team2 = 0
     lbl_score_right.config(text=score_team2)
     period = 1
-    lbl_period.config(text=score_team1)
+    lbl_period.config(text=period)
     team1.delete(0, END)
     team2.delete(0, END)
 
