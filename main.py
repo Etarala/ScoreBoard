@@ -545,7 +545,7 @@ def update_main_timer():
     period_time = period_time - 1
 
     if period_time >= 0:
-        m, s = divmod(period_time, 60)
+        m, s = divmod(period_time-1, 60)
         min_sec_format = '{:02d}:{:02d}'.format(m, s)
 
         lbl_timer.config(text=min_sec_format)
@@ -576,7 +576,7 @@ def start_main_timer(timer):
         return
     else:
         game_started = True
-        m, s = divmod(period_time+1, 60)
+        m, s = divmod(period_time-1, 60)
         min_sec_format = '{:02d}:{:02d}'.format(m, s)
         period_time = timer
         lbl_timer.config(text=min_sec_format)
@@ -623,14 +623,14 @@ def check_radio_btn():
     global period_time
     period_time = radio_button
     if var.get() == 300:
-        period_time = 298
+        period_time = 300
     elif var.get() == 600:
-        period_time = 598
+        period_time = 600
     elif var.get() == 900:
-        period_time = 898
+        period_time = 900
     elif var.get() == 1200:
-        period_time = 1198
-    m, s = divmod(period_time + 2, 60)
+        period_time = 1200
+    m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     with open("output/main_timer.txt", "w") as file:
         file.write(str(min_sec_format))
