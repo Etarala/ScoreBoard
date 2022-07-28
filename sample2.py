@@ -80,9 +80,11 @@ paused_penalty_left_first_started = True
 score_team1 = 0
 score_team2 = 0
 period = 1
-team1.insert(0, "TEAM 1")
-team2.insert(0, "TEAM 2")
-
+period_time = 0
+penalty_left_first_time = 120
+penalty_left_second_time = 120
+penalty_right_first_time = 120
+penalty_right_second_time = 120
 
 
 
