@@ -1,9 +1,4 @@
 from tkinter import *
-import datetime
-import time
-from time import strftime
-import sys
-import os
 
 window = Tk()
 window.title("Score Panel")
@@ -41,6 +36,9 @@ penalty_right_first_started = False
 penalty_right_first_paused = True
 penalty_right_second_started = False
 penalty_right_second_paused = True
+write_files = True
+team1_write = ""
+team2_write = ""
 
 # Score team left
 def nClick_score_left_up():
@@ -120,6 +118,8 @@ def update_penalty_left_first_timer():
             min_sec_format = '{:02d}:{:02d}'.format(m, s)
             lbl_penalty_left1.config(text=min_sec_format)
             window.after(1000, update_penalty_left_first_timer)
+            with open("output/penalty_left_first.txt", "w") as file:
+                file.write(str(min_sec_format))
 
 
 def chk_penalty_left_first():
@@ -171,6 +171,8 @@ def update_penalty_left_second_timer():
             min_sec_format = '{:02d}:{:02d}'.format(m, s)
             lbl_penalty_left2.config(text=min_sec_format)
             window.after(1000, update_penalty_left_second_timer)
+            with open("output/penalty_left_second.txt", "w") as file:
+                file.write(str(min_sec_format))
 
 
 def chk_penalty_left_second():
@@ -234,6 +236,8 @@ def update_penalty_right_first_timer():
             min_sec_format = '{:02d}:{:02d}'.format(m, s)
             lbl_penalty_right1.config(text=min_sec_format)
             window.after(1000, update_penalty_right_first_timer)
+            with open("output/penalty_right_first.txt", "w") as file:
+                file.write(str(min_sec_format))
 
 
 def chk_penalty_right_first():
@@ -285,6 +289,8 @@ def update_penalty_right_second_timer():
             min_sec_format = '{:02d}:{:02d}'.format(m, s)
             lbl_penalty_right2.config(text=min_sec_format)
             window.after(1000, update_penalty_right_second_timer)
+            with open("output/penalty_right_second.txt", "w") as file:
+                file.write(str(min_sec_format))
 
 
 def chk_penalty_right_second():
@@ -427,6 +433,22 @@ def reset_main_timer():
     penalty_left_second_started = False
     penalty_right_first_started = False
     penalty_right_second_started = False
+    with open("output/score_team1.txt", "w") as file:
+        file.write("0")
+    with open("output/score_team2.txt", "w") as file:
+        file.write("0")
+    with open("output/period.txt", "w") as file:
+        file.write("1")
+    with open("output/main_timer.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_left_first.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_left_second.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_right_first.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_right_second.txt", "w") as file:
+        file.write("00:00")
 
 
 btn_reset_main_timer = Button(window, text="RESET TIMERS", font=("square sans serif 7", 17), command=reset_main_timer,relief='flat',
@@ -488,6 +510,22 @@ def new_game():
     lbl_period.config(text=period)
     team1.delete(0, END)
     team2.delete(0, END)
+    with open("output/score_team1.txt", "w") as file:
+        file.write("0")
+    with open("output/score_team2.txt", "w") as file:
+        file.write("0")
+    with open("output/period.txt", "w") as file:
+        file.write("1")
+    with open("output/main_timer.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_left_first.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_left_second.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_right_first.txt", "w") as file:
+        file.write("00:00")
+    with open("output/penalty_right_second.txt", "w") as file:
+        file.write("00:00")
 
 
 btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=new_game, relief='flat',
@@ -512,6 +550,22 @@ def update_main_timer():
         lbl_timer.config(text=min_sec_format)
 
         window.after(1000, update_main_timer)
+        with open("output/score_team1.txt", "w") as file:
+            file.write(str(score_team1))
+        with open("output/score_team2.txt", "w") as file:
+            file.write(str(score_team2))
+        with open("output/main_timer.txt", "w") as file:
+            file.write(str(min_sec_format))
+        with open("output/period.txt", "w") as file:
+            file.write(str(period))
+        team1_write = team1.get()
+        team2_write = team2.get()
+        with open("output/team1.txt", "w", encoding='utf-8') as file:
+            file.write(str(team1_write))
+        with open("output/team2.txt", "w", encoding='utf-8') as file:
+            file.write(str(team2_write))
+
+
 
 
 def start_main_timer(timer):
@@ -575,6 +629,16 @@ def check_radio_btn():
         period_time = 898
     elif var.get() == 1200:
         period_time = 1198
+    m, s = divmod(period_time + 2, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
+    """team1_write = team1.get()
+    team2_write = team2.get()
+    with open("output/team1.txt", "w", encoding='utf-8') as file:
+        file.write(str(team1_write))
+    with open("output/team2.txt", "w", encoding='utf-8') as file:
+        file.write(str(team2_write))"""
 
 
 var = IntVar()
@@ -597,8 +661,23 @@ team2 = Entry(window, width=20, bg="black", fg="#feba00", justify="center", font
 team2.insert(0, "TEAM 2")
 team2.place(x=428, y=20, width=380, height=40)
 
-# Write files
 
 with open("output/score_team1.txt", "w") as file:
-    file.write(score_team1)
+    file.write("0")
+with open("output/score_team2.txt", "w") as file:
+    file.write("0")
+with open("output/period.txt", "w") as file:
+    file.write("1")
+with open("output/main_timer.txt", "w") as file:
+    file.write("00:00")
+with open("output/penalty_left_first.txt", "w") as file:
+    file.write("00:00")
+with open("output/penalty_left_second.txt", "w") as file:
+    file.write("00:00")
+with open("output/penalty_right_first.txt", "w") as file:
+    file.write("00:00")
+with open("output/penalty_right_second.txt", "w") as file:
+    file.write("00:00")
+
+
 window.mainloop()
