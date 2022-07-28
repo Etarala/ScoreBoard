@@ -112,7 +112,7 @@ def update_penalty_left_first_timer():
     global paused_main_timer
     global penalty_left_first_started
     #btn_pause_main_timer.config(bg='black')
-    if penalty_left_first_started:
+    if not paused_main_timer and penalty_left_first_started:
         penalty_left_first_time = penalty_left_first_time - 1
         if penalty_left_first_time >= 0:
             m, s = divmod(penalty_left_first_time, 60)
@@ -302,10 +302,8 @@ def pause():
     paused_main_timer = not paused_main_timer
     if not paused_main_timer:
         update_main_timer()
-    if penalty_left_first_started:
-        update_penalty_left_first_timer()
-    if not penalty_left_first_paused:
-        return
+        if penalty_left_first_started:
+            update_penalty_left_first_timer()
 
 
 
