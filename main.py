@@ -46,12 +46,18 @@ def nClick_score_left_up():
     global score_team1
     score_team1 += 1
     lbl_score_left.config(text=score_team1)
+    with open("output/score_team1.txt", "w") as file:
+        file.write(str(score_team1))
+
 def nClick_score_left_down():
     global score_team1
     score_team1 -= 1
     if score_team1 < 0:
         score_team1 = 0
     lbl_score_left.config(text=score_team1)
+    with open("output/score_team1.txt", "w") as file:
+        file.write(str(score_team1))
+
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_left_up, relief='flat', borderwidth=0)
 btn_score_left_up.place(x=60, y=80, width=40, height=40)
@@ -67,12 +73,16 @@ def nClick_score_right_up():
     global score_team2
     score_team2 += 1
     lbl_score_right.config(text=score_team2)
+    with open("output/score_team2.txt", "w") as file:
+        file.write(str(score_team2))
 def nClick_score_right_down():
     global score_team2
     score_team2 -= 1
     if score_team2 < 0:
         score_team2 = 0
     lbl_score_right.config(text=score_team2)
+    with open("output/score_team2.txt", "w") as file:
+        file.write(str(score_team2))
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_right_up, relief='flat', borderwidth=0)
 btn_score_left_up.place(x=715, y=80, width=40, height=40)
@@ -88,12 +98,16 @@ def nClick_period_up():
     global period
     period += 1
     lbl_period.config(text=period)
+    with open("output/period.txt", "w") as file:
+        file.write(str(period))
 def nClick_period_down():
     global period
     period -= 1
     if period < 0:
         period = 0
     lbl_period.config(text=period)
+    with open("output/period.txt", "w") as file:
+        file.write(str(period))
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_period_up, relief='flat', borderwidth=0)
 btn_score_left_up.place(x=450, y=400, width=40, height=40)
@@ -545,14 +559,10 @@ def update_main_timer():
         lbl_timer.config(text=min_sec_format)
 
         window.after(1000, update_main_timer)
-        with open("output/score_team1.txt", "w") as file:
-            file.write(str(score_team1))
-        with open("output/score_team2.txt", "w") as file:
-            file.write(str(score_team2))
+
         with open("output/main_timer.txt", "w") as file:
             file.write(str(min_sec_format))
-        with open("output/period.txt", "w") as file:
-            file.write(str(period))
+
         team1_write = team1.get()
         team2_write = team2.get()
         with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
