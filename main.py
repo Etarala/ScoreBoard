@@ -668,7 +668,6 @@ team2 = Entry(window, width=20, bg="black", fg="#feba00", justify="center", font
 team2.insert(0, "TEAM 2")
 team2.place(x=428, y=20, width=380, height=40)
 
-
 with open("output/score_team1.txt", "w") as file:
     file.write("0")
 with open("output/score_team2.txt", "w") as file:
