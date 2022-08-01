@@ -1,7 +1,7 @@
 from tkinter import *
 import codecs
+import pyglet
 from global_hotkeys import *
-import time
 
 window = Tk()
 window.title("Score Panel")
@@ -14,6 +14,9 @@ background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
+
+pyglet.font.add_file('fonts/Digital Numbers.ttf')
+pyglet.font.add_file("fonts/square sans serif 7.ttf")
 
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits")
