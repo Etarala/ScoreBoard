@@ -1,5 +1,7 @@
 from tkinter import *
 import codecs
+from global_hotkeys import *
+import time
 
 window = Tk()
 window.title("Score Panel")
@@ -683,6 +685,27 @@ with open("output/penalty_right_first.txt", "w") as file:
     file.write("00:00")
 with open("output/penalty_right_second.txt", "w") as file:
     file.write("00:00")
+
+
+# Add hotkeys
+is_alive = True
+
+def exit_application():
+    global is_alive
+    stop_checking_hotkeys()
+    is_alive = False
+
+bindings = [
+    [["control", "numpad_7"], None, nClick_score_left_up],
+    [["control", "numpad_1"], None, nClick_score_left_down],
+    [["control", "numpad_9"], None, nClick_score_right_up],
+    [["control", "numpad_3"], None, nClick_score_right_down],
+    [["control", "numpad_5"], None, pause],
+    [["control", "shift", "9"], None, exit_application],
+]
+
+register_hotkeys(bindings)
+start_checking_hotkeys()
 
 
 window.mainloop()
