@@ -15,14 +15,24 @@ background_label.place(x=0, y=0, relwidth=1, relheight=1)
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
 
-pyglet.font.add_file('fonts/Digital Numbers.ttf')
-pyglet.font.add_file("fonts/square sans serif 7.ttf")
+is_alive = False
+
+def global_hotkeys():
+    global is_alive
+    if is_alive == False:
+        start_checking_hotkeys()
+        is_alive = True
+    elif is_alive == True:
+        stop_checking_hotkeys()
+        is_alive = False
 
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits")
+filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
+mainmenu.add_cascade(label="Options", menu=filemenu)
 
-mainmenu.add_cascade(label="Game", menu=filemenu)
-
+pyglet.font.add_file('fonts/Digital Numbers.ttf')
+pyglet.font.add_file("fonts/square sans serif 7.ttf")
 # Define variables
 score_team1 = 0
 score_team2 = 0
@@ -743,25 +753,18 @@ with open("output/penalty_right_second.txt", "w") as file:
     file.write("00:00")
 
 # Add hotkeys
-is_alive = True
-
-
-def exit_application():
-    global is_alive
-    stop_checking_hotkeys()
-    is_alive = False
-
 
 bindings = [
-    [["control", "numpad_7"], None, nClick_score_left_up],
-    [["control", "numpad_1"], None, nClick_score_left_down],
-    [["control", "numpad_9"], None, nClick_score_right_up],
-    [["control", "numpad_3"], None, nClick_score_right_down],
-    [["control", "numpad_5"], None, pause],
-    [["control", "shift", "9"], None, exit_application],
+    [["alt"], None, nClick_score_left_up],
+    #[["control", "numpad_1"], None, nClick_score_left_down],
+    [["control"], None, nClick_score_right_up],
+    #[["control", "numpad_3"], None, nClick_score_right_down],
+    [["space"], None, pause],
+    [["enter"], None, lambda: start_main_timer(period_time)],
+
 ]
 
 register_hotkeys(bindings)
-start_checking_hotkeys()
+
 
 window.mainloop()
