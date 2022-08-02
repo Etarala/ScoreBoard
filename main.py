@@ -4,7 +4,7 @@ import pyglet
 from global_hotkeys import *
 
 window = Tk()
-window.title("Score Panel")
+window.title("ScoreBoard")
 window.geometry('815x500')
 window.resizable(width=0, height=0)
 
