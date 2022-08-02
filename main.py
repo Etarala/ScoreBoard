@@ -627,6 +627,8 @@ def update_main_timer():
 def start_main_timer(timer):
     global period_time
     global game_started
+    if period_time <= 0:
+        return
     if game_started:
         return
     else:
