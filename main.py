@@ -33,7 +33,9 @@ mainmenu.add_cascade(label="Options", menu=filemenu)
 
 pyglet.font.add_file('fonts/Digital Numbers.ttf')
 pyglet.font.add_file("fonts/square sans serif 7.ttf")
+
 # Define variables
+
 score_team1 = 0
 score_team2 = 0
 period = 1
@@ -281,7 +283,6 @@ lbl_penalty_name_left.place(x=45, y=460)
 
 
 # Penalty Team Right
-
 def update_penalty_right_first_timer():
     global penalty_right_first_time
     global paused_main_timer
@@ -686,7 +687,6 @@ btn_pause_main_timer.place(x=410, y=230)
 
 
 # Add radiobuttons default period time
-
 def check_radio_btn():
     radio_button = var.get()
     global period_time
@@ -753,18 +753,15 @@ with open("output/penalty_right_second.txt", "w") as file:
     file.write("00:00")
 
 # Add hotkeys
-
 bindings = [
-    [["alt"], None, nClick_score_left_up],
+    [["left_control"], None, nClick_score_left_up],
     #[["control", "numpad_1"], None, nClick_score_left_down],
-    [["control"], None, nClick_score_right_up],
+    [["right_control"], None, nClick_score_right_up],
     #[["control", "numpad_3"], None, nClick_score_right_down],
     [["space"], None, pause],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
 ]
-
 register_hotkeys(bindings)
-
 
 window.mainloop()
