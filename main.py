@@ -174,6 +174,12 @@ def chk_penalty_left_first():
     global penalty_left_first_paused
     penalty_left_first_started = check1left
     penalty_left_first_paused = not penalty_left_first_started
+    m, s = divmod(penalty_left_first_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left1.config(text=min_sec_format)
+    window.after(1000, update_penalty_left_first_timer)
+    with open("output/penalty_left_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 chk_penalty_left_first_state = BooleanVar()
@@ -191,6 +197,8 @@ def nClick_penalty_left_first_minutes_up():
     m, s = divmod(penalty_left_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_left1.config(text=min_sec_format)
+    with open("output/penalty_left_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_penalty_left_first_minutes_down():
@@ -201,6 +209,8 @@ def nClick_penalty_left_first_minutes_down():
     m, s = divmod(penalty_left_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_left1.config(text=min_sec_format)
+    with open("output/penalty_left_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_penalty_left_first_up = Button(window, text="+", font=("digital numbers", 22),
@@ -234,6 +244,12 @@ def chk_penalty_left_second():
     global penalty_left_second_paused
     penalty_left_second_started = check2left
     penalty_left_second_paused = not penalty_left_second_started
+    m, s = divmod(penalty_left_second_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_left2.config(text=min_sec_format)
+    window.after(1000, update_penalty_left_second_timer)
+    with open("output/penalty_left_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 chk_penalty_left_second_state = BooleanVar()
@@ -251,6 +267,8 @@ def nClick_penalty_left_second_minutes_up():
     m, s = divmod(penalty_left_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_left2.config(text=min_sec_format)
+    with open("output/penalty_left_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_penalty_left_second_minutes_down():
@@ -261,6 +279,8 @@ def nClick_penalty_left_second_minutes_down():
     m, s = divmod(penalty_left_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_left2.config(text=min_sec_format)
+    with open("output/penalty_left_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_penalty_left_second_up = Button(window, text="+", font=("digital numbers", 22),
@@ -304,6 +324,12 @@ def chk_penalty_right_first():
     global penalty_right_first_paused
     penalty_right_first_started = check1right
     penalty_right_first_paused = not penalty_right_first_started
+    m, s = divmod(penalty_right_first_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_right1.config(text=min_sec_format)
+    window.after(1000, update_penalty_right_first_timer)
+    with open("output/penalty_right_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 chk_penalty_right_first_state = BooleanVar()
@@ -321,6 +347,8 @@ def nClick_penalty_right_first_minutes_up():
     m, s = divmod(penalty_right_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_right1.config(text=min_sec_format)
+    with open("output/penalty_right_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_penalty_right_first_minutes_down():
@@ -331,6 +359,8 @@ def nClick_penalty_right_first_minutes_down():
     m, s = divmod(penalty_right_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_right1.config(text=min_sec_format)
+    with open("output/penalty_right_first.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_penalty_right_first_up = Button(window, text="+", font=("digital numbers", 22),
@@ -364,6 +394,12 @@ def chk_penalty_right_second():
     global penalty_right_second_paused
     penalty_right_second_started = check2right
     penalty_right_second_paused = not penalty_right_second_started
+    m, s = divmod(penalty_right_second_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_penalty_right2.config(text=min_sec_format)
+    window.after(1000, update_penalty_right_second_timer)
+    with open("output/penalty_right_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 chk_penalty_right_second_state = BooleanVar()
@@ -381,6 +417,8 @@ def nClick_penalty_right_second_minutes_up():
     m, s = divmod(penalty_right_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_right2.config(text=min_sec_format)
+    with open("output/penalty_right_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_penalty_right_second_minutes_down():
@@ -391,6 +429,8 @@ def nClick_penalty_right_second_minutes_down():
     m, s = divmod(penalty_right_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_penalty_right2.config(text=min_sec_format)
+    with open("output/penalty_right_second.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_penalty_right_second_up = Button(window, text="+", font=("digital numbers", 22),
