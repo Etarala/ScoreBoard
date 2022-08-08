@@ -35,7 +35,6 @@ pyglet.font.add_file('fonts/Digital Numbers.ttf')
 pyglet.font.add_file("fonts/square sans serif 7.ttf")
 
 # Define variables
-
 score_team1 = 0
 score_team2 = 0
 period = 1
