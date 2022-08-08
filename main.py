@@ -740,6 +740,7 @@ def check_radio_btn():
         file.write(str(team1_write))
     with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
         file.write(str(team2_write))
+    window.focus_set()
 
 
 var = IntVar()
