@@ -176,8 +176,6 @@ def chk_penalty_left_first():
     penalty_left_first_paused = not penalty_left_first_started
     m, s = divmod(penalty_left_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    lbl_penalty_left1.config(text=min_sec_format)
-    window.after(1000, update_penalty_left_first_timer)
     with open("output/penalty_left_first.txt", "w") as file:
         file.write(str(min_sec_format))
 
@@ -246,8 +244,6 @@ def chk_penalty_left_second():
     penalty_left_second_paused = not penalty_left_second_started
     m, s = divmod(penalty_left_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    lbl_penalty_left2.config(text=min_sec_format)
-    window.after(1000, update_penalty_left_second_timer)
     with open("output/penalty_left_second.txt", "w") as file:
         file.write(str(min_sec_format))
 
@@ -326,8 +322,6 @@ def chk_penalty_right_first():
     penalty_right_first_paused = not penalty_right_first_started
     m, s = divmod(penalty_right_first_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    lbl_penalty_right1.config(text=min_sec_format)
-    window.after(1000, update_penalty_right_first_timer)
     with open("output/penalty_right_first.txt", "w") as file:
         file.write(str(min_sec_format))
 
@@ -396,8 +390,6 @@ def chk_penalty_right_second():
     penalty_right_second_paused = not penalty_right_second_started
     m, s = divmod(penalty_right_second_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
-    lbl_penalty_right2.config(text=min_sec_format)
-    window.after(1000, update_penalty_right_second_timer)
     with open("output/penalty_right_second.txt", "w") as file:
         file.write(str(min_sec_format))
 
