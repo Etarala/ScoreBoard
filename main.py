@@ -5,7 +5,6 @@ from global_hotkeys import *
 import shutil
 import os
 
-
 window = Tk()
 window.title("ScoreBoard")
 window.geometry('815x500')
@@ -17,8 +16,6 @@ background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 pyglet.font.add_file('fonts/Digital Numbers.ttf')
 pyglet.font.add_file("fonts/square sans serif 7.ttf")
-
-
 
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
@@ -67,8 +64,8 @@ bullit_right4_2 = False
 bullit_right5_1 = False
 bullit_right5_2 = False
 
-
 is_alive = False
+
 
 def global_hotkeys():
     global is_alive
@@ -78,6 +75,7 @@ def global_hotkeys():
     elif is_alive == True:
         stop_checking_hotkeys()
         is_alive = False
+
 
 # Bullits
 def openNewWindow():
@@ -90,14 +88,16 @@ def openNewWindow():
     lbl_separator = Label(newWindow, text="", fg="white")
     lbl_separator.place(x=198, y=0, width=10, height=500)
 
-    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="#feba00", font=("square sans serif 7", 17))
+    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="#feba00",
+                                  font=("square sans serif 7", 17))
     lbl_bullits_name_left.place(x=15, y=10)
 
-    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="#feba00", font=("square sans serif 7", 17))
+    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="#feba00",
+                                   font=("square sans serif 7", 17))
     lbl_bullits_name_right.place(x=220, y=10)
 
     lbl_bullits_name_left_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
-                                   font=("square sans serif 7", 14))
+                                       font=("square sans serif 7", 14))
     lbl_bullits_name_left_miss.place(x=14, y=70)
 
     lbl_bullits_name_left_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
@@ -105,11 +105,11 @@ def openNewWindow():
     lbl_bullits_name_left_goal.place(x=115, y=70)
 
     lbl_bullits_name_right_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
-                                   font=("square sans serif 7", 14))
+                                        font=("square sans serif 7", 14))
     lbl_bullits_name_right_miss.place(x=220, y=70)
 
     lbl_bullits_name_right_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
-                                       font=("square sans serif 7", 14))
+                                        font=("square sans serif 7", 14))
     lbl_bullits_name_right_goal.place(x=320, y=70)
 
     shutil.copyfile("pict/1.png", "output/left_1.png")
@@ -123,8 +123,7 @@ def openNewWindow():
     shutil.copyfile("pict/1.png", "output/right_4.png")
     shutil.copyfile("pict/1.png", "output/right_5.png")
 
-
-# Bullits team left
+    # Bullits team left
 
     def chk_bullits_left_11():
         global bullit_left1_1
@@ -138,11 +137,10 @@ def openNewWindow():
     chk_bullits_left_11_state = BooleanVar()
     chk_bullits_left_11_state.set(False)
     chk_bullits_left_11_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_11_state,
-                                             command=chk_bullits_left_11, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_11, bg="#404040", fg="#fe0000",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_11_btn.place(x=30, y=90)
-
 
     def chk_bullits_left_12():
         global bullit_left1_2
@@ -156,12 +154,10 @@ def openNewWindow():
     chk_bullits_left_12_state = BooleanVar()
     chk_bullits_left_12_state.set(False)
     chk_bullits_left_12_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_12_state,
-                                             command=chk_bullits_left_12, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_12, bg="#404040", fg="#03bd02",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_12_btn.place(x=130, y=90)
-
-
 
     def chk_bullits_left_21():
         global bullit_left2_1
@@ -175,11 +171,10 @@ def openNewWindow():
     chk_bullits_left_21_state = BooleanVar()
     chk_bullits_left_21_state.set(False)
     chk_bullits_left_21_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_21_state,
-                                             command=chk_bullits_left_21, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_21, bg="#404040", fg="#fe0000",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_21_btn.place(x=30, y=130)
-
 
     def chk_bullits_left_22():
         global bullit_left2_2
@@ -193,11 +188,10 @@ def openNewWindow():
     chk_bullits_left_22_state = BooleanVar()
     chk_bullits_left_22_state.set(False)
     chk_bullits_left_22_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_22_state,
-                                             command=chk_bullits_left_22, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_22, bg="#404040", fg="#03bd02",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_22_btn.place(x=130, y=130)
-
 
     def chk_bullits_left_31():
         global bullit_left3_1
@@ -211,11 +205,10 @@ def openNewWindow():
     chk_bullits_left_31_state = BooleanVar()
     chk_bullits_left_31_state.set(False)
     chk_bullits_left_31_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_31_state,
-                                             command=chk_bullits_left_31, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_31, bg="#404040", fg="#fe0000",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_31_btn.place(x=30, y=170)
-
 
     def chk_bullits_left_32():
         global bullit_left3_2
@@ -229,11 +222,10 @@ def openNewWindow():
     chk_bullits_left_32_state = BooleanVar()
     chk_bullits_left_32_state.set(False)
     chk_bullits_left_32_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_32_state,
-                                             command=chk_bullits_left_32, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_32, bg="#404040", fg="#03bd02",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_32_btn.place(x=130, y=170)
-
 
     def chk_bullits_left_41():
         global bullit_left4_1
@@ -247,11 +239,10 @@ def openNewWindow():
     chk_bullits_left_41_state = BooleanVar()
     chk_bullits_left_41_state.set(False)
     chk_bullits_left_41_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_41_state,
-                                             command=chk_bullits_left_41, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_41, bg="#404040", fg="#fe0000",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_41_btn.place(x=30, y=210)
-
 
     def chk_bullits_left_42():
         global bullit_left4_2
@@ -265,11 +256,10 @@ def openNewWindow():
     chk_bullits_left_42_state = BooleanVar()
     chk_bullits_left_42_state.set(False)
     chk_bullits_left_42_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_42_state,
-                                             command=chk_bullits_left_42, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_42, bg="#404040", fg="#03bd02",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_42_btn.place(x=130, y=210)
-
 
     def chk_bullits_left_51():
         global bullit_left5_1
@@ -283,11 +273,10 @@ def openNewWindow():
     chk_bullits_left_51_state = BooleanVar()
     chk_bullits_left_51_state.set(False)
     chk_bullits_left_51_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_51_state,
-                                             command=chk_bullits_left_51, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_51, bg="#404040", fg="#fe0000",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_51_btn.place(x=30, y=250)
-
 
     def chk_bullits_left_52():
         global bullit_left5_2
@@ -301,13 +290,13 @@ def openNewWindow():
     chk_bullits_left_52_state = BooleanVar()
     chk_bullits_left_52_state.set(False)
     chk_bullits_left_52_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_52_state,
-                                             command=chk_bullits_left_52, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                          command=chk_bullits_left_52, bg="#404040", fg="#03bd02",
+                                          selectcolor='black', activebackground="#404040",
+                                          font=("square sans serif 7", 25))
     chk_bullits_left_52_btn.place(x=130, y=250)
 
-# Bullits team right
-    
+    # Bullits team right
+
     def chk_bullits_right_11():
         global bullit_right1_1
         check_11_right = chk_bullits_right_11_state.get()
@@ -320,11 +309,10 @@ def openNewWindow():
     chk_bullits_right_11_state = BooleanVar()
     chk_bullits_right_11_state.set(False)
     chk_bullits_right_11_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_11_state,
-                                             command=chk_bullits_right_11, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_11, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_11_btn.place(x=235, y=90)
-
 
     def chk_bullits_right_12():
         global bullit_right1_2
@@ -338,12 +326,10 @@ def openNewWindow():
     chk_bullits_right_12_state = BooleanVar()
     chk_bullits_right_12_state.set(False)
     chk_bullits_right_12_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_12_state,
-                                             command=chk_bullits_right_12, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_12, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_12_btn.place(x=335, y=90)
-
-
 
     def chk_bullits_right_21():
         global bullit_right2_1
@@ -357,11 +343,10 @@ def openNewWindow():
     chk_bullits_right_21_state = BooleanVar()
     chk_bullits_right_21_state.set(False)
     chk_bullits_right_21_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_21_state,
-                                             command=chk_bullits_right_21, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_21, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_21_btn.place(x=235, y=130)
-
 
     def chk_bullits_right_22():
         global bullit_right2_2
@@ -375,11 +360,10 @@ def openNewWindow():
     chk_bullits_right_22_state = BooleanVar()
     chk_bullits_right_22_state.set(False)
     chk_bullits_right_22_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_22_state,
-                                             command=chk_bullits_right_22, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_22, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_22_btn.place(x=335, y=130)
-
 
     def chk_bullits_right_31():
         global bullit_right3_1
@@ -393,11 +377,10 @@ def openNewWindow():
     chk_bullits_right_31_state = BooleanVar()
     chk_bullits_right_31_state.set(False)
     chk_bullits_right_31_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_31_state,
-                                             command=chk_bullits_right_31, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_31, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_31_btn.place(x=235, y=170)
-
 
     def chk_bullits_right_32():
         global bullit_right3_2
@@ -411,11 +394,10 @@ def openNewWindow():
     chk_bullits_right_32_state = BooleanVar()
     chk_bullits_right_32_state.set(False)
     chk_bullits_right_32_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_32_state,
-                                             command=chk_bullits_right_32, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_32, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_32_btn.place(x=335, y=170)
-
 
     def chk_bullits_right_41():
         global bullit_right4_1
@@ -429,11 +411,10 @@ def openNewWindow():
     chk_bullits_right_41_state = BooleanVar()
     chk_bullits_right_41_state.set(False)
     chk_bullits_right_41_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_41_state,
-                                             command=chk_bullits_right_41, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_41, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_41_btn.place(x=235, y=210)
-
 
     def chk_bullits_right_42():
         global bullit_right4_2
@@ -447,11 +428,10 @@ def openNewWindow():
     chk_bullits_right_42_state = BooleanVar()
     chk_bullits_right_42_state.set(False)
     chk_bullits_right_42_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_42_state,
-                                             command=chk_bullits_right_42, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_42, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_42_btn.place(x=335, y=210)
-
 
     def chk_bullits_right_51():
         global bullit_right5_1
@@ -465,11 +445,10 @@ def openNewWindow():
     chk_bullits_right_51_state = BooleanVar()
     chk_bullits_right_51_state.set(False)
     chk_bullits_right_51_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_51_state,
-                                             command=chk_bullits_right_51, bg="#404040", fg="#fe0000",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_51, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_51_btn.place(x=235, y=250)
-
 
     def chk_bullits_right_52():
         global bullit_right5_2
@@ -483,18 +462,16 @@ def openNewWindow():
     chk_bullits_right_52_state = BooleanVar()
     chk_bullits_right_52_state.set(False)
     chk_bullits_right_52_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_52_state,
-                                             command=chk_bullits_right_52, bg="#404040", fg="#03bd02",
-                                             selectcolor='black', activebackground="#404040",
-                                             font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_52, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_52_btn.place(x=335, y=250)
-
 
 
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits", command=openNewWindow)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
 mainmenu.add_cascade(label="Options", menu=filemenu)
-
 
 
 # Score team left
@@ -1236,9 +1213,9 @@ shutil.copyfile("pict/1.png", "output/right_5.png")
 # Add hotkeys
 bindings = [
     [["left_control"], None, nClick_score_left_up],
-    #[["control", "numpad_1"], None, nClick_score_left_down],
+    # [["control", "numpad_1"], None, nClick_score_left_down],
     [["right_control"], None, nClick_score_right_up],
-    #[["control", "numpad_3"], None, nClick_score_right_down],
+    # [["control", "numpad_3"], None, nClick_score_right_down],
     [["space"], None, pause],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
