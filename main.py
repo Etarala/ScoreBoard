@@ -3,6 +3,7 @@ import codecs
 import pyglet
 from global_hotkeys import *
 import shutil
+from tkinter import messagebox
 
 window = Tk()
 window.title("ScoreBoard")
@@ -64,6 +65,7 @@ bullit_right5_1 = False
 bullit_right5_2 = False
 
 is_alive = False
+
 
 def global_hotkeys():
     global is_alive
@@ -466,10 +468,25 @@ def openNewWindow():
     chk_bullits_right_52_btn.place(x=335, y=250)
 
 
+def hotkeys():
+    messagebox.showinfo('Hotkeys',
+                        ' Enter = Start Game\n Left Ctrl = Left team 1 score Up\n Right Ctrl = Right team 1 score Up\n Space = Pause')
+
+
+def about():
+    messagebox.showinfo('About',
+                        ' This programm is made by: etarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
+
+
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits", command=openNewWindow)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
 mainmenu.add_cascade(label="Options", menu=filemenu)
+helpmenu = Menu(mainmenu, tearoff=0)
+
+helpmenu.add_command(label="Hotkeys", command=hotkeys)
+helpmenu.add_command(label="About", command=about)
+mainmenu.add_cascade(label="Help", menu=helpmenu)
 
 
 # Score team left
