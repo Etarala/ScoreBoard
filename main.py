@@ -3,7 +3,6 @@ import codecs
 import pyglet
 from global_hotkeys import *
 import shutil
-import os
 
 window = Tk()
 window.title("ScoreBoard")
@@ -65,7 +64,6 @@ bullit_right5_1 = False
 bullit_right5_2 = False
 
 is_alive = False
-
 
 def global_hotkeys():
     global is_alive
