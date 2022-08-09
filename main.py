@@ -2,6 +2,9 @@ from tkinter import *
 import codecs
 import pyglet
 from global_hotkeys import *
+import shutil
+import os
+
 
 window = Tk()
 window.title("ScoreBoard")
@@ -42,7 +45,28 @@ penalty_right_second_paused = True
 write_files = True
 team1_write = ""
 team2_write = ""
-bullit_left1 = False
+bullit_left1_1 = False
+bullit_left1_2 = False
+bullit_left2_1 = False
+bullit_left2_2 = False
+bullit_left3_1 = False
+bullit_left3_2 = False
+bullit_left4_1 = False
+bullit_left4_2 = False
+bullit_left5_1 = False
+bullit_left5_2 = False
+
+bullit_right1_1 = False
+bullit_right1_2 = False
+bullit_right2_1 = False
+bullit_right2_2 = False
+bullit_right3_1 = False
+bullit_right3_2 = False
+bullit_right4_1 = False
+bullit_right4_2 = False
+bullit_right5_1 = False
+bullit_right5_2 = False
+
 
 is_alive = False
 
@@ -66,34 +90,405 @@ def openNewWindow():
     lbl_separator = Label(newWindow, text="", fg="white")
     lbl_separator.place(x=198, y=0, width=10, height=500)
 
-    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="white", font=("square sans serif 7", 17))
+    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="#feba00", font=("square sans serif 7", 17))
     lbl_bullits_name_left.place(x=15, y=10)
 
-    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="white", font=("square sans serif 7", 17))
+    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="#feba00", font=("square sans serif 7", 17))
     lbl_bullits_name_right.place(x=220, y=10)
 
-    def chk_bullits_left1():
-        global bullit_left1
-        check1left = chk_bullits_left1_state.get()
-        bullit_left1 = check1left
-        if bullit_left1 == True:
-            print("Goal")
+    lbl_bullits_name_left_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
+                                   font=("square sans serif 7", 14))
+    lbl_bullits_name_left_miss.place(x=14, y=70)
+
+    lbl_bullits_name_left_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
+                                       font=("square sans serif 7", 14))
+    lbl_bullits_name_left_goal.place(x=115, y=70)
+
+    lbl_bullits_name_right_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
+                                   font=("square sans serif 7", 14))
+    lbl_bullits_name_right_miss.place(x=220, y=70)
+
+    lbl_bullits_name_right_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
+                                       font=("square sans serif 7", 14))
+    lbl_bullits_name_right_goal.place(x=320, y=70)
+
+    shutil.copyfile("pict/1.png", "output/left_1.png")
+    shutil.copyfile("pict/1.png", "output/left_2.png")
+    shutil.copyfile("pict/1.png", "output/left_3.png")
+    shutil.copyfile("pict/1.png", "output/left_4.png")
+    shutil.copyfile("pict/1.png", "output/left_5.png")
+    shutil.copyfile("pict/1.png", "output/right_1.png")
+    shutil.copyfile("pict/1.png", "output/right_2.png")
+    shutil.copyfile("pict/1.png", "output/right_3.png")
+    shutil.copyfile("pict/1.png", "output/right_4.png")
+    shutil.copyfile("pict/1.png", "output/right_5.png")
+
+
+# Bullits team left
+
+    def chk_bullits_left_11():
+        global bullit_left1_1
+        check_11_left = chk_bullits_left_11_state.get()
+        bullit_left_11 = check_11_left
+        if bullit_left_11 == True:
+            shutil.copyfile("pict/2.png", "output/left_1.png")
         else:
-            print("Miss")
+            pass
 
-
-    chk_bullits_left1_state = BooleanVar()
-    chk_bullits_left1_state.set(False)
-    chk_bullits_left1_btn = Checkbutton(newWindow, text='', var=chk_bullits_left1_state,
-                                             command=chk_bullits_left1, bg="#404040", fg="#03bd02",
+    chk_bullits_left_11_state = BooleanVar()
+    chk_bullits_left_11_state.set(False)
+    chk_bullits_left_11_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_11_state,
+                                             command=chk_bullits_left_11, bg="#404040", fg="#fe0000",
                                              selectcolor='black', activebackground="#404040",
                                              font=("square sans serif 7", 25))
-    chk_bullits_left1_btn.place(x=10, y=30)
-    """goal = Button(newWindow,text="GOAL", relief='flat', borderwidth=0, font=("square sans serif 7",17), bg="black", fg='#feba00')
-    goal.place(x=170, y=60, width=100, height=80)
+    chk_bullits_left_11_btn.place(x=30, y=90)
 
-    miss = Button(newWindow, text="MISS",  relief='flat', borderwidth=0, font=("square sans serif 7",17), bg="black", fg='#feba00')
-    miss.place(x=50, y=60, width=100, height=80)"""
+
+    def chk_bullits_left_12():
+        global bullit_left1_2
+        check_12_left = chk_bullits_left_12_state.get()
+        bullit_left_12 = check_12_left
+        if bullit_left_12 == True:
+            shutil.copyfile("pict/3.png", "output/left_1.png")
+        else:
+            pass
+
+    chk_bullits_left_12_state = BooleanVar()
+    chk_bullits_left_12_state.set(False)
+    chk_bullits_left_12_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_12_state,
+                                             command=chk_bullits_left_12, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_12_btn.place(x=130, y=90)
+
+
+
+    def chk_bullits_left_21():
+        global bullit_left2_1
+        check_21_left = chk_bullits_left_21_state.get()
+        bullit_left_21 = check_21_left
+        if bullit_left_21 == True:
+            shutil.copyfile("pict/2.png", "output/left_2.png")
+        else:
+            pass
+
+    chk_bullits_left_21_state = BooleanVar()
+    chk_bullits_left_21_state.set(False)
+    chk_bullits_left_21_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_21_state,
+                                             command=chk_bullits_left_21, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_21_btn.place(x=30, y=130)
+
+
+    def chk_bullits_left_22():
+        global bullit_left2_2
+        check_22_left = chk_bullits_left_22_state.get()
+        bullit_left_22 = check_22_left
+        if bullit_left_22 == True:
+            shutil.copyfile("pict/3.png", "output/left_2.png")
+        else:
+            pass
+
+    chk_bullits_left_22_state = BooleanVar()
+    chk_bullits_left_22_state.set(False)
+    chk_bullits_left_22_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_22_state,
+                                             command=chk_bullits_left_22, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_22_btn.place(x=130, y=130)
+
+
+    def chk_bullits_left_31():
+        global bullit_left3_1
+        check_31_left = chk_bullits_left_31_state.get()
+        bullit_left_31 = check_31_left
+        if bullit_left_31 == True:
+            shutil.copyfile("pict/2.png", "output/left_3.png")
+        else:
+            pass
+
+    chk_bullits_left_31_state = BooleanVar()
+    chk_bullits_left_31_state.set(False)
+    chk_bullits_left_31_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_31_state,
+                                             command=chk_bullits_left_31, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_31_btn.place(x=30, y=170)
+
+
+    def chk_bullits_left_32():
+        global bullit_left3_2
+        check_32_left = chk_bullits_left_32_state.get()
+        bullit_left_32 = check_32_left
+        if bullit_left_32 == True:
+            shutil.copyfile("pict/3.png", "output/left_3.png")
+        else:
+            pass
+
+    chk_bullits_left_32_state = BooleanVar()
+    chk_bullits_left_32_state.set(False)
+    chk_bullits_left_32_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_32_state,
+                                             command=chk_bullits_left_32, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_32_btn.place(x=130, y=170)
+
+
+    def chk_bullits_left_41():
+        global bullit_left4_1
+        check_41_left = chk_bullits_left_41_state.get()
+        bullit_left_41 = check_41_left
+        if bullit_left_41 == True:
+            shutil.copyfile("pict/2.png", "output/left_4.png")
+        else:
+            pass
+
+    chk_bullits_left_41_state = BooleanVar()
+    chk_bullits_left_41_state.set(False)
+    chk_bullits_left_41_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_41_state,
+                                             command=chk_bullits_left_41, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_41_btn.place(x=30, y=210)
+
+
+    def chk_bullits_left_42():
+        global bullit_left4_2
+        check_42_left = chk_bullits_left_42_state.get()
+        bullit_left_42 = check_42_left
+        if bullit_left_42 == True:
+            shutil.copyfile("pict/3.png", "output/left_4.png")
+        else:
+            pass
+
+    chk_bullits_left_42_state = BooleanVar()
+    chk_bullits_left_42_state.set(False)
+    chk_bullits_left_42_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_42_state,
+                                             command=chk_bullits_left_42, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_42_btn.place(x=130, y=210)
+
+
+    def chk_bullits_left_51():
+        global bullit_left5_1
+        check_51_left = chk_bullits_left_51_state.get()
+        bullit_left_51 = check_51_left
+        if bullit_left_51 == True:
+            shutil.copyfile("pict/2.png", "output/left_5.png")
+        else:
+            pass
+
+    chk_bullits_left_51_state = BooleanVar()
+    chk_bullits_left_51_state.set(False)
+    chk_bullits_left_51_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_51_state,
+                                             command=chk_bullits_left_51, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_51_btn.place(x=30, y=250)
+
+
+    def chk_bullits_left_52():
+        global bullit_left5_2
+        check_52_left = chk_bullits_left_52_state.get()
+        bullit_left_52 = check_52_left
+        if bullit_left_52 == True:
+            shutil.copyfile("pict/3.png", "output/left_5.png")
+        else:
+            pass
+
+    chk_bullits_left_52_state = BooleanVar()
+    chk_bullits_left_52_state.set(False)
+    chk_bullits_left_52_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_52_state,
+                                             command=chk_bullits_left_52, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left_52_btn.place(x=130, y=250)
+
+# Bullits team right
+    
+    def chk_bullits_right_11():
+        global bullit_right1_1
+        check_11_right = chk_bullits_right_11_state.get()
+        bullit_right_11 = check_11_right
+        if bullit_right_11 == True:
+            shutil.copyfile("pict/2.png", "output/right_1.png")
+        else:
+            pass
+
+    chk_bullits_right_11_state = BooleanVar()
+    chk_bullits_right_11_state.set(False)
+    chk_bullits_right_11_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_11_state,
+                                             command=chk_bullits_right_11, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_11_btn.place(x=235, y=90)
+
+
+    def chk_bullits_right_12():
+        global bullit_right1_2
+        check_12_right = chk_bullits_right_12_state.get()
+        bullit_right_12 = check_12_right
+        if bullit_right_12 == True:
+            shutil.copyfile("pict/3.png", "output/right_1.png")
+        else:
+            pass
+
+    chk_bullits_right_12_state = BooleanVar()
+    chk_bullits_right_12_state.set(False)
+    chk_bullits_right_12_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_12_state,
+                                             command=chk_bullits_right_12, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_12_btn.place(x=335, y=90)
+
+
+
+    def chk_bullits_right_21():
+        global bullit_right2_1
+        check_21_right = chk_bullits_right_21_state.get()
+        bullit_right_21 = check_21_right
+        if bullit_right_21 == True:
+            shutil.copyfile("pict/2.png", "output/right_2.png")
+        else:
+            pass
+
+    chk_bullits_right_21_state = BooleanVar()
+    chk_bullits_right_21_state.set(False)
+    chk_bullits_right_21_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_21_state,
+                                             command=chk_bullits_right_21, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_21_btn.place(x=235, y=130)
+
+
+    def chk_bullits_right_22():
+        global bullit_right2_2
+        check_22_right = chk_bullits_right_22_state.get()
+        bullit_right_22 = check_22_right
+        if bullit_right_22 == True:
+            shutil.copyfile("pict/3.png", "output/right_2.png")
+        else:
+            pass
+
+    chk_bullits_right_22_state = BooleanVar()
+    chk_bullits_right_22_state.set(False)
+    chk_bullits_right_22_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_22_state,
+                                             command=chk_bullits_right_22, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_22_btn.place(x=335, y=130)
+
+
+    def chk_bullits_right_31():
+        global bullit_right3_1
+        check_31_right = chk_bullits_right_31_state.get()
+        bullit_right_31 = check_31_right
+        if bullit_right_31 == True:
+            shutil.copyfile("pict/2.png", "output/right_3.png")
+        else:
+            pass
+
+    chk_bullits_right_31_state = BooleanVar()
+    chk_bullits_right_31_state.set(False)
+    chk_bullits_right_31_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_31_state,
+                                             command=chk_bullits_right_31, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_31_btn.place(x=235, y=170)
+
+
+    def chk_bullits_right_32():
+        global bullit_right3_2
+        check_32_right = chk_bullits_right_32_state.get()
+        bullit_right_32 = check_32_right
+        if bullit_right_32 == True:
+            shutil.copyfile("pict/3.png", "output/right_3.png")
+        else:
+            pass
+
+    chk_bullits_right_32_state = BooleanVar()
+    chk_bullits_right_32_state.set(False)
+    chk_bullits_right_32_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_32_state,
+                                             command=chk_bullits_right_32, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_32_btn.place(x=335, y=170)
+
+
+    def chk_bullits_right_41():
+        global bullit_right4_1
+        check_41_right = chk_bullits_right_41_state.get()
+        bullit_right_41 = check_41_right
+        if bullit_right_41 == True:
+            shutil.copyfile("pict/2.png", "output/right_4.png")
+        else:
+            pass
+
+    chk_bullits_right_41_state = BooleanVar()
+    chk_bullits_right_41_state.set(False)
+    chk_bullits_right_41_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_41_state,
+                                             command=chk_bullits_right_41, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_41_btn.place(x=235, y=210)
+
+
+    def chk_bullits_right_42():
+        global bullit_right4_2
+        check_42_right = chk_bullits_right_42_state.get()
+        bullit_right_42 = check_42_right
+        if bullit_right_42 == True:
+            shutil.copyfile("pict/3.png", "output/right_4.png")
+        else:
+            pass
+
+    chk_bullits_right_42_state = BooleanVar()
+    chk_bullits_right_42_state.set(False)
+    chk_bullits_right_42_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_42_state,
+                                             command=chk_bullits_right_42, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_42_btn.place(x=335, y=210)
+
+
+    def chk_bullits_right_51():
+        global bullit_right5_1
+        check_51_right = chk_bullits_right_51_state.get()
+        bullit_right_51 = check_51_right
+        if bullit_right_51 == True:
+            shutil.copyfile("pict/2.png", "output/right_5.png")
+        else:
+            pass
+
+    chk_bullits_right_51_state = BooleanVar()
+    chk_bullits_right_51_state.set(False)
+    chk_bullits_right_51_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_51_state,
+                                             command=chk_bullits_right_51, bg="#404040", fg="#fe0000",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_51_btn.place(x=235, y=250)
+
+
+    def chk_bullits_right_52():
+        global bullit_right5_2
+        check_52_right = chk_bullits_right_52_state.get()
+        bullit_right_52 = check_52_right
+        if bullit_right_52 == True:
+            shutil.copyfile("pict/3.png", "output/right_5.png")
+        else:
+            pass
+
+    chk_bullits_right_52_state = BooleanVar()
+    chk_bullits_right_52_state.set(False)
+    chk_bullits_right_52_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_52_state,
+                                             command=chk_bullits_right_52, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_right_52_btn.place(x=335, y=250)
+
+
 
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits", command=openNewWindow)
@@ -827,6 +1222,16 @@ with open("output/penalty_right_first.txt", "w") as file:
     file.write("00:00")
 with open("output/penalty_right_second.txt", "w") as file:
     file.write("00:00")
+shutil.copyfile("pict/1.png", "output/left_1.png")
+shutil.copyfile("pict/1.png", "output/left_2.png")
+shutil.copyfile("pict/1.png", "output/left_3.png")
+shutil.copyfile("pict/1.png", "output/left_4.png")
+shutil.copyfile("pict/1.png", "output/left_5.png")
+shutil.copyfile("pict/1.png", "output/right_1.png")
+shutil.copyfile("pict/1.png", "output/right_2.png")
+shutil.copyfile("pict/1.png", "output/right_3.png")
+shutil.copyfile("pict/1.png", "output/right_4.png")
+shutil.copyfile("pict/1.png", "output/right_5.png")
 
 # Add hotkeys
 bindings = [
