@@ -12,27 +12,13 @@ background = PhotoImage(file="pict/layer.png")
 background_label = Label(window, image=background)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-mainmenu = Menu(window)
-window.config(menu=mainmenu)
-
-is_alive = False
-
-def global_hotkeys():
-    global is_alive
-    if is_alive == False:
-        start_checking_hotkeys()
-        is_alive = True
-    elif is_alive == True:
-        stop_checking_hotkeys()
-        is_alive = False
-
-filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Bullits")
-filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
-mainmenu.add_cascade(label="Options", menu=filemenu)
-
 pyglet.font.add_file('fonts/Digital Numbers.ttf')
 pyglet.font.add_file("fonts/square sans serif 7.ttf")
+
+
+
+mainmenu = Menu(window)
+window.config(menu=mainmenu)
 
 # Define variables
 score_team1 = 0
@@ -56,6 +42,64 @@ penalty_right_second_paused = True
 write_files = True
 team1_write = ""
 team2_write = ""
+bullit_left1 = False
+
+is_alive = False
+
+def global_hotkeys():
+    global is_alive
+    if is_alive == False:
+        start_checking_hotkeys()
+        is_alive = True
+    elif is_alive == True:
+        stop_checking_hotkeys()
+        is_alive = False
+
+# Bullits
+def openNewWindow():
+    newWindow = Toplevel(window)
+    newWindow.geometry("400x500")
+    newWindow.resizable(width=0, height=0)
+    newWindow.title("Bullits")
+    newWindow["bg"] = "#404040"
+
+    lbl_separator = Label(newWindow, text="", fg="white")
+    lbl_separator.place(x=198, y=0, width=10, height=500)
+
+    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="white", font=("square sans serif 7", 17))
+    lbl_bullits_name_left.place(x=15, y=10)
+
+    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="white", font=("square sans serif 7", 17))
+    lbl_bullits_name_right.place(x=220, y=10)
+
+    def chk_bullits_left1():
+        global bullit_left1
+        check1left = chk_bullits_left1_state.get()
+        bullit_left1 = check1left
+        if bullit_left1 == True:
+            print("Goal")
+        else:
+            print("Miss")
+
+
+    chk_bullits_left1_state = BooleanVar()
+    chk_bullits_left1_state.set(False)
+    chk_bullits_left1_btn = Checkbutton(newWindow, text='', var=chk_bullits_left1_state,
+                                             command=chk_bullits_left1, bg="#404040", fg="#03bd02",
+                                             selectcolor='black', activebackground="#404040",
+                                             font=("square sans serif 7", 25))
+    chk_bullits_left1_btn.place(x=10, y=30)
+    """goal = Button(newWindow,text="GOAL", relief='flat', borderwidth=0, font=("square sans serif 7",17), bg="black", fg='#feba00')
+    goal.place(x=170, y=60, width=100, height=80)
+
+    miss = Button(newWindow, text="MISS",  relief='flat', borderwidth=0, font=("square sans serif 7",17), bg="black", fg='#feba00')
+    miss.place(x=50, y=60, width=100, height=80)"""
+
+filemenu = Menu(mainmenu, tearoff=0)
+filemenu.add_command(label="Bullits", command=openNewWindow)
+filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
+mainmenu.add_cascade(label="Options", menu=filemenu)
+
 
 
 # Score team left
