@@ -83,7 +83,7 @@ def openNewWindow():
     newWindow = Toplevel(window)
     newWindow.geometry("400x500")
     newWindow.resizable(width=0, height=0)
-    newWindow.title("Bullits")
+    newWindow.title("Bullets")
     newWindow["bg"] = "#404040"
 
     lbl_separator = Label(newWindow, text="", fg="white")
@@ -483,7 +483,7 @@ def donate():
     webbrowser.open("https://yoomoney.ru/to/41001654796610", new=0, autoraise=True)
 
 filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Bullits", command=openNewWindow)
+filemenu.add_command(label="Bullets", command=openNewWindow)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
 mainmenu.add_cascade(label="Options", menu=filemenu)
 helpmenu = Menu(mainmenu, tearoff=0)
