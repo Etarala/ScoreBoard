@@ -4,6 +4,7 @@ import pyglet
 from global_hotkeys import *
 import shutil
 from tkinter import messagebox
+import webbrowser
 
 window = Tk()
 window.title("ScoreBoard")
@@ -478,6 +479,9 @@ def about():
                         ' This programm is made by: etarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
 
 
+def donate():
+    webbrowser.open("https://yoomoney.ru/to/41001654796610", new=0, autoraise=True)
+
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullits", command=openNewWindow)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
@@ -486,6 +490,7 @@ helpmenu = Menu(mainmenu, tearoff=0)
 
 helpmenu.add_command(label="Hotkeys", command=hotkeys)
 helpmenu.add_command(label="About", command=about)
+helpmenu.add_command(label="Donate", command=donate)
 mainmenu.add_cascade(label="Help", menu=helpmenu)
 
 
