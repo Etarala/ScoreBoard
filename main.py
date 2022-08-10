@@ -1061,6 +1061,16 @@ def new_game():
         file.write("00:00")
     with open("output/penalty_right_second.txt", "w") as file:
         file.write("00:00")
+    shutil.copyfile("pict/1.png", "output/left_1.png")
+    shutil.copyfile("pict/1.png", "output/left_2.png")
+    shutil.copyfile("pict/1.png", "output/left_3.png")
+    shutil.copyfile("pict/1.png", "output/left_4.png")
+    shutil.copyfile("pict/1.png", "output/left_5.png")
+    shutil.copyfile("pict/1.png", "output/right_1.png")
+    shutil.copyfile("pict/1.png", "output/right_2.png")
+    shutil.copyfile("pict/1.png", "output/right_3.png")
+    shutil.copyfile("pict/1.png", "output/right_4.png")
+    shutil.copyfile("pict/1.png", "output/right_5.png")
 
 
 btn_new_game = Button(window, text="NEW GAME", font=("square sans serif 7", 17), command=new_game, relief='flat',
