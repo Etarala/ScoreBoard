@@ -471,12 +471,12 @@ def openNewWindow():
 
 def hotkeys():
     messagebox.showinfo('Hotkeys',
-                        ' Enter = Start Game\n Left Ctrl = Left team 1 score Up\n Right Ctrl = Right team 1 score Up\n Space = Pause')
+                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN')
 
 
 def about():
     messagebox.showinfo('About',
-                        ' This programm is made by: etarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
+                        ' This programm is made by: Etarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
 
 
 def donate():
@@ -604,7 +604,11 @@ def update_penalty_left_first_timer():
 
 
 def chk_penalty_left_first():
+    global penalty_left_first_time
     check1left = chk_penalty_left_first_state.get()
+    if check1left == False:
+        penalty_left_first_time = 120
+        lbl_penalty_left1.config(text="02:00")
     global penalty_left_first_started
     global penalty_left_first_paused
     penalty_left_first_started = check1left
@@ -672,7 +676,11 @@ def update_penalty_left_second_timer():
 
 
 def chk_penalty_left_second():
+    global penalty_left_second_time
     check2left = chk_penalty_left_second_state.get()
+    if check2left == False:
+        penalty_left_second_time = 120
+        lbl_penalty_left2.config(text="02:00")
     global penalty_left_second_started
     global penalty_left_second_paused
     penalty_left_second_started = check2left
@@ -750,7 +758,11 @@ def update_penalty_right_first_timer():
 
 
 def chk_penalty_right_first():
+    global penalty_right_first_time
     check1right = chk_penalty_right_first_state.get()
+    if check1right == False:
+        penalty_right_first_time = 120
+        lbl_penalty_right1.config(text="02:00")
     global penalty_right_first_started
     global penalty_right_first_paused
     penalty_right_first_started = check1right
@@ -818,7 +830,11 @@ def update_penalty_right_second_timer():
 
 
 def chk_penalty_right_second():
+    global penalty_right_second_time
     check2right = chk_penalty_right_second_state.get()
+    if check2right == False:
+        penalty_right_second_time = 120
+        lbl_penalty_right2.config(text="02:00")
     global penalty_right_second_started
     global penalty_right_second_paused
     penalty_right_second_started = check2right
@@ -886,6 +902,8 @@ def nClick_minutes_up():
     m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_timer.config(text=min_sec_format)
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_minutes_down():
@@ -896,6 +914,8 @@ def nClick_minutes_down():
     m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_timer.config(text=min_sec_format)
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_minutes_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_minutes_up, relief='flat',
@@ -912,6 +932,8 @@ def nClick_seconds_up():
     m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_timer.config(text=min_sec_format)
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 def nClick_seconds_down():
@@ -922,6 +944,8 @@ def nClick_seconds_down():
     m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     lbl_timer.config(text=min_sec_format)
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
 
 
 btn_seconds_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_seconds_up, relief='flat',
@@ -1094,9 +1118,12 @@ def update_main_timer():
     period_time = period_time - 1
 
     if period_time >= 0:
+
         m, s = divmod(period_time - 1, 60)
         min_sec_format = '{:02d}:{:02d}'.format(m, s)
-
+        if min_sec_format == "-1:59":
+            m, s = divmod(period_time, 60)
+            min_sec_format = '{:02d}:{:02d}'.format(m, s)
         lbl_timer.config(text=min_sec_format)
 
         window.after(1000, update_main_timer)
@@ -1243,7 +1270,8 @@ shutil.copyfile("pict/1.png", "output/right_5.png")
 # Add hotkeys
 bindings = [
     [["left_control"], None, nClick_score_left_up],
-    # [["control", "numpad_1"], None, nClick_score_left_down],
+    [["+"], None, nClick_seconds_up],
+    [["-"], None, nClick_seconds_down],
     [["right_control"], None, nClick_score_right_up],
     # [["control", "numpad_3"], None, nClick_score_right_down],
     [["space"], None, pause],
