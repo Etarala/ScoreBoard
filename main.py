@@ -1273,7 +1273,7 @@ bindings = [
     [["+"], None, nClick_seconds_up],
     [["-"], None, nClick_seconds_down],
     [["right_control"], None, nClick_score_right_up],
-    # [["control", "numpad_3"], None, nClick_score_right_down],
+    # [["control", "numpad_5"], None, pause],
     [["space"], None, pause],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
