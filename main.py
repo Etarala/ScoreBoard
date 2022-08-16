@@ -624,6 +624,7 @@ def set_penalty_left_first():
         chk_penalty_left_first_state.set(True)
     else:
         chk_penalty_left_first_state.set(False)
+    chk_penalty_left_first()
 
 
 
@@ -786,6 +787,7 @@ def set_penalty_right_first():
         chk_penalty_right_first_state.set(True)
     else:
         chk_penalty_right_first_state.set(False)
+    chk_penalty_right_first()
 
 chk_penalty_right_first_state = BooleanVar()
 chk_penalty_right_first_state.set(False)
