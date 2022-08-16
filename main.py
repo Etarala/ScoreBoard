@@ -471,7 +471,7 @@ def openNewWindow():
 
 def hotkeys():
     messagebox.showinfo('Hotkeys',
-                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN')
+                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
 
 
 def about():
@@ -617,6 +617,14 @@ def chk_penalty_left_first():
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     with open("output/penalty_left_first.txt", "w") as file:
         file.write(str(min_sec_format))
+
+def set_penalty_left_first():
+    check1left = chk_penalty_left_first_state.get()
+    if check1left == False:
+        chk_penalty_left_first_state.set(True)
+    else:
+        chk_penalty_left_first_state.set(False)
+
 
 
 chk_penalty_left_first_state = BooleanVar()
@@ -772,6 +780,12 @@ def chk_penalty_right_first():
     with open("output/penalty_right_first.txt", "w") as file:
         file.write(str(min_sec_format))
 
+def set_penalty_right_first():
+    check1right = chk_penalty_right_first_state.get()
+    if check1right == False:
+        chk_penalty_right_first_state.set(True)
+    else:
+        chk_penalty_right_first_state.set(False)
 
 chk_penalty_right_first_state = BooleanVar()
 chk_penalty_right_first_state.set(False)
@@ -1273,7 +1287,8 @@ bindings = [
     [["+"], None, nClick_seconds_up],
     [["-"], None, nClick_seconds_down],
     [["right_control"], None, nClick_score_right_up],
-    # [["control", "numpad_5"], None, pause],
+    [["z"], None, set_penalty_left_first],
+    [["/"], None, set_penalty_right_first],
     [["space"], None, pause],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
