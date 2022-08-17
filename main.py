@@ -54,7 +54,6 @@ bullit_left4_1 = False
 bullit_left4_2 = False
 bullit_left5_1 = False
 bullit_left5_2 = False
-
 bullit_right1_1 = False
 bullit_right1_2 = False
 bullit_right2_1 = False
