@@ -8,8 +8,9 @@ import webbrowser
 
 window = Tk()
 window.title("ScoreBoard")
-window.geometry('815x500')
+window.geometry('815x520')
 window.resizable(width=0, height=0)
+window.iconbitmap(r"pict/HdScoreboard.ico")
 
 background = PhotoImage(file="pict/layer.png")
 background_label = Label(window, image=background)
