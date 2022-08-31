@@ -3,3 +3,4 @@ config.py
 .idea/
 venv/
 __pycache__/config.cpython-39.pyc
+__pycache__/main.cpython-39.pyc
