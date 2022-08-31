@@ -471,7 +471,7 @@ def openNewWindow():
 
 def hotkeys():
     messagebox.showinfo('Hotkeys',
-                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
+                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " 0 " = Main Timer minutes UP\n " 9 " = Main Timer minutes DOWN\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
 
 
 def about():
@@ -1288,6 +1288,8 @@ bindings = [
     [["left_control"], None, nClick_score_left_up],
     [["+"], None, nClick_seconds_up],
     [["-"], None, nClick_seconds_down],
+    [["0"], None, nClick_minutes_up],
+    [["9"], None, nClick_minutes_down],
     [["right_control"], None, nClick_score_right_up],
     [["z"], None, set_penalty_left_first],
     [["/"], None, set_penalty_right_first],
