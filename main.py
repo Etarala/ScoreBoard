@@ -78,7 +78,7 @@ def global_hotkeys():
         is_alive = False
 
 
-# Bullits
+# Bullets
 def openNewWindow():
     newWindow = Toplevel(window)
     newWindow.geometry("400x500")
@@ -133,7 +133,7 @@ def openNewWindow():
         if bullit_left_11 == True:
             shutil.copyfile("pict/2.png", "output/left_1.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_1.png")
 
     chk_bullits_left_11_state = BooleanVar()
     chk_bullits_left_11_state.set(False)
@@ -150,7 +150,7 @@ def openNewWindow():
         if bullit_left_12 == True:
             shutil.copyfile("pict/3.png", "output/left_1.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_1.png")
 
     chk_bullits_left_12_state = BooleanVar()
     chk_bullits_left_12_state.set(False)
@@ -167,7 +167,7 @@ def openNewWindow():
         if bullit_left_21 == True:
             shutil.copyfile("pict/2.png", "output/left_2.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_2.png")
 
     chk_bullits_left_21_state = BooleanVar()
     chk_bullits_left_21_state.set(False)
@@ -184,7 +184,7 @@ def openNewWindow():
         if bullit_left_22 == True:
             shutil.copyfile("pict/3.png", "output/left_2.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_2.png")
 
     chk_bullits_left_22_state = BooleanVar()
     chk_bullits_left_22_state.set(False)
@@ -201,7 +201,7 @@ def openNewWindow():
         if bullit_left_31 == True:
             shutil.copyfile("pict/2.png", "output/left_3.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_3.png")
 
     chk_bullits_left_31_state = BooleanVar()
     chk_bullits_left_31_state.set(False)
@@ -218,7 +218,7 @@ def openNewWindow():
         if bullit_left_32 == True:
             shutil.copyfile("pict/3.png", "output/left_3.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_3.png")
 
     chk_bullits_left_32_state = BooleanVar()
     chk_bullits_left_32_state.set(False)
@@ -235,7 +235,7 @@ def openNewWindow():
         if bullit_left_41 == True:
             shutil.copyfile("pict/2.png", "output/left_4.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_4.png")
 
     chk_bullits_left_41_state = BooleanVar()
     chk_bullits_left_41_state.set(False)
@@ -252,7 +252,7 @@ def openNewWindow():
         if bullit_left_42 == True:
             shutil.copyfile("pict/3.png", "output/left_4.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_4.png")
 
     chk_bullits_left_42_state = BooleanVar()
     chk_bullits_left_42_state.set(False)
@@ -269,7 +269,7 @@ def openNewWindow():
         if bullit_left_51 == True:
             shutil.copyfile("pict/2.png", "output/left_5.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_5.png")
 
     chk_bullits_left_51_state = BooleanVar()
     chk_bullits_left_51_state.set(False)
@@ -286,7 +286,7 @@ def openNewWindow():
         if bullit_left_52 == True:
             shutil.copyfile("pict/3.png", "output/left_5.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/left_5.png")
 
     chk_bullits_left_52_state = BooleanVar()
     chk_bullits_left_52_state.set(False)
@@ -305,7 +305,7 @@ def openNewWindow():
         if bullit_right_11 == True:
             shutil.copyfile("pict/2.png", "output/right_1.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_1.png")
 
     chk_bullits_right_11_state = BooleanVar()
     chk_bullits_right_11_state.set(False)
@@ -322,7 +322,7 @@ def openNewWindow():
         if bullit_right_12 == True:
             shutil.copyfile("pict/3.png", "output/right_1.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_1.png")
 
     chk_bullits_right_12_state = BooleanVar()
     chk_bullits_right_12_state.set(False)
@@ -339,7 +339,7 @@ def openNewWindow():
         if bullit_right_21 == True:
             shutil.copyfile("pict/2.png", "output/right_2.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_2.png")
 
     chk_bullits_right_21_state = BooleanVar()
     chk_bullits_right_21_state.set(False)
@@ -356,7 +356,7 @@ def openNewWindow():
         if bullit_right_22 == True:
             shutil.copyfile("pict/3.png", "output/right_2.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_2.png")
 
     chk_bullits_right_22_state = BooleanVar()
     chk_bullits_right_22_state.set(False)
@@ -373,7 +373,7 @@ def openNewWindow():
         if bullit_right_31 == True:
             shutil.copyfile("pict/2.png", "output/right_3.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_3.png")
 
     chk_bullits_right_31_state = BooleanVar()
     chk_bullits_right_31_state.set(False)
@@ -390,7 +390,7 @@ def openNewWindow():
         if bullit_right_32 == True:
             shutil.copyfile("pict/3.png", "output/right_3.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_3.png")
 
     chk_bullits_right_32_state = BooleanVar()
     chk_bullits_right_32_state.set(False)
@@ -407,7 +407,7 @@ def openNewWindow():
         if bullit_right_41 == True:
             shutil.copyfile("pict/2.png", "output/right_4.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_4.png")
 
     chk_bullits_right_41_state = BooleanVar()
     chk_bullits_right_41_state.set(False)
@@ -424,7 +424,7 @@ def openNewWindow():
         if bullit_right_42 == True:
             shutil.copyfile("pict/3.png", "output/right_4.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_4.png")
 
     chk_bullits_right_42_state = BooleanVar()
     chk_bullits_right_42_state.set(False)
@@ -441,7 +441,7 @@ def openNewWindow():
         if bullit_right_51 == True:
             shutil.copyfile("pict/2.png", "output/right_5.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_5.png")
 
     chk_bullits_right_51_state = BooleanVar()
     chk_bullits_right_51_state.set(False)
@@ -458,7 +458,7 @@ def openNewWindow():
         if bullit_right_52 == True:
             shutil.copyfile("pict/3.png", "output/right_5.png")
         else:
-            pass
+            shutil.copyfile("pict/1.png", "output/right_5.png")
 
     chk_bullits_right_52_state = BooleanVar()
     chk_bullits_right_52_state.set(False)
