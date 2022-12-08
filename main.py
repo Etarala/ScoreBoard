@@ -5,6 +5,7 @@ from global_hotkeys import *
 import shutil
 from tkinter import messagebox
 import webbrowser
+from datetime import datetime
 
 window = Tk()
 window.title("ScoreBoard")
@@ -27,6 +28,8 @@ score_team1 = 0
 score_team2 = 0
 period = 1
 period_time = 0
+clean_time = 0
+after_id = ''
 penalty_left_first_time = 120
 penalty_left_second_time = 120
 penalty_right_first_time = 120
@@ -64,6 +67,9 @@ bullit_right4_1 = False
 bullit_right4_2 = False
 bullit_right5_1 = False
 bullit_right5_2 = False
+clean_time_started = False
+with open("output/clean_time.txt", "w") as file:
+    file.write("00:00")
 
 is_alive = False
 
@@ -471,7 +477,7 @@ def openNewWindow():
 
 def hotkeys():
     messagebox.showinfo('Hotkeys',
-                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " 8 " = Period UP \n " 0 " = Main Timer minutes UP\n " 9 " = Main Timer minutes DOWN\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
+                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " 8 " = Period UP \n " 0 " = Main Timer minutes UP\n " 9 " = Main Timer minutes DOWN\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " 6 " = Start Clean Time Timer\n " 7 " = Stop Clean Time Timer\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
 
 
 def about():
@@ -992,7 +998,9 @@ def reset_main_timer():
     global penalty_left_second_started
     global penalty_right_first_started
     global penalty_right_second_started
+    global clean_time
     period_time = 0
+    clean_time = 0
     lbl_timer.config(text="00:00")
     var.set(0)
     game_started = False
@@ -1020,6 +1028,8 @@ def reset_main_timer():
     penalty_right_second_started = False
     with open("output/main_timer.txt", "w") as file:
         file.write("00:00")
+    with open("output/clear_time.txt", "w") as file:
+        file.write("00:00")
     with open("output/penalty_left_first.txt", "w") as file:
         file.write("00:00")
     with open("output/penalty_left_second.txt", "w") as file:
@@ -1027,6 +1037,8 @@ def reset_main_timer():
     with open("output/penalty_right_first.txt", "w") as file:
         file.write("00:00")
     with open("output/penalty_right_second.txt", "w") as file:
+        file.write("00:00")
+    with open("output/clean_time.txt", "w") as file:
         file.write("00:00")
 
 
@@ -1056,7 +1068,9 @@ def new_game():
     global score_team1
     global score_team2
     global period
+    global clean_time
     period_time = 0
+    clean_time = 0
     lbl_timer.config(text="00:00")
     var.set(0)
     game_started = False
@@ -1098,6 +1112,8 @@ def new_game():
         file.write("1")
     with open("output/main_timer.txt", "w") as file:
         file.write("00:00")
+    with open("output/clear_time.txt", "w") as file:
+        file.write("00:00")
     with open("output/penalty_left_first.txt", "w") as file:
         file.write("00:00")
     with open("output/penalty_left_second.txt", "w") as file:
@@ -1105,6 +1121,8 @@ def new_game():
     with open("output/penalty_right_first.txt", "w") as file:
         file.write("00:00")
     with open("output/penalty_right_second.txt", "w") as file:
+        file.write("00:00")
+    with open("output/clean_time.txt", "w") as file:
         file.write("00:00")
     shutil.copyfile("pict/1.png", "output/left_1.png")
     shutil.copyfile("pict/1.png", "output/left_2.png")
@@ -1283,6 +1301,39 @@ shutil.copyfile("pict/1.png", "output/right_3.png")
 shutil.copyfile("pict/1.png", "output/right_4.png")
 shutil.copyfile("pict/1.png", "output/right_5.png")
 
+#Add clean time
+def tick_tack():
+    global clean_time, after_id
+    after_id = window.after(1000, tick_tack)
+    f_temp = datetime.fromtimestamp(clean_time).strftime('%M:%S')
+    clean_time +=1
+    clean_timer.config(text=f_temp)
+    with open("output/clean_time.txt", "w") as file:
+        file.write(str(f_temp))
+
+def start_sw():
+    global clean_time
+    global clean_time_started
+    if clean_time_started:
+        return
+    else:
+        clean_time_started = True
+        clean_time = 0
+        tick_tack()
+
+def stop_sw():
+    global clean_time_started
+    clean_time_started = False
+    window.after_cancel(after_id)
+
+
+
+clean_timer = Label(window, text=clean_time, bg="black", fg="#fe0000", font=("digital numbers", 17))
+clean_timer.place(x=573, y=95, width=90, height=33)
+lbl_clean_name = Label(window, text="Cl.time", bg="#404040", fg="white", font=("square sans serif 7", 14))
+lbl_clean_name.place(x=573, y=70)
+
+
 # Add hotkeys
 bindings = [
     [["left_control"], None, nClick_score_left_up],
@@ -1291,6 +1342,8 @@ bindings = [
     [["0"], None, nClick_minutes_up],
     [["9"], None, nClick_minutes_down],
     [["8"], None, nClick_period_up],
+    [["6"], None, start_sw],
+    [["7"], None, stop_sw],
     [["right_control"], None, nClick_score_right_up],
     [["z"], None, set_penalty_left_first],
     [["/"], None, set_penalty_right_first],
