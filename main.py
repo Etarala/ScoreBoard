@@ -1001,6 +1001,7 @@ def reset_main_timer():
     global clean_time
     period_time = 0
     clean_time = 0
+    clean_timer.config(text="00:00")
     lbl_timer.config(text="00:00")
     var.set(0)
     game_started = False
@@ -1069,6 +1070,7 @@ def new_game():
     global clean_time
     period_time = 0
     clean_time = 0
+    clean_timer.config(text="00:00")
     lbl_timer.config(text="00:00")
     var.set(0)
     game_started = False
