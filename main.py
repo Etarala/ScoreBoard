@@ -488,6 +488,7 @@ def about():
 def donate():
     webbrowser.open("https://yoomoney.ru/to/41001654796610", new=0, autoraise=True)
 
+
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullets", command=openNewWindow)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
@@ -624,6 +625,7 @@ def chk_penalty_left_first():
     with open("output/penalty_left_first.txt", "w") as file:
         file.write(str(min_sec_format))
 
+
 def set_penalty_left_first():
     check1left = chk_penalty_left_first_state.get()
     if check1left == False:
@@ -631,7 +633,6 @@ def set_penalty_left_first():
     else:
         chk_penalty_left_first_state.set(False)
     chk_penalty_left_first()
-
 
 
 chk_penalty_left_first_state = BooleanVar()
@@ -787,6 +788,7 @@ def chk_penalty_right_first():
     with open("output/penalty_right_first.txt", "w") as file:
         file.write(str(min_sec_format))
 
+
 def set_penalty_right_first():
     check1right = chk_penalty_right_first_state.get()
     if check1right == False:
@@ -794,6 +796,7 @@ def set_penalty_right_first():
     else:
         chk_penalty_right_first_state.set(False)
     chk_penalty_right_first()
+
 
 chk_penalty_right_first_state = BooleanVar()
 chk_penalty_right_first_state.set(False)
@@ -1301,15 +1304,17 @@ shutil.copyfile("pict/1.png", "output/right_3.png")
 shutil.copyfile("pict/1.png", "output/right_4.png")
 shutil.copyfile("pict/1.png", "output/right_5.png")
 
-#Add clean time
+
+# Add clean time
 def tick_tack():
     global clean_time, after_id
     after_id = window.after(1000, tick_tack)
     f_temp = datetime.fromtimestamp(clean_time).strftime('%M:%S')
-    clean_time +=1
+    clean_time += 1
     clean_timer.config(text=f_temp)
     with open("output/clean_time.txt", "w") as file:
         file.write(str(f_temp))
+
 
 def start_sw():
     global clean_time
@@ -1321,11 +1326,11 @@ def start_sw():
         clean_time = 0
         tick_tack()
 
+
 def stop_sw():
     global clean_time_started
     clean_time_started = False
     window.after_cancel(after_id)
-
 
 
 clean_timer = Label(window, text=clean_time, bg="black", fg="#fe0000", font=("digital numbers", 17))
@@ -1333,6 +1338,15 @@ clean_timer.place(x=573, y=95, width=90, height=33)
 lbl_clean_name = Label(window, text="Cl.time", bg="#404040", fg="white", font=("square sans serif 7", 14))
 lbl_clean_name.place(x=573, y=70)
 
+# Add Statistics
+statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face-off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
+                     'shot_gates_team2': 0, 'face-off_team2': 0, 'penalty_team2': 0}
+
+def shot_team1():
+    global statistics_params
+    statistics_params['shot_team1'] += 1
+    with open("output/shot_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_team1']))
 
 # Add hotkeys
 bindings = [
@@ -1348,9 +1362,12 @@ bindings = [
     [["z"], None, set_penalty_left_first],
     [["/"], None, set_penalty_right_first],
     [["space"], None, pause],
+    [["f2"], None, shot_team1],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
 ]
 register_hotkeys(bindings)
+
+
 
 window.mainloop()
