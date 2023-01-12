@@ -108,20 +108,20 @@ def global_hotkeys():
 # Bullets
 def openNewWindow():
     newWindow = Toplevel(window)
-    newWindow.geometry("400x500")
+    newWindow.geometry("400x520")
     newWindow.resizable(width=0, height=0)
     newWindow.title("Bullets")
     newWindow["bg"] = "#404040"
 
     lbl_separator = Label(newWindow, text="", fg="white")
-    lbl_separator.place(x=198, y=0, width=10, height=500)
+    lbl_separator.place(x=198, y=0, width=10, height=520)
 
-    lbl_bullits_name_left = Label(newWindow, text="Team left", bg="#404040", fg="#feba00",
+    lbl_bullits_name_left = Label(newWindow, text=team1.get(), bg="#404040", fg="#feba00",
                                   font=("square sans serif 7", 17))
     lbl_bullits_name_left.place(x=15, y=10)
 
-    lbl_bullits_name_right = Label(newWindow, text="Team Right", bg="#404040", fg="#feba00",
-                                   font=("square sans serif 7", 17))
+    lbl_bullits_name_right = Label(newWindow, text=team2.get(), bg="#404040", fg="#feba00",
+                                   font=("square sans serif 7", 17), justify=CENTER)
     lbl_bullits_name_right.place(x=220, y=10)
 
     lbl_bullits_name_left_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
