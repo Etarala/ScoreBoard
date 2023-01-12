@@ -57,6 +57,16 @@ bullit_left4_1 = False
 bullit_left4_2 = False
 bullit_left5_1 = False
 bullit_left5_2 = False
+bullit_left6_1 = False
+bullit_left6_2 = False
+bullit_left7_1 = False
+bullit_left7_2 = False
+bullit_left8_1 = False
+bullit_left8_2 = False
+bullit_left9_1 = False
+bullit_left9_2 = False
+bullit_left10_1 = False
+bullit_left10_2 = False
 bullit_right1_1 = False
 bullit_right1_2 = False
 bullit_right2_1 = False
@@ -67,6 +77,16 @@ bullit_right4_1 = False
 bullit_right4_2 = False
 bullit_right5_1 = False
 bullit_right5_2 = False
+bullit_right6_1 = False
+bullit_right6_2 = False
+bullit_right7_1 = False
+bullit_right7_2 = False
+bullit_right8_1 = False
+bullit_right8_2 = False
+bullit_right9_1 = False
+bullit_right9_2 = False
+bullit_right10_1 = False
+bullit_right10_2 = False
 clean_time_started = False
 with open("output/clean_time.txt", "w") as file:
     file.write("00:00")
@@ -112,6 +132,7 @@ def openNewWindow():
     newWindow.resizable(width=0, height=0)
     newWindow.title("Bullets")
     newWindow["bg"] = "#404040"
+    newWindow.iconbitmap(r"pict/HdScoreboard.ico")
 
     lbl_separator = Label(newWindow, text="", fg="white")
     lbl_separator.place(x=198, y=0, width=10, height=520)
@@ -145,11 +166,21 @@ def openNewWindow():
     shutil.copyfile("pict/1.png", "output/left_3.png")
     shutil.copyfile("pict/1.png", "output/left_4.png")
     shutil.copyfile("pict/1.png", "output/left_5.png")
+    shutil.copyfile("pict/1.png", "output/left_6.png")
+    shutil.copyfile("pict/1.png", "output/left_7.png")
+    shutil.copyfile("pict/1.png", "output/left_8.png")
+    shutil.copyfile("pict/1.png", "output/left_9.png")
+    shutil.copyfile("pict/1.png", "output/left_10.png")
     shutil.copyfile("pict/1.png", "output/right_1.png")
     shutil.copyfile("pict/1.png", "output/right_2.png")
     shutil.copyfile("pict/1.png", "output/right_3.png")
     shutil.copyfile("pict/1.png", "output/right_4.png")
     shutil.copyfile("pict/1.png", "output/right_5.png")
+    shutil.copyfile("pict/1.png", "output/right_6.png")
+    shutil.copyfile("pict/1.png", "output/right_7.png")
+    shutil.copyfile("pict/1.png", "output/right_8.png")
+    shutil.copyfile("pict/1.png", "output/right_9.png")
+    shutil.copyfile("pict/1.png", "output/right_10.png")
 
     # Bullits team left
 
