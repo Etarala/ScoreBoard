@@ -889,7 +889,7 @@ def hotkeys():
 
 def about():
     messagebox.showinfo('About',
-                        ' This programm is made by: Etarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
+                        ' This programm is made by: ETarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
 
 
 def donate():
