@@ -1450,13 +1450,13 @@ def penalty_team2():
 
 def safety_factor_team1():
     global statistics_params
-    statistics_params['safety_factor_team1'] = round((100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'])
+    statistics_params['safety_factor_team1'] = round((100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'],2)
     with open("output/safety_factor_team1.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team1']))
 
 def safety_factor_team2():
     global statistics_params
-    statistics_params['safety_factor_team2'] = round((100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'])
+    statistics_params['safety_factor_team2'] = round((100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'],2)
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team2']))
 
