@@ -18,7 +18,7 @@ background_label = Label(window, image=background)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 pyglet.font.add_file('fonts/Digital Numbers.ttf')
-pyglet.font.add_file("fonts/square sans serif 7.ttf")
+pyglet.font.add_file('fonts/square sans serif 7.ttf')
 
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
@@ -70,6 +70,27 @@ bullit_right5_2 = False
 clean_time_started = False
 with open("output/clean_time.txt", "w") as file:
     file.write("00:00")
+with open("output/shot_team1.txt", "w") as file:
+    file.write('0')
+with open("output/shot_gates_team1.txt", "w") as file:
+    file.write('0')
+with open("output/face_off_team1.txt", "w") as file:
+    file.write('0')
+with open("output/penalty_team1.txt", "w") as file:
+    file.write('0')
+with open("output/shot_team2.txt", "w") as file:
+    file.write('0')
+with open("output/shot_gates_team2.txt", "w") as file:
+    file.write('0')
+with open("output/face_off_team2.txt", "w") as file:
+    file.write('0')
+with open("output/penalty_team2.txt", "w") as file:
+    file.write('0')
+with open("output/safety_factor_team1.txt",  "w") as file:
+    file.write('0')
+with open("output/safety_factor_team2.txt", "w") as file:
+    file.write('0')
+
 
 is_alive = False
 
@@ -477,7 +498,14 @@ def openNewWindow():
 
 def hotkeys():
     messagebox.showinfo('Hotkeys',
-                        ' Enter = Start Game\n Left Ctrl = Left team 1 score UP\n Right Ctrl = Right team 1 score UP\n Space = Pause\n " 8 " = Period UP \n " 0 " = Main Timer minutes UP\n " 9 " = Main Timer minutes DOWN\n " + " = Main Timer seconds UP\n " - " = Main Timer seconds DOWN\n " 6 " = Start Clean Time Timer\n " 7 " = Stop Clean Time Timer\n " z " = Penalty Team left Set\n " / " = Penalty Team Right Set')
+                        ' ***GAME***\n <Enter> = Start Game\n <Left Ctrl> = Left team 1 score UP\n '
+                        '<Right Ctrl> = Right team 1 score UP\n <Space> = Pause\n < 8 > = Period UP \n\n '
+                        '***MAIN TIMER***\n < 0 > = Main Timer minutes UP\n < 9 > = Main Timer minutes DOWN\n '
+                        '< + > = Main Timer seconds UP\n < - > = Main Timer seconds DOWN\n\n ***CLEAN TIMER***\n '
+                        '< 6 > = Start Clean Time Timer\n < 7 > = Stop Clean Time Timer\n\n ***PENALTY***\n '
+                        '< z > = Penalty Team left Set\n < / > = Penalty Team Right Set\n\n ***STATISTICS***\n '
+                        ' Left Team:\n < F2 > = Shot\n < F3 > = Shot on goal\n < F4 > = Face off\n < F5 > = Penalty\n '
+                        ' Right Team:\n < F6 > = Shot\n < F7 > = Shot on goal\n < F8 > = Face off\n < F9 > = Penalty')
 
 
 def about():
@@ -508,6 +536,7 @@ def nClick_score_left_up():
     lbl_score_left.config(text=score_team1)
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
+    shot_gates_team1()
 
 
 def nClick_score_left_down():
@@ -538,6 +567,7 @@ def nClick_score_right_up():
     lbl_score_right.config(text=score_team2)
     with open("output/score_team2.txt", "w") as file:
         file.write(str(score_team2))
+    shot_gates_team2()
 
 
 def nClick_score_right_down():
@@ -1071,6 +1101,7 @@ def new_game():
     global score_team2
     global period
     global clean_time
+    global statistics_params
     period_time = 0
     clean_time = 0
     clean_timer.config(text="00:00")
@@ -1127,6 +1158,27 @@ def new_game():
         file.write("00:00")
     with open("output/clean_time.txt", "w") as file:
         file.write("00:00")
+    with open("output/shot_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/shot_gates_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/face_off_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/penalty_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/shot_team2.txt", "w") as file:
+        file.write('0')
+    with open("output/shot_gates_team2.txt", "w") as file:
+        file.write('0')
+    with open("output/face_off_team2.txt", "w") as file:
+        file.write('0')
+    with open("output/penalty_team2.txt", "w") as file:
+        file.write('0')
+    with open("output/safety_factor_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/safety_factor_team2.txt", "w") as file:
+        file.write('0')
+    statistics_params = empty_statistics_params()
     shutil.copyfile("pict/1.png", "output/left_1.png")
     shutil.copyfile("pict/1.png", "output/left_2.png")
     shutil.copyfile("pict/1.png", "output/left_3.png")
@@ -1339,14 +1391,75 @@ lbl_clean_name = Label(window, text="Cl.time", bg="#404040", fg="white", font=("
 lbl_clean_name.place(x=573, y=70)
 
 # Add Statistics
-statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face-off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
-                     'shot_gates_team2': 0, 'face-off_team2': 0, 'penalty_team2': 0}
+statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
+                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1' : 0, 'safety_factor_team2' : 0, }
+
+def empty_statistics_params():
+    return {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
+                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1' : 0, 'safety_factor_team2' : 0, }
 
 def shot_team1():
     global statistics_params
     statistics_params['shot_team1'] += 1
     with open("output/shot_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_team1']))
+
+def shot_gates_team1():
+    global statistics_params
+    statistics_params['shot_gates_team1'] += 1
+    with open("output/shot_gates_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team1']))
+    safety_factor_team2()
+
+def face_off_team1():
+    global statistics_params
+    statistics_params['face_off_team1'] += 1
+    with open("output/face_off_team1.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team1']))
+
+def penalty_team1():
+    global statistics_params
+    statistics_params['penalty_team1'] += 1
+    with open("output/penalty_team1.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team1']))
+
+def shot_team2():
+    global statistics_params
+    statistics_params['shot_team2'] += 1
+    with open("output/shot_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_team2']))
+
+def shot_gates_team2():
+    global statistics_params
+    statistics_params['shot_gates_team2'] += 1
+    with open("output/shot_gates_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team2']))
+    safety_factor_team1()
+
+def face_off_team2():
+    global statistics_params
+    statistics_params['face_off_team2'] += 1
+    with open("output/face_off_team2.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team2']))
+
+def penalty_team2():
+    global statistics_params
+    statistics_params['penalty_team2'] += 1
+    with open("output/penalty_team2.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team2']))
+
+def safety_factor_team1():
+    global statistics_params
+    statistics_params['safety_factor_team1'] = round((100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'])
+    with open("output/safety_factor_team1.txt", "w") as file:
+        file.write(str(statistics_params['safety_factor_team1']))
+
+def safety_factor_team2():
+    global statistics_params
+    statistics_params['safety_factor_team2'] = round((100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'])
+    with open("output/safety_factor_team2.txt", "w") as file:
+        file.write(str(statistics_params['safety_factor_team2']))
+
 
 # Add hotkeys
 bindings = [
@@ -1363,11 +1476,16 @@ bindings = [
     [["/"], None, set_penalty_right_first],
     [["space"], None, pause],
     [["f2"], None, shot_team1],
+    [["f3"], None, shot_gates_team1],
+    [["f4"], None, face_off_team1],
+    [["f5"], None, penalty_team1],
+    [["f6"], None, shot_team2],
+    [["f7"], None, shot_gates_team2],
+    [["f8"], None, face_off_team2],
+    [["f9"], None, penalty_team2],
     [["enter"], None, lambda: start_main_timer(period_time)],
 
 ]
 register_hotkeys(bindings)
-
-
 
 window.mainloop()
