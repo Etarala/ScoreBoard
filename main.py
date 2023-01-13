@@ -875,6 +875,49 @@ def openNewWindow():
                                           font=("square sans serif 7", 25))
     chk_bullits_right_102_btn.place(x=335, y=450)
 
+
+# New window Statistic
+
+def openNewWindow_statistics():
+    newWindow = Toplevel(window)
+    newWindow.geometry("600x400")
+    newWindow.resizable(width=0, height=0)
+    newWindow.title("Statistics")
+    newWindow["bg"] = "#404040"
+    newWindow.iconbitmap(r"pict/HdScoreboard.ico")
+
+    lbl_separator = Label(newWindow, text="", fg="white")
+    lbl_separator.place(x=300, y=0, width=5, height=400)
+
+    lbl_stat_name_left = Label(newWindow, text=team1.get(), bg="#404040", fg="#feba00",
+                                  font=("square sans serif 7", 18))
+    lbl_stat_name_left.place(x=15, y=10)
+
+    lbl_stat_name_right = Label(newWindow, text=team2.get(), bg="#404040", fg="#feba00",
+                                   font=("square sans serif 7", 18))
+    lbl_stat_name_right.place(x=320, y=10)
+
+    lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+                                       font=("square sans serif 7", 17))
+    lbl_stat_name_left_goal.place(x=14, y=60)
+    lbl_stat_value_left_goal = Label(newWindow, text=score_team1, bg="#404040", fg="white",
+                                    font=("square sans serif 7", 17))
+    lbl_stat_value_left_goal.place(x=230, y=60)
+    lbl_stat_name_left_shot_team1 = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
+                                    font=("square sans serif 7", 17))
+    lbl_stat_name_left_shot_team1.place(x=14, y=100)
+    lbl_stat_value_left_goal = Label(newWindow, text=statistics_params['shot_team1'], bg="#404040", fg="white",
+                                     font=("square sans serif 7", 17))
+    lbl_stat_value_left_goal.place(x=230, y=100)
+
+
+
+
+    def update_statistics_values():
+        lbl_stat_value_left_goal.config(text=score_team1)
+
+# Hotkeys
+
 def hotkeys():
     messagebox.showinfo('Hotkeys',
                         ' ***GAME***\n <Enter> = Start Game\n <Left Ctrl> = Left team 1 score UP\n '
@@ -898,6 +941,7 @@ def donate():
 
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Bullets", command=openNewWindow)
+filemenu.add_command(label="Statistics", command=openNewWindow_statistics)
 filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
 mainmenu.add_cascade(label="Options", menu=filemenu)
 helpmenu = Menu(mainmenu, tearoff=0)
@@ -916,6 +960,7 @@ def nClick_score_left_up():
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
     shot_gates_team1()
+    update_statistics_values()
 
 
 def nClick_score_left_down():
