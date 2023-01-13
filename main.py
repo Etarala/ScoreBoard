@@ -889,7 +889,7 @@ def openNewWindow_statistics():
     newWindow.iconbitmap(r"pict/HdScoreboard.ico")
     global score_team1
     global statistics_widgets
-
+    statistics_widgets = {}
 
     lbl_separator = Label(newWindow, text="", fg="white")
     lbl_separator.place(x=300, y=0, width=5, height=400)
@@ -905,7 +905,7 @@ def openNewWindow_statistics():
     lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
                                        font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
-    lbl_stat_value_left_goal = Label(newWindow, text=score_team1, bg="#404040", fg="white",
+    lbl_stat_value_left_goal = Label(newWindow, text=str(score_team1), bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
@@ -922,7 +922,7 @@ def openNewWindow_statistics():
 def update_statistics_values():
     global statistics_widgets
     global score_team1
-    statistics_widgets['lbl_stat_value_left_goal'].text = str(score_team1)
+    statistics_widgets['lbl_stat_value_left_goal'].config(text=str(score_team1))
 
 
 # Hotkeys
@@ -980,6 +980,7 @@ def nClick_score_left_down():
     lbl_score_left.config(text=score_team1)
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
+    update_statistics_values()
 
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_left_up, relief='flat',
@@ -1001,6 +1002,7 @@ def nClick_score_right_up():
     with open("output/score_team2.txt", "w") as file:
         file.write(str(score_team2))
     shot_gates_team2()
+    update_statistics_values()
 
 
 def nClick_score_right_down():
@@ -1011,6 +1013,7 @@ def nClick_score_right_down():
     lbl_score_right.config(text=score_team2)
     with open("output/score_team2.txt", "w") as file:
         file.write(str(score_team2))
+    update_statistics_values()
 
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_right_up, relief='flat',
@@ -1031,6 +1034,7 @@ def nClick_period_up():
     lbl_period.config(text=period)
     with open("output/period.txt", "w") as file:
         file.write(str(period))
+    update_statistics_values()
 
 
 def nClick_period_down():
@@ -1612,6 +1616,7 @@ def new_game():
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write('0')
     statistics_params = empty_statistics_params()
+    update_statistics_values()
     shutil.copyfile("pict/1.png", "output/left_1.png")
     shutil.copyfile("pict/1.png", "output/left_2.png")
     shutil.copyfile("pict/1.png", "output/left_3.png")
@@ -1836,6 +1841,7 @@ def shot_team1():
     statistics_params['shot_team1'] += 1
     with open("output/shot_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_team1']))
+    update_statistics_values()
 
 def shot_gates_team1():
     global statistics_params
@@ -1843,24 +1849,28 @@ def shot_gates_team1():
     with open("output/shot_gates_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team1']))
     safety_factor_team2()
+    update_statistics_values()
 
 def face_off_team1():
     global statistics_params
     statistics_params['face_off_team1'] += 1
     with open("output/face_off_team1.txt", "w") as file:
         file.write(str(statistics_params['face_off_team1']))
+    update_statistics_values()
 
 def penalty_team1():
     global statistics_params
     statistics_params['penalty_team1'] += 1
     with open("output/penalty_team1.txt", "w") as file:
         file.write(str(statistics_params['penalty_team1']))
+    update_statistics_values()
 
 def shot_team2():
     global statistics_params
     statistics_params['shot_team2'] += 1
     with open("output/shot_team2.txt", "w") as file:
         file.write(str(statistics_params['shot_team2']))
+    update_statistics_values()
 
 def shot_gates_team2():
     global statistics_params
@@ -1868,18 +1878,21 @@ def shot_gates_team2():
     with open("output/shot_gates_team2.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team2']))
     safety_factor_team1()
+    update_statistics_values()
 
 def face_off_team2():
     global statistics_params
     statistics_params['face_off_team2'] += 1
     with open("output/face_off_team2.txt", "w") as file:
         file.write(str(statistics_params['face_off_team2']))
+    update_statistics_values()
 
 def penalty_team2():
     global statistics_params
     statistics_params['penalty_team2'] += 1
     with open("output/penalty_team2.txt", "w") as file:
         file.write(str(statistics_params['penalty_team2']))
+    update_statistics_values()
 
 def safety_factor_team1():
     global statistics_params
