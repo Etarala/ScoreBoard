@@ -887,7 +887,7 @@ def openNewWindow_statistics():
     newWindow.title("Statistics")
     newWindow["bg"] = "#404040"
     newWindow.iconbitmap(r"pict/HdScoreboard.ico")
-
+    global score_team1
     global statistics_widgets
 
 
@@ -905,7 +905,7 @@ def openNewWindow_statistics():
     lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
                                        font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
-    lbl_stat_value_left_goal = Label(newWindow, text=statistics_widgets['lbl_stat_value_left_goal'], bg="#404040", fg="white",
+    lbl_stat_value_left_goal = Label(newWindow, text=score_team1, bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
@@ -922,7 +922,7 @@ def openNewWindow_statistics():
 def update_statistics_values():
     global statistics_widgets
     global score_team1
-    statistics_widgets['lbl_stat_value_left_goal'] = str(score_team1)
+    statistics_widgets['lbl_stat_value_left_goal'].text = str(score_team1)
 
 
 # Hotkeys
