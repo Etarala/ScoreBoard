@@ -888,7 +888,9 @@ def openNewWindow_statistics():
     newWindow["bg"] = "#404040"
     newWindow.iconbitmap(r"pict/HdScoreboard.ico")
     global score_team1
+    global score_team1
     global statistics_widgets
+    global statistics_params
     statistics_widgets = {}
 
     lbl_separator = Label(newWindow, text="", fg="white")
@@ -905,16 +907,30 @@ def openNewWindow_statistics():
     lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
                                        font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
+
     lbl_stat_value_left_goal = Label(newWindow, text=str(score_team1), bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
+
     lbl_stat_name_left_shot_team1 = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_team1.place(x=14, y=100)
-    lbl_stat_value_left_goal = Label(newWindow, text=statistics_params['shot_team1'], bg="#404040", fg="white",
+    lbl_stat_value_left_shot_team1 = Label(newWindow, text=str(statistics_params['shot_team1']), bg="#404040", fg="white",
                                      font=("square sans serif 7", 17))
-    lbl_stat_value_left_goal.place(x=230, y=100)
+    lbl_stat_value_left_shot_team1.place(x=230, y=100)
+    statistics_widgets['lbl_stat_value_left_shot_team1'] = lbl_stat_value_left_shot_team1
+
+    lbl_stat_name_left_shot_gates_team1 = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
+                                          font=("square sans serif 7", 17))
+    lbl_stat_name_left_shot_gates_team1.place(x=14, y=140)
+    lbl_stat_name_left_shot_gates_team1_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
+                                                font=("square sans serif 7", 17))
+    lbl_stat_name_left_shot_gates_team1_2.place(x=14, y=160)
+    lbl_stat_value_left_shot_gates_team1 = Label(newWindow, text=str(statistics_params['shot_team1']), bg="#404040",
+                                           fg="white", font=("square sans serif 7", 17))
+    lbl_stat_value_left_shot_gates_team1.place(x=230, y=150)
+    statistics_widgets['lbl_stat_value_left_shot_gates_team1'] = lbl_stat_value_left_shot_gates_team1
 
 
 
@@ -922,7 +938,11 @@ def openNewWindow_statistics():
 def update_statistics_values():
     global statistics_widgets
     global score_team1
+    global score_team1
+    global statistics_params
     statistics_widgets['lbl_stat_value_left_goal'].config(text=str(score_team1))
+    statistics_widgets['lbl_stat_value_left_shot_team1'].config(text=str(statistics_params['shot_team1']))
+    statistics_widgets['lbl_stat_value_left_shot_gates_team1'].config(text=str(statistics_params['shot_gates_team1']))
 
 
 # Hotkeys
@@ -1539,6 +1559,8 @@ def new_game():
     global period
     global clean_time
     global statistics_params
+    global statistics_widgets
+    statistics_widgets = {}
     period_time = 0
     clean_time = 0
     clean_timer.config(text="00:00")
@@ -1616,7 +1638,7 @@ def new_game():
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write('0')
     statistics_params = empty_statistics_params()
-    update_statistics_values()
+    #update_statistics_values()
     shutil.copyfile("pict/1.png", "output/left_1.png")
     shutil.copyfile("pict/1.png", "output/left_2.png")
     shutil.copyfile("pict/1.png", "output/left_3.png")

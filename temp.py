@@ -98,23 +98,71 @@ root.mainloop()
 
 
 
+def shot_gates_team1():
+    global statistics_params
+    statistics_params['shot_gates_team1'] += 1
+    with open("output/shot_gates_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team1']))
+    safety_factor_team2()
+    update_statistics_values()
+
+def face_off_team1():
+    global statistics_params
+    statistics_params['face_off_team1'] += 1
+    with open("output/face_off_team1.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team1']))
+    update_statistics_values()
+
+def penalty_team1():
+    global statistics_params
+    statistics_params['penalty_team1'] += 1
+    with open("output/penalty_team1.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team1']))
+    update_statistics_values()
+
+def shot_team2():
+    global statistics_params
+    statistics_params['shot_team2'] += 1
+    with open("output/shot_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_team2']))
+    update_statistics_values()
+
+def shot_gates_team2():
+    global statistics_params
+    statistics_params['shot_gates_team2'] += 1
+    with open("output/shot_gates_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team2']))
+    safety_factor_team1()
+    update_statistics_values()
+
+def face_off_team2():
+    global statistics_params
+    statistics_params['face_off_team2'] += 1
+    with open("output/face_off_team2.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team2']))
+    update_statistics_values()
+
+def penalty_team2():
+    global statistics_params
+    statistics_params['penalty_team2'] += 1
+    with open("output/penalty_team2.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team2']))
+    update_statistics_values()
+
+def safety_factor_team1():
+    global statistics_params
+    statistics_params['safety_factor_team1'] = round((100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'],2)
+    with open("output/safety_factor_team1.txt", "w") as file:
+        file.write(str(statistics_params['safety_factor_team1']))
+
+def safety_factor_team2():
+    global statistics_params
+    statistics_params['safety_factor_team2'] = round((100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'],2)
+    with open("output/safety_factor_team2.txt", "w") as file:
+        file.write(str(statistics_params['safety_factor_team2']))
 
 
 
 
 
 
-
-def openNewWindow_statistics():
-    newWindow = Toplevel(window)
-
-    global statistics_widgets
-    statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
-
-    lbl_stat_value_left_goal = Label(newWindow, text=statistics_widgets['lbl_stat_value_left_goal'],)
-    lbl_stat_value_left_goal.place(x=230, y=60)
-
-def update_statistics_values():
-    global statistics_widgets
-    global score_team1
-    statistics_widgets['lbl_stat_value_left_goal'] = str(score_team1)
