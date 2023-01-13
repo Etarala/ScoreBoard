@@ -127,6 +127,7 @@ def global_hotkeys():
 
 # Bullets
 def openNewWindow():
+    global window
     newWindow = Toplevel(window)
     newWindow.geometry("400x510")
     newWindow.resizable(width=0, height=0)
@@ -879,6 +880,7 @@ def openNewWindow():
 # New window Statistic
 statistics_widgets = {}
 def openNewWindow_statistics():
+    global window
     newWindow = Toplevel(window)
     newWindow.geometry("600x400")
     newWindow.resizable(width=0, height=0)
@@ -887,7 +889,7 @@ def openNewWindow_statistics():
     newWindow.iconbitmap(r"pict/HdScoreboard.ico")
 
     global statistics_widgets
-    #statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
+
 
     lbl_separator = Label(newWindow, text="", fg="white")
     lbl_separator.place(x=300, y=0, width=5, height=400)
@@ -906,6 +908,7 @@ def openNewWindow_statistics():
     lbl_stat_value_left_goal = Label(newWindow, text=statistics_widgets['lbl_stat_value_left_goal'], bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_value_left_goal.place(x=230, y=60)
+    statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
     lbl_stat_name_left_shot_team1 = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_team1.place(x=14, y=100)

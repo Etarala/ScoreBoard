@@ -92,3 +92,29 @@ button_2 = Button(root, text='Stop', font = ('Arial', 30), command = stop_sw)
 button_1.grid(row=1, columnspan = 2, sticky = 'ew')
 
 root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+def openNewWindow_statistics():
+    newWindow = Toplevel(window)
+
+    global statistics_widgets
+    statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
+
+    lbl_stat_value_left_goal = Label(newWindow, text=statistics_widgets['lbl_stat_value_left_goal'],)
+    lbl_stat_value_left_goal.place(x=230, y=60)
+
+def update_statistics_values():
+    global statistics_widgets
+    global score_team1
+    statistics_widgets['lbl_stat_value_left_goal'] = str(score_team1)
