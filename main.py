@@ -931,7 +931,7 @@ def openNewWindow_statistics():
     lbl_stat_value_left_shot_gates.place(x=230, y=156)
     statistics_widgets['lbl_stat_value_left_shot_gates'] = lbl_stat_value_left_shot_gates
 
-    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white",
+    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
                                         font=("square sans serif 7", 16))
     lbl_stat_name_left_face_off.place(x=14, y=210)
     lbl_stat_value_left_face_off = Label(newWindow, text=str(statistics_params['face_off_team1']), bg="#404040",
@@ -939,7 +939,7 @@ def openNewWindow_statistics():
     lbl_stat_value_left_face_off.place(x=230, y=206)
     statistics_widgets['lbl_stat_value_left_face_off'] = lbl_stat_value_left_face_off
 
-    lbl_stat_name_left_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
+    lbl_stat_name_left_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
                                        font=("square sans serif 7", 16))
     lbl_stat_name_left_penalty.place(x=14, y=260)
     lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
@@ -987,7 +987,7 @@ def openNewWindow_statistics():
     lbl_stat_value_right_shot_gates.place(x=576, y=156)
     statistics_widgets['lbl_stat_value_right_shot_gates'] = lbl_stat_value_right_shot_gates
 
-    lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white",
+    lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
                                          font=("square sans serif 7", 16))
     lbl_stat_name_right_face_off.place(x=360, y=210)
     lbl_stat_value_right_face_off = Label(newWindow, text=str(statistics_params['face_off_team2']), bg="#404040",
@@ -995,7 +995,7 @@ def openNewWindow_statistics():
     lbl_stat_value_right_face_off.place(x=576, y=206)
     statistics_widgets['lbl_stat_value_right_face_off'] = lbl_stat_value_right_face_off
 
-    lbl_stat_name_right_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
+    lbl_stat_name_right_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
                                         font=("square sans serif 7", 16))
     lbl_stat_name_right_penalty.place(x=360, y=260)
     lbl_stat_value_right_penalty = Label(newWindow, text=str(statistics_params['penalty_team2']), bg="#404040",
