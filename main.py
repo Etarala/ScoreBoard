@@ -882,7 +882,7 @@ statistics_widgets = {}
 def openNewWindow_statistics():
     global window
     newWindow = Toplevel(window)
-    newWindow.geometry("600x400")
+    newWindow.geometry("680x400")
     newWindow.resizable(width=0, height=0)
     newWindow.title("Statistics")
     newWindow["bg"] = "#404040"
@@ -901,7 +901,7 @@ def openNewWindow_statistics():
     statistics_widgets = {}
 
     lbl_separator = Label(newWindow, text="", fg="white")
-    lbl_separator.place(x=300, y=0, width=5, height=400)
+    lbl_separator.place(x=340, y=0, width=5, height=400)
 
     lbl_stat_name_left = Label(newWindow, text=team1.get(), bg="#404040", fg="#feba00",
                                   font=("square sans serif 7", 18))
@@ -909,8 +909,8 @@ def openNewWindow_statistics():
 
     lbl_stat_name_right = Label(newWindow, text=team2.get(), bg="#404040", fg="#feba00",
                                    font=("square sans serif 7", 18))
-    lbl_stat_name_right.place(x=320, y=10)
-
+    lbl_stat_name_right.place(x=360, y=10)
+    #LEFT
     lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
                                        font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
@@ -948,11 +948,79 @@ def openNewWindow_statistics():
 
     lbl_stat_name_left_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
                                               font=("square sans serif 7", 16))
-    lbl_stat_name_left_penalty.place(x=14, y=250)
+    lbl_stat_name_left_penalty.place(x=14, y=260)
     lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
                                                fg="#feba00", font=("square sans serif 7", 22))
-    lbl_stat_value_left_penalty.place(x=230, y=246)
+    lbl_stat_value_left_penalty.place(x=230, y=256)
     statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
+
+    lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
+                                          font=("square sans serif 7", 17))
+    lbl_stat_name_left_safety_factor.place(x=14, y=306)
+    lbl_stat_name_left_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
+                                            font=("square sans serif 7", 17))
+    lbl_stat_name_left_safety_factor_2.place(x=14, y=326)
+    lbl_stat_value_left_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team1']), bg="#404040",
+                                           fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_left_safety_factor.place(x=230, y=310)
+    statistics_widgets['lbl_stat_value_left_safety_factor'] = lbl_stat_value_left_safety_factor
+    #RIGHT
+    lbl_stat_name_right_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+                                    font=("square sans serif 7", 17))
+    lbl_stat_name_right_goal.place(x=360, y=60)
+
+    lbl_stat_value_right_goal = Label(newWindow, text=str(score_team2), bg="#404040", fg="#feba00",
+                                     font=("square sans serif 7", 22))
+    lbl_stat_value_right_goal.place(x=576, y=60)
+    statistics_widgets['lbl_stat_value_right_goal'] = lbl_stat_value_right_goal
+
+    lbl_stat_name_right_shot = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
+                                    font=("square sans serif 7", 17))
+    lbl_stat_name_right_shot.place(x=360, y=110)
+    lbl_stat_value_right_shot = Label(newWindow, text=str(statistics_params['shot_team2']), bg="#404040", fg="#feba00",
+                                     font=("square sans serif 7", 22))
+    lbl_stat_value_right_shot.place(x=576, y=105)
+    statistics_widgets['lbl_stat_value_right_shot'] = lbl_stat_value_right_shot
+
+    lbl_stat_name_right_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
+                                          font=("square sans serif 7", 17))
+    lbl_stat_name_right_shot_gates.place(x=360, y=150)
+    lbl_stat_name_right_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
+                                            font=("square sans serif 7", 17))
+    lbl_stat_name_right_shot_gates_2.place(x=360, y=170)
+    lbl_stat_value_right_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team2']), bg="#404040",
+                                           fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_right_shot_gates.place(x=576, y=156)
+    statistics_widgets['lbl_stat_value_right_shot_gates'] = lbl_stat_value_right_shot_gates
+
+    lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white",
+                                        font=("square sans serif 7", 16))
+    lbl_stat_name_right_face_off.place(x=360, y=210)
+    lbl_stat_value_right_face_off = Label(newWindow, text=str(statistics_params['face_off_team2']), bg="#404040",
+                                         fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_right_face_off.place(x=576, y=206)
+    statistics_widgets['lbl_stat_value_right_face_off'] = lbl_stat_value_right_face_off
+
+    lbl_stat_name_right_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
+                                       font=("square sans serif 7", 16))
+    lbl_stat_name_right_penalty.place(x=360, y=260)
+    lbl_stat_value_right_penalty = Label(newWindow, text=str(statistics_params['penalty_team2']), bg="#404040",
+                                        fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_right_penalty.place(x=576, y=256)
+    statistics_widgets['lbl_stat_value_right_penalty'] = lbl_stat_value_right_penalty
+
+    lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
+                                             font=("square sans serif 7", 17))
+    lbl_stat_name_right_safety_factor.place(x=360, y=306)
+    lbl_stat_name_right_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
+                                               font=("square sans serif 7", 17))
+    lbl_stat_name_right_safety_factor_2.place(x=360, y=326)
+    lbl_stat_value_right_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team2']),
+                                              bg="#404040",
+                                              fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_right_safety_factor.place(x=576, y=310)
+    statistics_widgets['lbl_stat_value_right_safety_factor'] = lbl_stat_value_right_safety_factor
+
 
     newWindow.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -970,6 +1038,13 @@ def update_statistics_values():
         statistics_widgets['lbl_stat_value_left_shot_gates'].config(text=str(statistics_params['shot_gates_team1']))
         statistics_widgets['lbl_stat_value_left_face_off'].config(text=str(statistics_params['face_off_team1']))
         statistics_widgets['lbl_stat_value_left_penalty'].config(text=str(statistics_params['penalty_team1']))
+        statistics_widgets['lbl_stat_value_left_safety_factor'].config(text=str(statistics_params['safety_factor_team1']))
+        statistics_widgets['lbl_stat_value_right_goal'].config(text=str(score_team2))
+        statistics_widgets['lbl_stat_value_right_shot'].config(text=str(statistics_params['shot_team2']))
+        statistics_widgets['lbl_stat_value_right_shot_gates'].config(text=str(statistics_params['shot_gates_team2']))
+        statistics_widgets['lbl_stat_value_right_face_off'].config(text=str(statistics_params['face_off_team2']))
+        statistics_widgets['lbl_stat_value_right_penalty'].config(text=str(statistics_params['penalty_team2']))
+        statistics_widgets['lbl_stat_value_right_safety_factor'].config(text=str(statistics_params['safety_factor_team2']))
 
 
 # Hotkeys

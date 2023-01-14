@@ -99,19 +99,7 @@ root.mainloop()
 
 
 
-def face_off_team1():
-    global statistics_params
-    statistics_params['face_off_team1'] += 1
-    with open("output/face_off_team1.txt", "w") as file:
-        file.write(str(statistics_params['face_off_team1']))
-    update_statistics_values()
 
-def penalty_team1():
-    global statistics_params
-    statistics_params['penalty_team1'] += 1
-    with open("output/penalty_team1.txt", "w") as file:
-        file.write(str(statistics_params['penalty_team1']))
-    update_statistics_values()
 
 def shot_team2():
     global statistics_params
