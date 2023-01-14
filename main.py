@@ -106,11 +106,10 @@ with open("output/face_off_team2.txt", "w") as file:
     file.write('0')
 with open("output/penalty_team2.txt", "w") as file:
     file.write('0')
-with open("output/safety_factor_team1.txt",  "w") as file:
+with open("output/safety_factor_team1.txt", "w") as file:
     file.write('0')
 with open("output/safety_factor_team2.txt", "w") as file:
     file.write('0')
-
 
 is_alive = False
 
@@ -355,7 +354,6 @@ def openNewWindow():
                                           font=("square sans serif 7", 25))
     chk_bullits_left_52_btn.place(x=130, y=250)
 
-
     def chk_bullits_left_61():
         global bullit_left6_1
         check_61_left = chk_bullits_left_61_state.get()
@@ -458,7 +456,6 @@ def openNewWindow():
                                           font=("square sans serif 7", 25))
     chk_bullits_left_82_btn.place(x=130, y=370)
 
-
     def chk_bullits_left_91():
         global bullit_left9_1
         check_91_left = chk_bullits_left_91_state.get()
@@ -493,7 +490,6 @@ def openNewWindow():
                                           font=("square sans serif 7", 25))
     chk_bullits_left_92_btn.place(x=130, y=410)
 
-
     def chk_bullits_left_101():
         global bullit_left10_1
         check_101_left = chk_bullits_left_101_state.get()
@@ -506,9 +502,9 @@ def openNewWindow():
     chk_bullits_left_101_state = BooleanVar()
     chk_bullits_left_101_state.set(False)
     chk_bullits_left_101_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_101_state,
-                                          command=chk_bullits_left_101, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_left_101, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_left_101_btn.place(x=30, y=450)
 
     def chk_bullits_left_102():
@@ -523,13 +519,10 @@ def openNewWindow():
     chk_bullits_left_102_state = BooleanVar()
     chk_bullits_left_102_state.set(False)
     chk_bullits_left_102_btn = Checkbutton(newWindow, text='', var=chk_bullits_left_102_state,
-                                          command=chk_bullits_left_102, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_left_102, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_left_102_btn.place(x=130, y=450)
-
-
-
 
     # Bullits team right
 
@@ -703,7 +696,6 @@ def openNewWindow():
                                            font=("square sans serif 7", 25))
     chk_bullits_right_52_btn.place(x=335, y=250)
 
-
     def chk_bullits_right_61():
         global bullit_right6_1
         check_61_right = chk_bullits_right_61_state.get()
@@ -716,9 +708,9 @@ def openNewWindow():
     chk_bullits_right_61_state = BooleanVar()
     chk_bullits_right_61_state.set(False)
     chk_bullits_right_61_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_61_state,
-                                          command=chk_bullits_right_61, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_61, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_61_btn.place(x=235, y=290)
 
     def chk_bullits_right_62():
@@ -733,9 +725,9 @@ def openNewWindow():
     chk_bullits_right_62_state = BooleanVar()
     chk_bullits_right_62_state.set(False)
     chk_bullits_right_62_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_62_state,
-                                          command=chk_bullits_right_62, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_62, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_62_btn.place(x=335, y=290)
 
     def chk_bullits_right_71():
@@ -750,9 +742,9 @@ def openNewWindow():
     chk_bullits_right_71_state = BooleanVar()
     chk_bullits_right_71_state.set(False)
     chk_bullits_right_71_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_71_state,
-                                          command=chk_bullits_right_71, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_71, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_71_btn.place(x=235, y=330)
 
     def chk_bullits_right_72():
@@ -767,9 +759,9 @@ def openNewWindow():
     chk_bullits_right_72_state = BooleanVar()
     chk_bullits_right_72_state.set(False)
     chk_bullits_right_72_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_72_state,
-                                          command=chk_bullits_right_72, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_72, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_72_btn.place(x=335, y=330)
 
     def chk_bullits_right_81():
@@ -784,9 +776,9 @@ def openNewWindow():
     chk_bullits_right_81_state = BooleanVar()
     chk_bullits_right_81_state.set(False)
     chk_bullits_right_81_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_81_state,
-                                          command=chk_bullits_right_81, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_81, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_81_btn.place(x=235, y=370)
 
     def chk_bullits_right_82():
@@ -801,11 +793,10 @@ def openNewWindow():
     chk_bullits_right_82_state = BooleanVar()
     chk_bullits_right_82_state.set(False)
     chk_bullits_right_82_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_82_state,
-                                          command=chk_bullits_right_82, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_82, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_82_btn.place(x=335, y=370)
-
 
     def chk_bullits_right_91():
         global bullit_right9_1
@@ -819,9 +810,9 @@ def openNewWindow():
     chk_bullits_right_91_state = BooleanVar()
     chk_bullits_right_91_state.set(False)
     chk_bullits_right_91_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_91_state,
-                                          command=chk_bullits_right_91, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_91, bg="#404040", fg="#fe0000",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_91_btn.place(x=235, y=410)
 
     def chk_bullits_right_92():
@@ -836,11 +827,10 @@ def openNewWindow():
     chk_bullits_right_92_state = BooleanVar()
     chk_bullits_right_92_state.set(False)
     chk_bullits_right_92_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_92_state,
-                                          command=chk_bullits_right_92, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                           command=chk_bullits_right_92, bg="#404040", fg="#03bd02",
+                                           selectcolor='black', activebackground="#404040",
+                                           font=("square sans serif 7", 25))
     chk_bullits_right_92_btn.place(x=335, y=410)
-
 
     def chk_bullits_right_101():
         global bullit_right10_1
@@ -854,9 +844,9 @@ def openNewWindow():
     chk_bullits_right_101_state = BooleanVar()
     chk_bullits_right_101_state.set(False)
     chk_bullits_right_101_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_101_state,
-                                          command=chk_bullits_right_101, bg="#404040", fg="#fe0000",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                            command=chk_bullits_right_101, bg="#404040", fg="#fe0000",
+                                            selectcolor='black', activebackground="#404040",
+                                            font=("square sans serif 7", 25))
     chk_bullits_right_101_btn.place(x=235, y=450)
 
     def chk_bullits_right_102():
@@ -871,14 +861,16 @@ def openNewWindow():
     chk_bullits_right_102_state = BooleanVar()
     chk_bullits_right_102_state.set(False)
     chk_bullits_right_102_btn = Checkbutton(newWindow, text='', var=chk_bullits_right_102_state,
-                                          command=chk_bullits_right_102, bg="#404040", fg="#03bd02",
-                                          selectcolor='black', activebackground="#404040",
-                                          font=("square sans serif 7", 25))
+                                            command=chk_bullits_right_102, bg="#404040", fg="#03bd02",
+                                            selectcolor='black', activebackground="#404040",
+                                            font=("square sans serif 7", 25))
     chk_bullits_right_102_btn.place(x=335, y=450)
 
 
 # New window Statistic
 statistics_widgets = {}
+
+
 def openNewWindow_statistics():
     global window
     newWindow = Toplevel(window)
@@ -892,11 +884,11 @@ def openNewWindow_statistics():
     global statistics_widgets
     global statistics_params
     statistics_widgets = {}
+
     def on_closing():
         global statistics_widgets
         statistics_widgets = {}
         newWindow.destroy()
-
 
     statistics_widgets = {}
 
@@ -904,19 +896,19 @@ def openNewWindow_statistics():
     lbl_separator.place(x=340, y=0, width=5, height=400)
 
     lbl_stat_name_left = Label(newWindow, text=team1.get(), bg="#404040", fg="#feba00",
-                                  font=("square sans serif 7", 18))
+                               font=("square sans serif 7", 18))
     lbl_stat_name_left.place(x=15, y=10)
 
     lbl_stat_name_right = Label(newWindow, text=team2.get(), bg="#404040", fg="#feba00",
-                                   font=("square sans serif 7", 18))
+                                font=("square sans serif 7", 18))
     lbl_stat_name_right.place(x=360, y=10)
-    #LEFT
+    # LEFT
     lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
-                                       font=("square sans serif 7", 17))
+                                    font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
 
     lbl_stat_value_left_goal = Label(newWindow, text=str(score_team1), bg="#404040", fg="#feba00",
-                                    font=("square sans serif 7", 22))
+                                     font=("square sans serif 7", 22))
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
 
@@ -932,95 +924,96 @@ def openNewWindow_statistics():
                                           font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_gates.place(x=14, y=150)
     lbl_stat_name_left_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
-                                                font=("square sans serif 7", 17))
+                                            font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_gates_2.place(x=14, y=170)
     lbl_stat_value_left_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team1']), bg="#404040",
                                            fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_shot_gates.place(x=230, y=156)
     statistics_widgets['lbl_stat_value_left_shot_gates'] = lbl_stat_value_left_shot_gates
 
-    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white", font=("square sans serif 7", 16))
+    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white",
+                                        font=("square sans serif 7", 16))
     lbl_stat_name_left_face_off.place(x=14, y=210)
     lbl_stat_value_left_face_off = Label(newWindow, text=str(statistics_params['face_off_team1']), bg="#404040",
-                                           fg="#feba00", font=("square sans serif 7", 22))
+                                         fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_face_off.place(x=230, y=206)
     statistics_widgets['lbl_stat_value_left_face_off'] = lbl_stat_value_left_face_off
 
     lbl_stat_name_left_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
-                                              font=("square sans serif 7", 16))
+                                       font=("square sans serif 7", 16))
     lbl_stat_name_left_penalty.place(x=14, y=260)
     lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
-                                               fg="#feba00", font=("square sans serif 7", 22))
+                                        fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_penalty.place(x=230, y=256)
     statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
 
     lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
-                                          font=("square sans serif 7", 17))
+                                             font=("square sans serif 7", 17))
     lbl_stat_name_left_safety_factor.place(x=14, y=306)
     lbl_stat_name_left_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
-                                            font=("square sans serif 7", 17))
+                                               font=("square sans serif 7", 17))
     lbl_stat_name_left_safety_factor_2.place(x=14, y=326)
-    lbl_stat_value_left_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team1']), bg="#404040",
-                                           fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_left_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team1']),
+                                              bg="#404040",
+                                              fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_safety_factor.place(x=230, y=310)
     statistics_widgets['lbl_stat_value_left_safety_factor'] = lbl_stat_value_left_safety_factor
-    #RIGHT
+    # RIGHT
     lbl_stat_name_right_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
-                                    font=("square sans serif 7", 17))
+                                     font=("square sans serif 7", 17))
     lbl_stat_name_right_goal.place(x=360, y=60)
 
     lbl_stat_value_right_goal = Label(newWindow, text=str(score_team2), bg="#404040", fg="#feba00",
-                                     font=("square sans serif 7", 22))
+                                      font=("square sans serif 7", 22))
     lbl_stat_value_right_goal.place(x=576, y=60)
     statistics_widgets['lbl_stat_value_right_goal'] = lbl_stat_value_right_goal
 
     lbl_stat_name_right_shot = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
-                                    font=("square sans serif 7", 17))
+                                     font=("square sans serif 7", 17))
     lbl_stat_name_right_shot.place(x=360, y=110)
     lbl_stat_value_right_shot = Label(newWindow, text=str(statistics_params['shot_team2']), bg="#404040", fg="#feba00",
-                                     font=("square sans serif 7", 22))
+                                      font=("square sans serif 7", 22))
     lbl_stat_value_right_shot.place(x=576, y=105)
     statistics_widgets['lbl_stat_value_right_shot'] = lbl_stat_value_right_shot
 
     lbl_stat_name_right_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
-                                          font=("square sans serif 7", 17))
+                                           font=("square sans serif 7", 17))
     lbl_stat_name_right_shot_gates.place(x=360, y=150)
     lbl_stat_name_right_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
-                                            font=("square sans serif 7", 17))
+                                             font=("square sans serif 7", 17))
     lbl_stat_name_right_shot_gates_2.place(x=360, y=170)
     lbl_stat_value_right_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team2']), bg="#404040",
-                                           fg="#feba00", font=("square sans serif 7", 22))
+                                            fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_shot_gates.place(x=576, y=156)
     statistics_widgets['lbl_stat_value_right_shot_gates'] = lbl_stat_value_right_shot_gates
 
     lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white",
-                                        font=("square sans serif 7", 16))
+                                         font=("square sans serif 7", 16))
     lbl_stat_name_right_face_off.place(x=360, y=210)
     lbl_stat_value_right_face_off = Label(newWindow, text=str(statistics_params['face_off_team2']), bg="#404040",
-                                         fg="#feba00", font=("square sans serif 7", 22))
+                                          fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_face_off.place(x=576, y=206)
     statistics_widgets['lbl_stat_value_right_face_off'] = lbl_stat_value_right_face_off
 
     lbl_stat_name_right_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
-                                       font=("square sans serif 7", 16))
+                                        font=("square sans serif 7", 16))
     lbl_stat_name_right_penalty.place(x=360, y=260)
     lbl_stat_value_right_penalty = Label(newWindow, text=str(statistics_params['penalty_team2']), bg="#404040",
-                                        fg="#feba00", font=("square sans serif 7", 22))
+                                         fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_penalty.place(x=576, y=256)
     statistics_widgets['lbl_stat_value_right_penalty'] = lbl_stat_value_right_penalty
 
     lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
-                                             font=("square sans serif 7", 17))
+                                              font=("square sans serif 7", 17))
     lbl_stat_name_right_safety_factor.place(x=360, y=306)
     lbl_stat_name_right_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
-                                               font=("square sans serif 7", 17))
+                                                font=("square sans serif 7", 17))
     lbl_stat_name_right_safety_factor_2.place(x=360, y=326)
     lbl_stat_value_right_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team2']),
-                                              bg="#404040",
-                                              fg="#feba00", font=("square sans serif 7", 22))
+                                               bg="#404040",
+                                               fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_safety_factor.place(x=576, y=310)
     statistics_widgets['lbl_stat_value_right_safety_factor'] = lbl_stat_value_right_safety_factor
-
 
     newWindow.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -1038,13 +1031,15 @@ def update_statistics_values():
         statistics_widgets['lbl_stat_value_left_shot_gates'].config(text=str(statistics_params['shot_gates_team1']))
         statistics_widgets['lbl_stat_value_left_face_off'].config(text=str(statistics_params['face_off_team1']))
         statistics_widgets['lbl_stat_value_left_penalty'].config(text=str(statistics_params['penalty_team1']))
-        statistics_widgets['lbl_stat_value_left_safety_factor'].config(text=str(statistics_params['safety_factor_team1']))
+        statistics_widgets['lbl_stat_value_left_safety_factor'].config(
+            text=str(statistics_params['safety_factor_team1']))
         statistics_widgets['lbl_stat_value_right_goal'].config(text=str(score_team2))
         statistics_widgets['lbl_stat_value_right_shot'].config(text=str(statistics_params['shot_team2']))
         statistics_widgets['lbl_stat_value_right_shot_gates'].config(text=str(statistics_params['shot_gates_team2']))
         statistics_widgets['lbl_stat_value_right_face_off'].config(text=str(statistics_params['face_off_team2']))
         statistics_widgets['lbl_stat_value_right_penalty'].config(text=str(statistics_params['penalty_team2']))
-        statistics_widgets['lbl_stat_value_right_safety_factor'].config(text=str(statistics_params['safety_factor_team2']))
+        statistics_widgets['lbl_stat_value_right_safety_factor'].config(
+            text=str(statistics_params['safety_factor_team2']))
 
 
 # Hotkeys
@@ -1740,7 +1735,7 @@ def new_game():
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write('0')
     statistics_params = empty_statistics_params()
-    #update_statistics_values()
+    # update_statistics_values()
     shutil.copyfile("pict/1.png", "output/left_1.png")
     shutil.copyfile("pict/1.png", "output/left_2.png")
     shutil.copyfile("pict/1.png", "output/left_3.png")
@@ -1954,11 +1949,15 @@ lbl_clean_name.place(x=573, y=70)
 
 # Add Statistics
 statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
-                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1' : 0, 'safety_factor_team2' : 0, }
+                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 0,
+                     'safety_factor_team2': 0, }
+
 
 def empty_statistics_params():
     return {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
-                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1' : 0, 'safety_factor_team2' : 0, }
+            'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 0,
+            'safety_factor_team2': 0, }
+
 
 def shot_team1():
     global statistics_params
@@ -1966,6 +1965,7 @@ def shot_team1():
     with open("output/shot_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_team1']))
     update_statistics_values()
+
 
 def shot_gates_team1():
     global statistics_params
@@ -1975,12 +1975,14 @@ def shot_gates_team1():
     safety_factor_team2()
     update_statistics_values()
 
+
 def face_off_team1():
     global statistics_params
     statistics_params['face_off_team1'] += 1
     with open("output/face_off_team1.txt", "w") as file:
         file.write(str(statistics_params['face_off_team1']))
     update_statistics_values()
+
 
 def penalty_team1():
     global statistics_params
@@ -1989,12 +1991,14 @@ def penalty_team1():
         file.write(str(statistics_params['penalty_team1']))
     update_statistics_values()
 
+
 def shot_team2():
     global statistics_params
     statistics_params['shot_team2'] += 1
     with open("output/shot_team2.txt", "w") as file:
         file.write(str(statistics_params['shot_team2']))
     update_statistics_values()
+
 
 def shot_gates_team2():
     global statistics_params
@@ -2004,12 +2008,14 @@ def shot_gates_team2():
     safety_factor_team1()
     update_statistics_values()
 
+
 def face_off_team2():
     global statistics_params
     statistics_params['face_off_team2'] += 1
     with open("output/face_off_team2.txt", "w") as file:
         file.write(str(statistics_params['face_off_team2']))
     update_statistics_values()
+
 
 def penalty_team2():
     global statistics_params
@@ -2018,15 +2024,19 @@ def penalty_team2():
         file.write(str(statistics_params['penalty_team2']))
     update_statistics_values()
 
+
 def safety_factor_team1():
     global statistics_params
-    statistics_params['safety_factor_team1'] = round((100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'],2)
+    statistics_params['safety_factor_team1'] = round(
+        (100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'], 2)
     with open("output/safety_factor_team1.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team1']))
 
+
 def safety_factor_team2():
     global statistics_params
-    statistics_params['safety_factor_team2'] = round((100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'],2)
+    statistics_params['safety_factor_team2'] = round(
+        (100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'], 2)
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team2']))
 
