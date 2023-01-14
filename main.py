@@ -920,25 +920,39 @@ def openNewWindow_statistics():
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
 
-    lbl_stat_name_left_shot_team1 = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
+    lbl_stat_name_left_shot = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
-    lbl_stat_name_left_shot_team1.place(x=14, y=100)
-    lbl_stat_value_left_shot_team1 = Label(newWindow, text=str(statistics_params['shot_team1']), bg="#404040", fg="#feba00",
+    lbl_stat_name_left_shot.place(x=14, y=110)
+    lbl_stat_value_left_shot = Label(newWindow, text=str(statistics_params['shot_team1']), bg="#404040", fg="#feba00",
                                      font=("square sans serif 7", 22))
-    lbl_stat_value_left_shot_team1.place(x=230, y=100)
-    statistics_widgets['lbl_stat_value_left_shot_team1'] = lbl_stat_value_left_shot_team1
+    lbl_stat_value_left_shot.place(x=230, y=105)
+    statistics_widgets['lbl_stat_value_left_shot'] = lbl_stat_value_left_shot
 
-    lbl_stat_name_left_shot_gates_team1 = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
+    lbl_stat_name_left_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
                                           font=("square sans serif 7", 17))
-    lbl_stat_name_left_shot_gates_team1.place(x=14, y=140)
-    lbl_stat_name_left_shot_gates_team1_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
+    lbl_stat_name_left_shot_gates.place(x=14, y=150)
+    lbl_stat_name_left_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
                                                 font=("square sans serif 7", 17))
-    lbl_stat_name_left_shot_gates_team1_2.place(x=14, y=160)
-    lbl_stat_value_left_shot_gates_team1 = Label(newWindow, text=str(statistics_params['shot_gates_team1']), bg="#404040",
+    lbl_stat_name_left_shot_gates_2.place(x=14, y=170)
+    lbl_stat_value_left_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team1']), bg="#404040",
                                            fg="#feba00", font=("square sans serif 7", 22))
-    lbl_stat_value_left_shot_gates_team1.place(x=230, y=150)
-    statistics_widgets['lbl_stat_value_left_shot_gates_team1'] = lbl_stat_value_left_shot_gates_team1
+    lbl_stat_value_left_shot_gates.place(x=230, y=156)
+    statistics_widgets['lbl_stat_value_left_shot_gates'] = lbl_stat_value_left_shot_gates
 
+    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЯ", bg="#404040", fg="white", font=("square sans serif 7", 16))
+    lbl_stat_name_left_face_off.place(x=14, y=210)
+    lbl_stat_value_left_face_off = Label(newWindow, text=str(statistics_params['face_off_team1']), bg="#404040",
+                                           fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_left_face_off.place(x=230, y=206)
+    statistics_widgets['lbl_stat_value_left_face_off'] = lbl_stat_value_left_face_off
+
+    lbl_stat_name_left_penalty = Label(newWindow, text="ПЕНАЛЬТИ", bg="#404040", fg="white",
+                                              font=("square sans serif 7", 16))
+    lbl_stat_name_left_penalty.place(x=14, y=250)
+    lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
+                                               fg="#feba00", font=("square sans serif 7", 22))
+    lbl_stat_value_left_penalty.place(x=230, y=246)
+    statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
 
     newWindow.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -952,8 +966,10 @@ def update_statistics_values():
         return
     else:
         statistics_widgets['lbl_stat_value_left_goal'].config(text=str(score_team1))
-        statistics_widgets['lbl_stat_value_left_shot_team1'].config(text=str(statistics_params['shot_team1']))
-        statistics_widgets['lbl_stat_value_left_shot_gates_team1'].config(text=str(statistics_params['shot_gates_team1']))
+        statistics_widgets['lbl_stat_value_left_shot'].config(text=str(statistics_params['shot_team1']))
+        statistics_widgets['lbl_stat_value_left_shot_gates'].config(text=str(statistics_params['shot_gates_team1']))
+        statistics_widgets['lbl_stat_value_left_face_off'].config(text=str(statistics_params['face_off_team1']))
+        statistics_widgets['lbl_stat_value_left_penalty'].config(text=str(statistics_params['penalty_team1']))
 
 
 # Hotkeys

@@ -98,13 +98,6 @@ root.mainloop()
 
 
 
-def shot_gates_team1():
-    global statistics_params
-    statistics_params['shot_gates_team1'] += 1
-    with open("output/shot_gates_team1.txt", "w") as file:
-        file.write(str(statistics_params['shot_gates_team1']))
-    safety_factor_team2()
-    update_statistics_values()
 
 def face_off_team1():
     global statistics_params
