@@ -1115,7 +1115,9 @@ def nClick_score_left_up():
     statistics_params['shot_gates_team1'] += 1
     with open("output/shot_gates_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team1']))
+    safety_factor_team2()
     update_statistics_values()
+
 
 
 
@@ -1128,9 +1130,10 @@ def nClick_score_left_down():
     lbl_score_left.config(text=score_team1)
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
-    update_statistics_values()
     with open("output/shot_gates_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team1']))
+    safety_factor_team2()
+    update_statistics_values()
 
 
 
@@ -1157,6 +1160,7 @@ def nClick_score_right_up():
     statistics_params['shot_gates_team2'] += 1
     with open("output/shot_gates_team2.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team2']))
+    safety_factor_team1()
     update_statistics_values()
 
 
@@ -1171,6 +1175,7 @@ def nClick_score_right_down():
     global statistics_params
     with open("output/shot_gates_team2.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team2']))
+    safety_factor_team1()
     update_statistics_values()
 
 
@@ -2084,13 +2089,13 @@ def safety_factor_team1():
 
 def safety_factor_team2():
     global statistics_params
+    if statistics_params['safety_factor_team2'] < 0:
+        statistics_params['safety_factor_team2'] = 0
     if statistics_params['shot_gates_team1'] > 0:
         statistics_params['safety_factor_team2'] = round(
             (100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'], 2)
     else:
         return
-    if statistics_params['safety_factor_team2'] < 0:
-        statistics_params['safety_factor_team2'] = 0
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team2']))
 
