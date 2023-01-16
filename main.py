@@ -920,6 +920,10 @@ def openNewWindow_statistics():
     lbl_stat_value_left_shot.place(x=230, y=105)
     statistics_widgets['lbl_stat_value_left_shot'] = lbl_stat_value_left_shot
 
+    btn_left_shot_down = Button(newWindow, text="-", font=("digital numbers", 30), command=shot_team1_minus,
+                               relief='flat', borderwidth=0)
+    btn_left_shot_down.place(x=290, y=105, width=28, height=28)
+
     lbl_stat_name_left_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
                                           font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_gates.place(x=14, y=150)
@@ -929,6 +933,9 @@ def openNewWindow_statistics():
     lbl_stat_value_left_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team1']), bg="#404040",
                                            fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_shot_gates.place(x=230, y=156)
+    btn_left_shot_gates_down = Button(newWindow, text="-", font=("digital numbers", 30), command=shot_gates_team1_minus,
+                                relief='flat', borderwidth=0)
+    btn_left_shot_gates_down.place(x=290, y=156, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_shot_gates'] = lbl_stat_value_left_shot_gates
 
     lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
@@ -937,6 +944,9 @@ def openNewWindow_statistics():
     lbl_stat_value_left_face_off = Label(newWindow, text=str(statistics_params['face_off_team1']), bg="#404040",
                                          fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_face_off.place(x=230, y=206)
+    btn_left_face_off_down = Button(newWindow, text="-", font=("digital numbers", 30), command=face_off_team1_minus,
+                                      relief='flat', borderwidth=0)
+    btn_left_face_off_down.place(x=290, y=206, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_face_off'] = lbl_stat_value_left_face_off
 
     lbl_stat_name_left_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
@@ -945,6 +955,9 @@ def openNewWindow_statistics():
     lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
                                         fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_left_penalty.place(x=230, y=256)
+    btn_left_penalty_down = Button(newWindow, text="-", font=("digital numbers", 30), command=penalty_team1_minus,
+                                    relief='flat', borderwidth=0)
+    btn_left_penalty_down.place(x=290, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
 
     lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
@@ -974,6 +987,9 @@ def openNewWindow_statistics():
     lbl_stat_value_right_shot = Label(newWindow, text=str(statistics_params['shot_team2']), bg="#404040", fg="#feba00",
                                       font=("square sans serif 7", 22))
     lbl_stat_value_right_shot.place(x=576, y=105)
+    btn_right_shot_down = Button(newWindow, text="-", font=("digital numbers", 30), command=shot_team2_minus,
+                                relief='flat', borderwidth=0)
+    btn_right_shot_down.place(x=635, y=105, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_shot'] = lbl_stat_value_right_shot
 
     lbl_stat_name_right_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
@@ -985,6 +1001,9 @@ def openNewWindow_statistics():
     lbl_stat_value_right_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team2']), bg="#404040",
                                             fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_shot_gates.place(x=576, y=156)
+    btn_right_shot_gates_down = Button(newWindow, text="-", font=("digital numbers", 30), command=shot_gates_team2_minus,
+                                 relief='flat', borderwidth=0)
+    btn_right_shot_gates_down.place(x=635, y=156, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_shot_gates'] = lbl_stat_value_right_shot_gates
 
     lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
@@ -993,6 +1012,9 @@ def openNewWindow_statistics():
     lbl_stat_value_right_face_off = Label(newWindow, text=str(statistics_params['face_off_team2']), bg="#404040",
                                           fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_face_off.place(x=576, y=206)
+    btn_right_face_off_down = Button(newWindow, text="-", font=("digital numbers", 30),
+                                       command=face_off_team2_minus, relief='flat', borderwidth=0)
+    btn_right_face_off_down.place(x=635, y=206, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_face_off'] = lbl_stat_value_right_face_off
 
     lbl_stat_name_right_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
@@ -1001,6 +1023,9 @@ def openNewWindow_statistics():
     lbl_stat_value_right_penalty = Label(newWindow, text=str(statistics_params['penalty_team2']), bg="#404040",
                                          fg="#feba00", font=("square sans serif 7", 22))
     lbl_stat_value_right_penalty.place(x=576, y=256)
+    btn_right_penalty_down = Button(newWindow, text="-", font=("digital numbers", 30),
+                                     command=penalty_team2_minus, relief='flat', borderwidth=0)
+    btn_right_penalty_down.place(x=635, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_penalty'] = lbl_stat_value_right_penalty
 
     lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
@@ -1081,12 +1106,12 @@ mainmenu.add_cascade(label="Help", menu=helpmenu)
 # Score team left
 def nClick_score_left_up():
     global score_team1
+    global statistics_params
     score_team1 += 1
     lbl_score_left.config(text=score_team1)
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
     shot_team1()
-    global statistics_params
     statistics_params['shot_gates_team1'] += 1
     with open("output/shot_gates_team1.txt", "w") as file:
         file.write(str(statistics_params['shot_gates_team1']))
@@ -1096,6 +1121,7 @@ def nClick_score_left_up():
 
 def nClick_score_left_down():
     global score_team1
+    global statistics_params
     score_team1 -= 1
     if score_team1 < 0:
         score_team1 = 0
@@ -1103,6 +1129,9 @@ def nClick_score_left_down():
     with open("output/score_team1.txt", "w") as file:
         file.write(str(score_team1))
     update_statistics_values()
+    with open("output/shot_gates_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team1']))
+
 
 
 btn_score_left_up = Button(window, text="+", font=("digital numbers", 30), command=nClick_score_left_up, relief='flat',
@@ -1139,6 +1168,9 @@ def nClick_score_right_down():
     lbl_score_right.config(text=score_team2)
     with open("output/score_team2.txt", "w") as file:
         file.write(str(score_team2))
+    global statistics_params
+    with open("output/shot_gates_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team2']))
     update_statistics_values()
 
 
@@ -2038,18 +2070,114 @@ def penalty_team2():
 
 def safety_factor_team1():
     global statistics_params
-    statistics_params['safety_factor_team1'] = round(
-        (100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'], 2)
+    if statistics_params['safety_factor_team1'] < 0:
+        statistics_params['safety_factor_team1'] = 0
+    if statistics_params['shot_gates_team2'] > 0:
+        statistics_params['safety_factor_team1'] = round(
+            (100 * (statistics_params['shot_gates_team2'] - score_team2)) / statistics_params['shot_gates_team2'], 2)
+    else:
+        return
+
     with open("output/safety_factor_team1.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team1']))
 
 
 def safety_factor_team2():
     global statistics_params
-    statistics_params['safety_factor_team2'] = round(
-        (100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'], 2)
+    if statistics_params['shot_gates_team1'] > 0:
+        statistics_params['safety_factor_team2'] = round(
+            (100 * (statistics_params['shot_gates_team1'] - score_team1)) / statistics_params['shot_gates_team1'], 2)
+    else:
+        return
+    if statistics_params['safety_factor_team2'] < 0:
+        statistics_params['safety_factor_team2'] = 0
     with open("output/safety_factor_team2.txt", "w") as file:
         file.write(str(statistics_params['safety_factor_team2']))
+
+ # Minus
+
+def shot_team1_minus():
+    global statistics_params
+    statistics_params['shot_team1'] -= 1
+    if statistics_params['shot_team1'] < 0:
+        statistics_params['shot_team1'] = 0
+    with open("output/shot_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_team1']))
+    update_statistics_values()
+
+
+def shot_gates_team1_minus():
+    global statistics_params
+    statistics_params['shot_gates_team1'] -= 1
+    if statistics_params['shot_gates_team1'] < 0:
+        statistics_params['shot_gates_team1'] = 0
+    with open("output/shot_gates_team1.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team1']))
+    shot_team1_minus()
+    safety_factor_team2()
+    update_statistics_values()
+
+
+def face_off_team1_minus():
+    global statistics_params
+    statistics_params['face_off_team1'] -= 1
+    if statistics_params['face_off_team1'] < 0:
+        statistics_params['face_off_team1'] = 0
+    with open("output/face_off_team1.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team1']))
+    update_statistics_values()
+
+
+def penalty_team1_minus():
+    global statistics_params
+    statistics_params['penalty_team1'] -= 1
+    if statistics_params['penalty_team1'] < 0:
+        statistics_params['penalty_team1'] = 0
+    with open("output/penalty_team1.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team1']))
+    update_statistics_values()
+
+
+def shot_team2_minus():
+    global statistics_params
+    statistics_params['shot_team2'] -= 1
+    if statistics_params['shot_team2'] < 0:
+        statistics_params['shot_team2'] = 0
+    with open("output/shot_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_team2']))
+    update_statistics_values()
+
+
+def shot_gates_team2_minus():
+    global statistics_params
+    statistics_params['shot_gates_team2'] -= 1
+    if statistics_params['shot_gates_team2'] < 0:
+        statistics_params['shot_gates_team2'] = 0
+    with open("output/shot_gates_team2.txt", "w") as file:
+        file.write(str(statistics_params['shot_gates_team2']))
+    safety_factor_team1()
+    shot_team2_minus()
+    update_statistics_values()
+
+
+def face_off_team2_minus():
+    global statistics_params
+    statistics_params['face_off_team2'] -= 1
+    if statistics_params['face_off_team2'] < 0:
+        statistics_params['face_off_team2'] = 0
+    with open("output/face_off_team2.txt", "w") as file:
+        file.write(str(statistics_params['face_off_team2']))
+    update_statistics_values()
+
+
+def penalty_team2_minus():
+    global statistics_params
+    statistics_params['penalty_team2'] -= 1
+    if statistics_params['penalty_team2'] < 0:
+        statistics_params['penalty_team2'] = 0
+    with open("output/penalty_team2.txt", "w") as file:
+        file.write(str(statistics_params['penalty_team2']))
+    update_statistics_values()
 
 
 # Add hotkeys
