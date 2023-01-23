@@ -10,3 +10,4 @@ __pycache__/main.cpython-39.pyc
 *.pyc
 *.toc
 !/main.spec
+output/*
