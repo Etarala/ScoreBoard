@@ -1995,14 +1995,14 @@ lbl_clean_name.place(x=573, y=70)
 
 # Add Statistics
 statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
-                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 0,
-                     'safety_factor_team2': 0, }
+                     'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 100.0,
+                     'safety_factor_team2': 100.0, }
 
 
 def empty_statistics_params():
     return {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
-            'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 0,
-            'safety_factor_team2': 0, }
+            'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 100.0,
+            'safety_factor_team2': 100.0, }
 
 
 def shot_team1():
