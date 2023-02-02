@@ -107,9 +107,9 @@ with open("output/face_off_team2.txt", "w") as file:
 with open("output/penalty_team2.txt", "w") as file:
     file.write('0')
 with open("output/safety_factor_team1.txt", "w") as file:
-    file.write('0')
+    file.write('100.0')
 with open("output/safety_factor_team2.txt", "w") as file:
-    file.write('0')
+    file.write('100.0')
 
 is_alive = False
 
@@ -1777,9 +1777,9 @@ def new_game():
     with open("output/penalty_team2.txt", "w") as file:
         file.write('0')
     with open("output/safety_factor_team1.txt", "w") as file:
-        file.write('0')
+        file.write('100.0')
     with open("output/safety_factor_team2.txt", "w") as file:
-        file.write('0')
+        file.write('100.0')
     statistics_params = empty_statistics_params()
     # update_statistics_values()
     shutil.copyfile("pict/1.png", "output/left_1.png")
