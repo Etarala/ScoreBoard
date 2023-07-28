@@ -855,6 +855,7 @@ def openNewWindow():
                                             font=("square sans serif 7", 25))
     chk_bullits_right_101_btn.place(x=235, y=450)
 
+
     def chk_bullits_right_102():
         global bullit_right10_2
         check_102_right = chk_bullits_right_102_state.get()
