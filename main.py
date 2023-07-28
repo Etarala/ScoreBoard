@@ -87,6 +87,8 @@ bullit_right9_1 = False
 bullit_right9_2 = False
 bullit_right10_1 = False
 bullit_right10_2 = False
+blocked_team1 = 0
+blocked_team2 = 0
 clean_time_started = False
 with open("output/clean_time.txt", "w") as file:
     file.write("00:00")
@@ -110,6 +112,10 @@ with open("output/safety_factor_team1.txt", "w") as file:
     file.write('100.0')
 with open("output/safety_factor_team2.txt", "w") as file:
     file.write('100.0')
+with open("output/blocked_team1.txt", "w") as file:
+    file.write('0')
+with open("output/blocked_team2.txt", "w") as file:
+    file.write('0')
 
 is_alive = False
 
@@ -874,7 +880,7 @@ statistics_widgets = {}
 def openNewWindow_statistics():
     global window
     newWindow = Toplevel(window)
-    newWindow.geometry("680x400")
+    newWindow.geometry("680x440")
     newWindow.resizable(width=0, height=0)
     newWindow.title("Statistics")
     newWindow["bg"] = "#404040"
@@ -893,7 +899,7 @@ def openNewWindow_statistics():
     statistics_widgets = {}
 
     lbl_separator = Label(newWindow, text="", fg="white")
-    lbl_separator.place(x=340, y=0, width=5, height=400)
+    lbl_separator.place(x=340, y=0, width=5, height=440)
 
     lbl_stat_name_left = Label(newWindow, text=team1.get(), bg="#404040", fg="#feba00",
                                font=("square sans serif 7", 18))
@@ -959,17 +965,26 @@ def openNewWindow_statistics():
                                     relief='flat', borderwidth=0)
     btn_left_penalty_down.place(x=290, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
-
+    lbl_stat_name_left_blocked_shots = Label(newWindow, text="БЛОКИРОВАННЫЕ", bg="#404040", fg="white",
+                                             font=("square sans serif 7", 17))
+    lbl_stat_name_left_blocked_shots.place(x=14, y=306)
+    lbl_stat_name_left_blocked_shots_2 = Label(newWindow, text="БРОСКИ", bg="#404040", fg="white",
+                                               font=("square sans serif 7", 17))
+    lbl_stat_name_left_blocked_shots_2.place(x=14, y=326)
+    lbl_stat_value_left_blocked_shots = Label(newWindow, text=str(blocked_team1), bg="#404040", fg="#feba00",
+                                     font=("square sans serif 7", 22))
+    lbl_stat_value_left_blocked_shots.place(x=230, y=330)
+    statistics_widgets['lbl_stat_value_left_blocked_shots'] = lbl_stat_value_left_blocked_shots
     lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
                                              font=("square sans serif 7", 17))
-    lbl_stat_name_left_safety_factor.place(x=14, y=306)
+    lbl_stat_name_left_safety_factor.place(x=14, y=375)
     lbl_stat_name_left_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
                                                font=("square sans serif 7", 17))
-    lbl_stat_name_left_safety_factor_2.place(x=14, y=326)
+    lbl_stat_name_left_safety_factor_2.place(x=14, y=397)
     lbl_stat_value_left_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team1']),
                                               bg="#404040",
                                               fg="#feba00", font=("square sans serif 7", 22))
-    lbl_stat_value_left_safety_factor.place(x=230, y=310)
+    lbl_stat_value_left_safety_factor.place(x=230, y=385)
     statistics_widgets['lbl_stat_value_left_safety_factor'] = lbl_stat_value_left_safety_factor
     # RIGHT
     lbl_stat_name_right_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
@@ -1027,17 +1042,27 @@ def openNewWindow_statistics():
                                      command=penalty_team2_minus, relief='flat', borderwidth=0)
     btn_right_penalty_down.place(x=635, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_penalty'] = lbl_stat_value_right_penalty
+    lbl_stat_name_right_blocked_shots = Label(newWindow, text="БЛОКИРОВАННЫЕ", bg="#404040", fg="white",
+                                             font=("square sans serif 7", 17))
+    lbl_stat_name_right_blocked_shots.place(x=360, y=306)
+    lbl_stat_name_right_blocked_shots_2 = Label(newWindow, text="БРОСКИ", bg="#404040", fg="white",
+                                               font=("square sans serif 7", 17))
+    lbl_stat_name_right_blocked_shots_2.place(x=360, y=326)
+    lbl_stat_value_right_blocked_shots = Label(newWindow, text=str(blocked_team2), bg="#404040", fg="#feba00",
+                                     font=("square sans serif 7", 22))
+    lbl_stat_value_right_blocked_shots.place(x=576, y=330)
+    statistics_widgets['lbl_stat_value_right_blocked_shots'] = lbl_stat_value_right_blocked_shots
 
     lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
                                               font=("square sans serif 7", 17))
-    lbl_stat_name_right_safety_factor.place(x=360, y=306)
+    lbl_stat_name_right_safety_factor.place(x=360, y=375)
     lbl_stat_name_right_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
                                                 font=("square sans serif 7", 17))
-    lbl_stat_name_right_safety_factor_2.place(x=360, y=326)
+    lbl_stat_name_right_safety_factor_2.place(x=360, y=397)
     lbl_stat_value_right_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team2']),
                                                bg="#404040",
                                                fg="#feba00", font=("square sans serif 7", 22))
-    lbl_stat_value_right_safety_factor.place(x=576, y=310)
+    lbl_stat_value_right_safety_factor.place(x=576, y=385)
     statistics_widgets['lbl_stat_value_right_safety_factor'] = lbl_stat_value_right_safety_factor
 
     newWindow.protocol("WM_DELETE_WINDOW", on_closing)
@@ -1047,11 +1072,14 @@ def update_statistics_values():
     global statistics_widgets
     global score_team1
     global score_team1
+    global blocked_team1
+    global blocked_team2
     global statistics_params
     if statistics_widgets == {}:
         return
     else:
         statistics_widgets['lbl_stat_value_left_goal'].config(text=str(score_team1))
+        statistics_widgets['lbl_stat_value_left_blocked_shots'].config(text=str(blocked_team1))
         statistics_widgets['lbl_stat_value_left_shot'].config(text=str(statistics_params['shot_team1']))
         statistics_widgets['lbl_stat_value_left_shot_gates'].config(text=str(statistics_params['shot_gates_team1']))
         statistics_widgets['lbl_stat_value_left_face_off'].config(text=str(statistics_params['face_off_team1']))
@@ -1059,6 +1087,7 @@ def update_statistics_values():
         statistics_widgets['lbl_stat_value_left_safety_factor'].config(
             text=str(statistics_params['safety_factor_team1']))
         statistics_widgets['lbl_stat_value_right_goal'].config(text=str(score_team2))
+        statistics_widgets['lbl_stat_value_right_blocked_shots'].config(text=str(blocked_team2))
         statistics_widgets['lbl_stat_value_right_shot'].config(text=str(statistics_params['shot_team2']))
         statistics_widgets['lbl_stat_value_right_shot_gates'].config(text=str(statistics_params['shot_gates_team2']))
         statistics_widgets['lbl_stat_value_right_face_off'].config(text=str(statistics_params['face_off_team2']))
@@ -1703,6 +1732,8 @@ def new_game():
     global clean_time
     global statistics_params
     global statistics_widgets
+    global blocked_team1
+    global blocked_team2
     statistics_widgets = {}
     period_time = 0
     clean_time = 0
@@ -1736,6 +1767,8 @@ def new_game():
     lbl_score_left.config(text=score_team1)
     score_team2 = 0
     lbl_score_right.config(text=score_team2)
+    blocked_team1 = 0
+    blocked_team2 = 0
     period = 1
     lbl_period.config(text=period)
     team1.delete(0, END)
@@ -1775,6 +1808,10 @@ def new_game():
     with open("output/face_off_team2.txt", "w") as file:
         file.write('0')
     with open("output/penalty_team2.txt", "w") as file:
+        file.write('0')
+    with open("output/blocked_team1.txt", "w") as file:
+        file.write('0')
+    with open("output/blocked_team2.txt", "w") as file:
         file.write('0')
     with open("output/safety_factor_team1.txt", "w") as file:
         file.write('100.0')
@@ -1996,13 +2033,13 @@ lbl_clean_name.place(x=573, y=70)
 # Add Statistics
 statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
                      'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 100.0,
-                     'safety_factor_team2': 100.0, }
+                     'safety_factor_team2': 100.0, 'blocked_team1': 0, 'blocked_team2': 0 }
 
 
 def empty_statistics_params():
     return {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
             'shot_gates_team2': 0, 'face_off_team2': 0, 'penalty_team2': 0, 'safety_factor_team1': 100.0,
-            'safety_factor_team2': 100.0, }
+            'safety_factor_team2': 100.0, 'blocked_team1': 0, 'blocked_team2': 0}
 
 
 def shot_team1():
@@ -2012,6 +2049,19 @@ def shot_team1():
         file.write(str(statistics_params['shot_team1']))
     update_statistics_values()
 
+def left_blocked():
+    global blocked_team1
+    blocked_team1 += 1
+    with open("output/blocked_team1.txt", "w") as file:
+        file.write(str(blocked_team1))
+    update_statistics_values()
+
+def right_blocked():
+    global blocked_team2
+    blocked_team2 += 1
+    with open("output/blocked_team2.txt", "w") as file:
+        file.write(str(blocked_team2))
+    update_statistics_values()
 
 def shot_gates_team1():
     global statistics_params
@@ -2195,6 +2245,8 @@ bindings = [
     [["8"], None, nClick_period_up],
     [["6"], None, start_sw],
     [["7"], None, stop_sw],
+    [["4"], None, left_blocked],
+    [["5"], None, right_blocked],
     [["right_control"], None, nClick_score_right_up],
     [["z"], None, set_penalty_left_first],
     [["/"], None, set_penalty_right_first],
