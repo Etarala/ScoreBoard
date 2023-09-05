@@ -975,6 +975,9 @@ def openNewWindow_statistics():
     lbl_stat_value_left_blocked_shots = Label(newWindow, text=str(blocked_team1), bg="#404040", fg="#feba00",
                                               font=("square sans serif 7", 22))
     lbl_stat_value_left_blocked_shots.place(x=230, y=330)
+    btn_left_blocked_shots_down = Button(newWindow, text="-", font=("digital numbers", 30),
+                                         command=blocked_shots_team1_minus, relief='flat', borderwidth=0)
+    btn_left_blocked_shots_down.place(x=290, y=315, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_blocked_shots'] = lbl_stat_value_left_blocked_shots
     lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
                                              font=("square sans serif 7", 17))
@@ -1053,8 +1056,10 @@ def openNewWindow_statistics():
     lbl_stat_value_right_blocked_shots = Label(newWindow, text=str(blocked_team2), bg="#404040", fg="#feba00",
                                                font=("square sans serif 7", 22))
     lbl_stat_value_right_blocked_shots.place(x=576, y=330)
+    btn_right_blocked_shots_down = Button(newWindow, text="-", font=("digital numbers", 30),
+                                    command=blocked_shots_team2_minus, relief='flat', borderwidth=0)
+    btn_right_blocked_shots_down.place(x=635, y=315, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_blocked_shots'] = lbl_stat_value_right_blocked_shots
-
     lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
                                               font=("square sans serif 7", 17))
     lbl_stat_name_right_safety_factor.place(x=360, y=375)
@@ -1074,14 +1079,14 @@ def update_statistics_values():
     global statistics_widgets
     global score_team1
     global score_team1
-    global blocked_team1
-    global blocked_team2
+    #global blocked_team1
+    #global blocked_team2
     global statistics_params
     if statistics_widgets == {}:
         return
     else:
         statistics_widgets['lbl_stat_value_left_goal'].config(text=str(score_team1))
-        statistics_widgets['lbl_stat_value_left_blocked_shots'].config(text=str(blocked_team1))
+        statistics_widgets['lbl_stat_value_left_blocked_shots'].config(text=str(statistics_params['blocked_team1']))
         statistics_widgets['lbl_stat_value_left_shot'].config(text=str(statistics_params['shot_team1']))
         statistics_widgets['lbl_stat_value_left_shot_gates'].config(text=str(statistics_params['shot_gates_team1']))
         statistics_widgets['lbl_stat_value_left_face_off'].config(text=str(statistics_params['face_off_team1']))
@@ -1089,7 +1094,7 @@ def update_statistics_values():
         statistics_widgets['lbl_stat_value_left_safety_factor'].config(
             text=str(statistics_params['safety_factor_team1']))
         statistics_widgets['lbl_stat_value_right_goal'].config(text=str(score_team2))
-        statistics_widgets['lbl_stat_value_right_blocked_shots'].config(text=str(blocked_team2))
+        statistics_widgets['lbl_stat_value_right_blocked_shots'].config(text=str(statistics_params['blocked_team2']))
         statistics_widgets['lbl_stat_value_right_shot'].config(text=str(statistics_params['shot_team2']))
         statistics_widgets['lbl_stat_value_right_shot_gates'].config(text=str(statistics_params['shot_gates_team2']))
         statistics_widgets['lbl_stat_value_right_face_off'].config(text=str(statistics_params['face_off_team2']))
@@ -2050,18 +2055,18 @@ def shot_team1():
 
 
 def left_blocked():
-    global blocked_team1
-    blocked_team1 += 1
+    global statistics_params
+    statistics_params['blocked_team1'] += 1
     with open("output/blocked_team1.txt", "w") as file:
-        file.write(str(blocked_team1))
+        file.write(str(statistics_params['blocked_team1']))
     update_statistics_values()
 
 
 def right_blocked():
-    global blocked_team2
-    blocked_team2 += 1
+    global statistics_params
+    statistics_params['blocked_team2'] += 1
     with open("output/blocked_team2.txt", "w") as file:
-        file.write(str(blocked_team2))
+        file.write(str(statistics_params['blocked_team2']))
     update_statistics_values()
 
 
@@ -2154,6 +2159,23 @@ def safety_factor_team2():
 
 # Minus
 
+def blocked_shots_team1_minus():
+    global statistics_params
+    statistics_params['blocked_team1'] -= 1
+    if statistics_params['blocked_team1'] < 0:
+        statistics_params['blocked_team1'] = 0
+    with open("output/blocked_team1.txt", "w") as file:
+        file.write(str(statistics_params['blocked_team1']))
+    update_statistics_values()
+
+def blocked_shots_team2_minus():
+    global statistics_params
+    statistics_params['blocked_team2'] -= 1
+    if statistics_params['blocked_team2'] < 0:
+        statistics_params['blocked_team2'] = 0
+    with open("output/blocked_team2.txt", "w") as file:
+        file.write(str(statistics_params['blocked_team2']))
+    update_statistics_values()
 def shot_team1_minus():
     global statistics_params
     statistics_params['shot_team1'] -= 1
