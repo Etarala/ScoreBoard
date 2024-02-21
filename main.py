@@ -855,7 +855,6 @@ def openNewWindow():
                                             font=("square sans serif 7", 25))
     chk_bullits_right_101_btn.place(x=235, y=450)
 
-
     def chk_bullits_right_102():
         global bullit_right10_2
         check_102_right = chk_bullits_right_102_state.get()
@@ -1057,7 +1056,7 @@ def openNewWindow_statistics():
                                                font=("square sans serif 7", 22))
     lbl_stat_value_right_blocked_shots.place(x=576, y=330)
     btn_right_blocked_shots_down = Button(newWindow, text="-", font=("digital numbers", 30),
-                                    command=blocked_shots_team2_minus, relief='flat', borderwidth=0)
+                                          command=blocked_shots_team2_minus, relief='flat', borderwidth=0)
     btn_right_blocked_shots_down.place(x=635, y=315, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_blocked_shots'] = lbl_stat_value_right_blocked_shots
     lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
@@ -1079,8 +1078,8 @@ def update_statistics_values():
     global statistics_widgets
     global score_team1
     global score_team1
-    #global blocked_team1
-    #global blocked_team2
+    # global blocked_team1
+    # global blocked_team2
     global statistics_params
     if statistics_widgets == {}:
         return
@@ -1112,7 +1111,7 @@ def hotkeys():
                         '***MAIN TIMER***\n < 0 > = Main Timer minutes UP\n < 9 > = Main Timer minutes DOWN\n '
                         '< + > = Main Timer seconds UP\n < - > = Main Timer seconds DOWN\n\n ***CLEAN TIMER***\n '
                         '< 6 > = Start Clean Time Timer\n < 7 > = Stop Clean Time Timer\n\n ***PENALTY***\n '
-                        '< z > = Penalty Team left Set\n < / > = Penalty Team Right Set\n\n ***STATISTICS***\n '
+                        '< z > = Penalty Team left First Set\n < x > = Penalty Team left Second Set\n < / > = Penalty Team Right First Set\n < . > = Penalty Team Right Second Set\n \n ***STATISTICS***\n '
                         ' Left Team:\n < F2 > = Shot\n < F3 > = Shot on goal\n < F4 > = Face off\n < F5 > = Penalty\n < 4 > = Blocked Shot \n'
                         ' Right Team:\n < F6 > = Shot\n < F7 > = Shot on goal\n < F8 > = Face off\n < F9 > = Penalty \n < 5 > = Blocked Shot')
 
@@ -1370,6 +1369,15 @@ def chk_penalty_left_second():
         file.write(str(min_sec_format))
 
 
+def set_penalty_left_second():
+    check2left = chk_penalty_left_second_state.get()
+    if check2left == False:
+        chk_penalty_left_second_state.set(True)
+    else:
+        chk_penalty_left_second_state.set(False)
+    chk_penalty_left_second()
+
+
 chk_penalty_left_second_state = BooleanVar()
 chk_penalty_left_second_state.set(False)
 chk_penalty_left_second_btn = Checkbutton(window, text='', var=chk_penalty_left_second_state,
@@ -1531,6 +1539,15 @@ def chk_penalty_right_second():
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
     with open("output/penalty_right_second.txt", "w") as file:
         file.write(str(min_sec_format))
+
+
+def set_penalty_right_second():
+    check2right = chk_penalty_right_second_state.get()
+    if check2right == False:
+        chk_penalty_right_second_state.set(True)
+    else:
+        chk_penalty_right_second_state.set(False)
+    chk_penalty_right_second()
 
 
 chk_penalty_right_second_state = BooleanVar()
@@ -2168,6 +2185,7 @@ def blocked_shots_team1_minus():
         file.write(str(statistics_params['blocked_team1']))
     update_statistics_values()
 
+
 def blocked_shots_team2_minus():
     global statistics_params
     statistics_params['blocked_team2'] -= 1
@@ -2176,6 +2194,8 @@ def blocked_shots_team2_minus():
     with open("output/blocked_team2.txt", "w") as file:
         file.write(str(statistics_params['blocked_team2']))
     update_statistics_values()
+
+
 def shot_team1_minus():
     global statistics_params
     statistics_params['shot_team1'] -= 1
@@ -2275,6 +2295,8 @@ bindings = [
     [["right_control"], None, nClick_score_right_up],
     [["z"], None, set_penalty_left_first],
     [["/"], None, set_penalty_right_first],
+    [["x"], None, set_penalty_left_second],
+    [["."], None, set_penalty_right_second],
     [["space"], None, pause],
     [["f2"], None, shot_team1],
     [["f3"], None, shot_gates_team1],
