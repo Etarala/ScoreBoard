@@ -9,3 +9,4 @@ __pycache__/*
 !/main.spec
 output/*
 !/temp.py
+__pycache__
