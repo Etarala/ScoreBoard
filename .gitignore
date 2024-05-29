@@ -2,13 +2,10 @@
 config.py
 .idea/
 venv/
-__pycache__/*
 *.pkg
 *.pyc
 *.toc
 !/main.spec
 output/*
 !/temp.py
-__pycache__
-__pycache__/bullets.cpython-311.pyc
 /__pycache__
