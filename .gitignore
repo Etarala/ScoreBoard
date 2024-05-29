@@ -10,3 +10,5 @@ __pycache__/*
 output/*
 !/temp.py
 __pycache__
+__pycache__/bullets.cpython-311.pyc
+/__pycache__
