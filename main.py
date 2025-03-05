@@ -28,6 +28,7 @@ score_team1 = 0
 score_team2 = 0
 period = 1
 period_time = 0
+target_period_time = 0 # добавленная строка
 clean_time = 0
 after_id = ''
 penalty_left_first_time = 120
@@ -35,7 +36,7 @@ penalty_left_second_time = 120
 penalty_right_first_time = 120
 penalty_right_second_time = 120
 game_started = False
-paused_main_timer = False
+paused_main_timer = True
 penalty_left_first_started = False
 penalty_left_first_paused = True
 penalty_left_second_started = False
@@ -1660,8 +1661,8 @@ btn_seconds_down = Button(window, text="-", font=("digital numbers", 30), comman
                           borderwidth=0)
 btn_seconds_down.place(x=470, y=180, width=40, height=40)
 
-lbl_timer = Label(window, text=period_time, bg="black", fg="#fe0000", font=("digital numbers", 60))
-lbl_timer.place(x=250, y=70, width=320, height=100)
+lbl_timer = Label(window, text="00:00", bg="black", fg="#fe0000", font=("digital numbers", 60)) # changed initial text to "00:00"
+lbl_timer.place(x=270, y=90, width=270, height=80)
 
 
 # Reset timers
@@ -1685,7 +1686,7 @@ def reset_main_timer():
     period_time = 0
     clean_time = 0
     clean_timer.config(text="00:00")
-    lbl_timer.config(text="00:00")
+    lbl_timer.config(text="00:00") # reset text here too
     var.set(0)
     game_started = False
     paused_main_timer = False
@@ -1702,6 +1703,7 @@ def reset_main_timer():
     chk_penalty_left_second_state.set(False)
     chk_penalty_right_first_state.set(False)
     chk_penalty_right_second_state.set(False)
+    #check_down_counter.set(True)
     penalty_left_first_paused = True
     penalty_left_second_paused = True
     penalty_right_first_paused = True
@@ -1759,7 +1761,7 @@ def new_game():
     period_time = 0
     clean_time = 0
     clean_timer.config(text="00:00")
-    lbl_timer.config(text="00:00")
+    lbl_timer.config(text="00:00") # reset text here too
     var.set(0)
     game_started = False
     paused_main_timer = False
@@ -1776,6 +1778,7 @@ def new_game():
     chk_penalty_left_second_state.set(False)
     chk_penalty_right_first_state.set(False)
     chk_penalty_right_second_state.set(False)
+    chk_down_counter_state.set(True)
     penalty_left_first_paused = True
     penalty_left_second_paused = True
     penalty_right_first_paused = True
@@ -1858,56 +1861,104 @@ btn_new_game.place(x=440, y=290)
 
 
 # Start_Pause Main Timer
+
+def set_down_counter():
+    checkdowncounter = chk_down_counter_state.get()
+    check_radio_btn() # Refresh timer display based on checkbox change
+
+
+chk_down_counter_state = BooleanVar()
+chk_down_counter_state.set(True)
+chk_down_counter_btn = Checkbutton(window, text=' обратный\nотсчет ', var=chk_down_counter_state,
+                                         command=set_down_counter, bg="#404040", fg="#feba00",
+                                         selectcolor='black', activebackground="#404040",
+                                         font=("square sans serif 7", 9))
+chk_down_counter_btn.place(x=155, y=180)
+
+lbl_timer = Label(window, text="00:00", bg="black", fg="#fe0000", font=("digital numbers", 60))
+lbl_timer.place(x=250, y=70, width=320, height=100)
+
+
 def update_main_timer():
     global period_time
     global paused_main_timer
+    global target_period_time
+    global game_started
     if paused_main_timer:
         btn_pause_main_timer.config(bg='yellow')
         return
     btn_pause_main_timer.config(bg='black')
-    period_time = period_time - 1
 
-    if period_time >= 0:
-
-        m, s = divmod(period_time - 1, 60)
-        min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        if min_sec_format == "-1:59":
+    checkdowncounter = chk_down_counter_state.get()
+    if checkdowncounter == True: # Count Down
+        period_time -= 1
+        if period_time < 0:
+            period_time = 0
+            paused_main_timer = True
+            game_started = False # Reset game_started when timer reaches 0
+            btn_pause_main_timer.config(bg='yellow')
+            btn_start_main_timer.config(bg='grey') # Optionally disable start button
             m, s = divmod(period_time, 60)
             min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        lbl_timer.config(text=min_sec_format)
+            lbl_timer.config(text=min_sec_format) # update label only once here
+            return
+    else: # Count Up
+        period_time += 1
+        if period_time > target_period_time:
+            period_time = target_period_time
+            paused_main_timer = True
+            game_started = False # Reset game_started when timer reaches target
+            btn_pause_main_timer.config(bg='yellow')
+            btn_start_main_timer.config(bg='grey') # Optionally disable start button
+            m, s = divmod(period_time, 60)
+            min_sec_format = '{:02d}:{:02d}'.format(m, s)
+            lbl_timer.config(text=min_sec_format) # update label only once here
+            return
 
-        window.after(1000, update_main_timer)
+    m, s = divmod(period_time, 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format) # update label only once here
 
-        with open("output/main_timer.txt", "w") as file:
-            file.write(str(min_sec_format))
+    window.after(1000, update_main_timer)
 
-        team1_write = team1.get()
-        team2_write = team2.get()
-        with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
-            file.write(str(team1_write))
-        with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
-            file.write(str(team2_write))
+    with open("output/main_timer.txt", "w") as file:
+        file.write(str(min_sec_format))
+
+    team1_write = team1.get()
+    team2_write = team2.get()
+    with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
+        file.write(str(team1_write))
+    with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
+        file.write(str(team2_write))
 
 
-def start_main_timer(timer):
+def start_main_timer():
     global period_time
     global game_started
-    if period_time <= 0:
-        return
+    global paused_main_timer
+    btn_start_main_timer.config(bg='black')
+    btn_start_main_timer.config(state=NORMAL)
+    btn_start_main_timer.config(relief='flat')
+    paused_main_timer = False
+    btn_pause_main_timer.config(bg='black')
+    btn_pause_main_timer.config(relief='flat')
     if game_started:
         return
     else:
         game_started = True
-        m, s = divmod(period_time - 1, 60)
-        min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        period_time = timer
-        lbl_timer.config(text=min_sec_format)
+        checkdowncounter = chk_down_counter_state.get()
+        if checkdowncounter == True: # Count Down
+            if period_time <= 0:
+                return
+        else: # Count Up
+            period_time = 0
 
-        window.after(1000, update_main_timer)
+
+        update_main_timer()
 
 
 btn_start_main_timer = Button(window, text="START", font=("square sans serif 7", 20),
-                              command=lambda: start_main_timer(period_time),
+                              command=start_main_timer,
                               relief='flat', bg='black', fg='#fe0000', borderwidth=0)
 btn_start_main_timer.place(x=265, y=230)
 
@@ -1922,8 +1973,11 @@ def pause():
     global penalty_right_first_started
     global penalty_right_second_paused
     global penalty_right_second_started
+    global game_started
     paused_main_timer = not paused_main_timer
     if not paused_main_timer:
+        btn_pause_main_timer.config(bg='black')
+        btn_pause_main_timer.config(relief='flat')
         update_main_timer()
         if penalty_left_first_started:
             update_penalty_left_first_timer()
@@ -1933,10 +1987,13 @@ def pause():
             update_penalty_right_first_timer()
         if penalty_right_second_started:
             update_penalty_right_second_timer()
+    else:
+        btn_pause_main_timer.config(bg='yellow')
+        btn_pause_main_timer.config(relief='sunken')
 
 
 btn_pause_main_timer = Button(window, text="PAUSE", font=("square sans serif 7", 20), command=pause,
-                              relief='flat', bg='black', fg='#fe0000', borderwidth=0)
+                              relief='flat', bg='yellow', fg='#fe0000', borderwidth=0)
 btn_pause_main_timer.place(x=410, y=230)
 
 
@@ -1944,7 +2001,9 @@ btn_pause_main_timer.place(x=410, y=230)
 def check_radio_btn():
     radio_button = var.get()
     global period_time
-    period_time = radio_button
+    global target_period_time
+    target_period_time = radio_button
+    period_time = radio_button # Default to count down initial value
     if var.get() == 300:
         period_time = 300
     elif var.get() == 600:
@@ -1953,21 +2012,27 @@ def check_radio_btn():
         period_time = 900
     elif var.get() == 1200:
         period_time = 1200
+
+    checkdowncounter = chk_down_counter_state.get()
+    if checkdowncounter == False: # Count Up mode, reset period_time to 0 for display
+        period_time = 0
+
     m, s = divmod(period_time, 60)
     min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    lbl_timer.config(text=min_sec_format)
     with open("output/main_timer.txt", "w") as file:
         file.write(str(min_sec_format))
     team1_write = team1.get()
     team2_write = team2.get()
     with codecs.open("output/team1.txt", "w", encoding='utf-8') as file:
         file.write(str(team1_write))
-    with codecs.open("output/team2.txt", "w", encoding='utf-8') as file:
+    with codecs.open("output/team2.txt", "w") as file:
         file.write(str(team2_write))
     window.focus_set()
 
 
 var = IntVar()
-var.set(0)
+var.set(1200) # Default radio button selection to 5:00
 rad1 = Radiobutton(window, text='05:00', value=300, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00",
                    selectcolor='black', font=("arial", 12))
 rad2 = Radiobutton(window, text='10:00', value=600, variable=var, command=check_radio_btn, bg="#404040", fg="#feba00",
@@ -1997,7 +2062,9 @@ with open("output/score_team2.txt", "w") as file:
 with open("output/period.txt", "w") as file:
     file.write("1")
 with open("output/main_timer.txt", "w") as file:
-    file.write("00:00")
+    m, s = divmod(var.get(), 60)
+    min_sec_format = '{:02d}:{:02d}'.format(m, s)
+    file.write(str(min_sec_format))
 with open("output/penalty_left_first.txt", "w") as file:
     file.write("00:00")
 with open("output/penalty_left_second.txt", "w") as file:
@@ -2046,10 +2113,14 @@ def stop_sw():
     window.after_cancel(after_id)
 
 
-clean_timer = Label(window, text=clean_time, bg="black", fg="#fe0000", font=("digital numbers", 17))
+clean_timer = Label(window, text="00:00", bg="black", fg="#fe0000", font=("digital numbers", 17))
 clean_timer.place(x=573, y=95, width=90, height=33)
 lbl_clean_name = Label(window, text="Cl.time", bg="#404040", fg="white", font=("square sans serif 7", 14))
 lbl_clean_name.place(x=573, y=70)
+
+target_period_time = 300 # Initialize target_period_time with default radio button value
+check_radio_btn() # Initialize timer display based on default radio button selection and checkbox state
+
 
 # Add Statistics
 statistics_params = {'shot_team1': 0, 'shot_gates_team1': 0, 'face_off_team1': 0, 'penalty_team1': 0, 'shot_team2': 0,
@@ -2306,7 +2377,7 @@ bindings = [
     [["f7"], None, shot_gates_team2],
     [["f8"], None, face_off_team2],
     [["f9"], None, penalty_team2],
-    [["enter"], None, lambda: start_main_timer(period_time)],
+    [["enter"], None, start_main_timer], # removed lambda and period_time argument
 
 ]
 register_hotkeys(bindings)
