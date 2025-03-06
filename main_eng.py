@@ -152,19 +152,19 @@ def openNewWindow():
                                    font=("square sans serif 7", 17))
     lbl_bullits_name_right.place(x=220, y=10)
 
-    lbl_bullits_name_left_miss = Label(newWindow, text="ПРОМАХ", bg="#404040", fg="white",
+    lbl_bullits_name_left_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
                                        font=("square sans serif 7", 14))
-    lbl_bullits_name_left_miss.place(x=1, y=70)
+    lbl_bullits_name_left_miss.place(x=14, y=70)
 
-    lbl_bullits_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+    lbl_bullits_name_left_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                        font=("square sans serif 7", 14))
     lbl_bullits_name_left_goal.place(x=115, y=70)
 
-    lbl_bullits_name_right_miss = Label(newWindow, text="ПРОМАХ", bg="#404040", fg="white",
+    lbl_bullits_name_right_miss = Label(newWindow, text="MISS", bg="#404040", fg="white",
                                         font=("square sans serif 7", 14))
-    lbl_bullits_name_right_miss.place(x=208, y=70)
+    lbl_bullits_name_right_miss.place(x=220, y=70)
 
-    lbl_bullits_name_right_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+    lbl_bullits_name_right_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                         font=("square sans serif 7", 14))
     lbl_bullits_name_right_goal.place(x=320, y=70)
 
@@ -883,7 +883,7 @@ def openNewWindow_statistics():
     newWindow = Toplevel(window)
     newWindow.geometry("680x440")
     newWindow.resizable(width=0, height=0)
-    newWindow.title("Статистика")
+    newWindow.title("Statistics")
     newWindow["bg"] = "#404040"
     newWindow.iconbitmap(r"pict/HdScoreboard.ico")
     global score_team1
@@ -1106,20 +1106,20 @@ def update_statistics_values():
 # Hotkeys
 
 def hotkeys():
-    messagebox.showinfo('Горячие клавиши',
-                        ' ***ИГРА***\n <Enter> = ЗАПУСК ТАЙМЕРА\n <Левый Ctrl> = ГОЛ КОМАНДА 1\n '
-                        '<Правый Ctrl> = ГОЛ КОМАНДА 2\n <Пробел> = ПАУЗА\n < 8 > = ПЕРИОД +1 \n\n '
-                        '***ОСНОВНОЙ ТАЙМЕР***\n < 0 > = МИНУТЫ +1\n < 9 > = МИНУТЫ -1\n '
-                        '< + > = СЕКУНДЫ +1\n < - > = СЕКУНДЫ -1\n\n ***СЧЕТЧИК ЧИСТОГО ВРЕМЕНИ***\n '
-                        '< 6 > = ЗАПУСК СЧЕТЧИКА\n < 7 > = ОСТАНОВКА СЧЕТЧИКА\n\n ***УДАЛЕНИЯ***\n '
-                        '< z > = ПЕРВОЕ УДАЛЕНИЕ КОМАНДА 1\n < x > = ВТОРОЕ УДАЛЕНИЕ КОМАНДА 1\n < / > = ПЕРВОЕ УДАЛЕНИЕ КОМАНДА 2\n < . > = ВТОРОЕ УДАЛЕНИЕ КОМАНДА 2\n \n ***СТАТИСТИКА***\n '
-                        ' ПЕРВАЯ КОМАНДА:\n < F2 > = БРОСОК\n < F3 > = БРОСОК ПО ВОРОТАМ\n < F4 > = ВБРАСЫВАНИЕ\n < F5 > = УДАЛЕНИЕ\n < 4 > = БЛОКИРОВАНЫЙ БРОСОК \n'
-                        ' ВТОРАЯ КОМАНДА:\n < F6 > = БРОСОК\n < F7 > = БРОСОК ПО ВОРОТАМ\n < F8 > = ВБРАСЫВАНИЕ\n < F9 > = УДАЛЕНИЕ \n < 5 > = БЛОКИРОВАНЫЙ БРОСОК')
+    messagebox.showinfo('Hotkeys',
+                        ' ***GAME***\n <Enter> = Start Game\n <Left Ctrl> = Left team 1 score UP\n '
+                        '<Right Ctrl> = Right team 1 score UP\n <Space> = Pause\n < 8 > = Period UP \n\n '
+                        '***MAIN TIMER***\n < 0 > = Main Timer minutes UP\n < 9 > = Main Timer minutes DOWN\n '
+                        '< + > = Main Timer seconds UP\n < - > = Main Timer seconds DOWN\n\n ***CLEAN TIMER***\n '
+                        '< 6 > = Start Clean Time Timer\n < 7 > = Stop Clean Time Timer\n\n ***PENALTY***\n '
+                        '< z > = Penalty Team left First Set\n < x > = Penalty Team left Second Set\n < / > = Penalty Team Right First Set\n < . > = Penalty Team Right Second Set\n \n ***STATISTICS***\n '
+                        ' Left Team:\n < F2 > = Shot\n < F3 > = Shot on goal\n < F4 > = Face off\n < F5 > = Penalty\n < 4 > = Blocked Shot \n'
+                        ' Right Team:\n < F6 > = Shot\n < F7 > = Shot on goal\n < F8 > = Face off\n < F9 > = Penalty \n < 5 > = Blocked Shot')
 
 
 def about():
-    messagebox.showinfo('О программе',
-                        ' Эта программа создана: ETarala \n для помощи в проведении спортивных мероприятий и их трансляций\n Если у вас есть какие-либо вопросы или предложения, вы можете написать мне,\n Email: etarala@mail.ru\n Спасибо за использование Scoreboard')
+    messagebox.showinfo('About',
+                        ' This programm is made by: ETarala\n If you have any questions or suggetions please contact me in\n Email: etarala@mail.ru\n Thank you for downloading the Scoreboard')
 
 
 def donate():
@@ -1127,16 +1127,16 @@ def donate():
 
 
 filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Буллиты", command=openNewWindow)
-filemenu.add_command(label="Статистика", command=openNewWindow_statistics)
-filemenu.add_checkbutton(label="Включить горячие клавиши", command=global_hotkeys)
-mainmenu.add_cascade(label="Модули", menu=filemenu)
+filemenu.add_command(label="Bullets", command=openNewWindow)
+filemenu.add_command(label="Statistics", command=openNewWindow_statistics)
+filemenu.add_checkbutton(label="Global Hotkeys", command=global_hotkeys)
+mainmenu.add_cascade(label="Options", menu=filemenu)
 helpmenu = Menu(mainmenu, tearoff=0)
 
-helpmenu.add_command(label="Горячие клавиши", command=hotkeys)
-helpmenu.add_command(label="О программе", command=about)
-helpmenu.add_command(label="Сказать 'спасибо'", command=donate)
-mainmenu.add_cascade(label="Помощь", menu=helpmenu)
+helpmenu.add_command(label="Hotkeys", command=hotkeys)
+helpmenu.add_command(label="About", command=about)
+helpmenu.add_command(label="Donate", command=donate)
+mainmenu.add_cascade(label="Help", menu=helpmenu)
 
 
 # Score team left
@@ -2048,11 +2048,11 @@ rad4.place(x=175, y=145)
 
 # Add text input
 team1 = Entry(window, width=20, bg="black", fg="#feba00", justify="center", font=("square sans serif 7", 20))
-team1.insert(0, "КОМАНДА 1")
+team1.insert(0, "TEAM 1")
 team1.place(x=5, y=20, width=380, height=40)
 
 team2 = Entry(window, width=20, bg="black", fg="#feba00", justify="center", font=("square sans serif 7", 20))
-team2.insert(0, "КОМАНДА 2")
+team2.insert(0, "TEAM 2")
 team2.place(x=428, y=20, width=380, height=40)
 
 with open("output/score_team1.txt", "w") as file:
@@ -2117,7 +2117,7 @@ def stop_sw():
 
 clean_timer = Label(window, text="00:00", bg="black", fg="#fe0000", font=("digital numbers", 17))
 clean_timer.place(x=573, y=95, width=90, height=33)
-lbl_clean_name = Label(window, text="Ч.время", bg="#404040", fg="white", font=("square sans serif 7", 12))
+lbl_clean_name = Label(window, text="Cl.time", bg="#404040", fg="white", font=("square sans serif 7", 14))
 lbl_clean_name.place(x=573, y=70)
 
 target_period_time = 300 # Initialize target_period_time with default radio button value
