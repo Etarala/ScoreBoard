@@ -910,7 +910,7 @@ def openNewWindow_statistics():
                                 font=("square sans serif 7", 18))
     lbl_stat_name_right.place(x=360, y=10)
     # LEFT
-    lbl_stat_name_left_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+    lbl_stat_name_left_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_name_left_goal.place(x=14, y=60)
 
@@ -919,7 +919,7 @@ def openNewWindow_statistics():
     lbl_stat_value_left_goal.place(x=230, y=60)
     statistics_widgets['lbl_stat_value_left_goal'] = lbl_stat_value_left_goal
 
-    lbl_stat_name_left_shot = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
+    lbl_stat_name_left_shot = Label(newWindow, text="SHOT", bg="#404040", fg="white",
                                     font=("square sans serif 7", 17))
     lbl_stat_name_left_shot.place(x=14, y=110)
     lbl_stat_value_left_shot = Label(newWindow, text=str(statistics_params['shot_team1']), bg="#404040", fg="#feba00",
@@ -931,10 +931,10 @@ def openNewWindow_statistics():
                                 relief='flat', borderwidth=0)
     btn_left_shot_down.place(x=290, y=105, width=28, height=28)
 
-    lbl_stat_name_left_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
+    lbl_stat_name_left_shot_gates = Label(newWindow, text="SHOT ON", bg="#404040", fg="white",
                                           font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_gates.place(x=14, y=150)
-    lbl_stat_name_left_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
+    lbl_stat_name_left_shot_gates_2 = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                             font=("square sans serif 7", 17))
     lbl_stat_name_left_shot_gates_2.place(x=14, y=170)
     lbl_stat_value_left_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team1']), bg="#404040",
@@ -945,7 +945,7 @@ def openNewWindow_statistics():
     btn_left_shot_gates_down.place(x=290, y=156, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_shot_gates'] = lbl_stat_value_left_shot_gates
 
-    lbl_stat_name_left_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
+    lbl_stat_name_left_face_off = Label(newWindow, text="FACE OFF", bg="#404040", fg="white",
                                         font=("square sans serif 7", 16))
     lbl_stat_name_left_face_off.place(x=14, y=210)
     lbl_stat_value_left_face_off = Label(newWindow, text=str(statistics_params['face_off_team1']), bg="#404040",
@@ -956,7 +956,7 @@ def openNewWindow_statistics():
     btn_left_face_off_down.place(x=290, y=206, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_face_off'] = lbl_stat_value_left_face_off
 
-    lbl_stat_name_left_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
+    lbl_stat_name_left_penalty = Label(newWindow, text="PENALTY", bg="#404040", fg="white",
                                        font=("square sans serif 7", 16))
     lbl_stat_name_left_penalty.place(x=14, y=260)
     lbl_stat_value_left_penalty = Label(newWindow, text=str(statistics_params['penalty_team1']), bg="#404040",
@@ -966,23 +966,23 @@ def openNewWindow_statistics():
                                    relief='flat', borderwidth=0)
     btn_left_penalty_down.place(x=290, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_penalty'] = lbl_stat_value_left_penalty
-    lbl_stat_name_left_blocked_shots = Label(newWindow, text="БЛОКИРОВАННЫЕ", bg="#404040", fg="white",
+    lbl_stat_name_left_blocked_shots = Label(newWindow, text="BLOCKED", bg="#404040", fg="white",
                                              font=("square sans serif 7", 17))
     lbl_stat_name_left_blocked_shots.place(x=14, y=306)
-    lbl_stat_name_left_blocked_shots_2 = Label(newWindow, text="БРОСКИ", bg="#404040", fg="white",
+    lbl_stat_name_left_blocked_shots_2 = Label(newWindow, text="SHOTS", bg="#404040", fg="white",
                                                font=("square sans serif 7", 17))
     lbl_stat_name_left_blocked_shots_2.place(x=14, y=326)
     lbl_stat_value_left_blocked_shots = Label(newWindow, text=str(blocked_team1), bg="#404040", fg="#feba00",
                                               font=("square sans serif 7", 22))
-    lbl_stat_value_left_blocked_shots.place(x=230, y=330)
+    lbl_stat_value_left_blocked_shots.place(x=230, y=315)
     btn_left_blocked_shots_down = Button(newWindow, text="-", font=("digital numbers", 30),
                                          command=blocked_shots_team1_minus, relief='flat', borderwidth=0)
     btn_left_blocked_shots_down.place(x=290, y=315, width=28, height=28)
     statistics_widgets['lbl_stat_value_left_blocked_shots'] = lbl_stat_value_left_blocked_shots
-    lbl_stat_name_left_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
+    lbl_stat_name_left_safety_factor = Label(newWindow, text="SAFETY", bg="#404040", fg="white",
                                              font=("square sans serif 7", 17))
     lbl_stat_name_left_safety_factor.place(x=14, y=375)
-    lbl_stat_name_left_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
+    lbl_stat_name_left_safety_factor_2 = Label(newWindow, text="FACTOR %", bg="#404040", fg="white",
                                                font=("square sans serif 7", 17))
     lbl_stat_name_left_safety_factor_2.place(x=14, y=397)
     lbl_stat_value_left_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team1']),
@@ -991,7 +991,7 @@ def openNewWindow_statistics():
     lbl_stat_value_left_safety_factor.place(x=230, y=385)
     statistics_widgets['lbl_stat_value_left_safety_factor'] = lbl_stat_value_left_safety_factor
     # RIGHT
-    lbl_stat_name_right_goal = Label(newWindow, text="ГОЛ", bg="#404040", fg="white",
+    lbl_stat_name_right_goal = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                      font=("square sans serif 7", 17))
     lbl_stat_name_right_goal.place(x=360, y=60)
 
@@ -1000,7 +1000,7 @@ def openNewWindow_statistics():
     lbl_stat_value_right_goal.place(x=576, y=60)
     statistics_widgets['lbl_stat_value_right_goal'] = lbl_stat_value_right_goal
 
-    lbl_stat_name_right_shot = Label(newWindow, text="БРОСОК", bg="#404040", fg="white",
+    lbl_stat_name_right_shot = Label(newWindow, text="SHOT", bg="#404040", fg="white",
                                      font=("square sans serif 7", 17))
     lbl_stat_name_right_shot.place(x=360, y=110)
     lbl_stat_value_right_shot = Label(newWindow, text=str(statistics_params['shot_team2']), bg="#404040", fg="#feba00",
@@ -1011,10 +1011,10 @@ def openNewWindow_statistics():
     btn_right_shot_down.place(x=635, y=105, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_shot'] = lbl_stat_value_right_shot
 
-    lbl_stat_name_right_shot_gates = Label(newWindow, text="БРОСОК ПО", bg="#404040", fg="white",
+    lbl_stat_name_right_shot_gates = Label(newWindow, text="SHOT ON", bg="#404040", fg="white",
                                            font=("square sans serif 7", 17))
     lbl_stat_name_right_shot_gates.place(x=360, y=150)
-    lbl_stat_name_right_shot_gates_2 = Label(newWindow, text="ВОРОТАМ", bg="#404040", fg="white",
+    lbl_stat_name_right_shot_gates_2 = Label(newWindow, text="GOAL", bg="#404040", fg="white",
                                              font=("square sans serif 7", 17))
     lbl_stat_name_right_shot_gates_2.place(x=360, y=170)
     lbl_stat_value_right_shot_gates = Label(newWindow, text=str(statistics_params['shot_gates_team2']), bg="#404040",
@@ -1026,7 +1026,7 @@ def openNewWindow_statistics():
     btn_right_shot_gates_down.place(x=635, y=156, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_shot_gates'] = lbl_stat_value_right_shot_gates
 
-    lbl_stat_name_right_face_off = Label(newWindow, text="ВБРАСЫВАНИЕ", bg="#404040", fg="white",
+    lbl_stat_name_right_face_off = Label(newWindow, text="FACE OFF", bg="#404040", fg="white",
                                          font=("square sans serif 7", 16))
     lbl_stat_name_right_face_off.place(x=360, y=210)
     lbl_stat_value_right_face_off = Label(newWindow, text=str(statistics_params['face_off_team2']), bg="#404040",
@@ -1037,7 +1037,7 @@ def openNewWindow_statistics():
     btn_right_face_off_down.place(x=635, y=206, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_face_off'] = lbl_stat_value_right_face_off
 
-    lbl_stat_name_right_penalty = Label(newWindow, text="УДАЛЕНИЕ", bg="#404040", fg="white",
+    lbl_stat_name_right_penalty = Label(newWindow, text="PENALTY", bg="#404040", fg="white",
                                         font=("square sans serif 7", 16))
     lbl_stat_name_right_penalty.place(x=360, y=260)
     lbl_stat_value_right_penalty = Label(newWindow, text=str(statistics_params['penalty_team2']), bg="#404040",
@@ -1047,23 +1047,23 @@ def openNewWindow_statistics():
                                     command=penalty_team2_minus, relief='flat', borderwidth=0)
     btn_right_penalty_down.place(x=635, y=256, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_penalty'] = lbl_stat_value_right_penalty
-    lbl_stat_name_right_blocked_shots = Label(newWindow, text="БЛОКИРОВАННЫЕ", bg="#404040", fg="white",
+    lbl_stat_name_right_blocked_shots = Label(newWindow, text="BLOCKED", bg="#404040", fg="white",
                                               font=("square sans serif 7", 17))
     lbl_stat_name_right_blocked_shots.place(x=360, y=306)
-    lbl_stat_name_right_blocked_shots_2 = Label(newWindow, text="БРОСКИ", bg="#404040", fg="white",
+    lbl_stat_name_right_blocked_shots_2 = Label(newWindow, text="SHOTS", bg="#404040", fg="white",
                                                 font=("square sans serif 7", 17))
     lbl_stat_name_right_blocked_shots_2.place(x=360, y=326)
     lbl_stat_value_right_blocked_shots = Label(newWindow, text=str(blocked_team2), bg="#404040", fg="#feba00",
                                                font=("square sans serif 7", 22))
-    lbl_stat_value_right_blocked_shots.place(x=576, y=330)
+    lbl_stat_value_right_blocked_shots.place(x=576, y=315)
     btn_right_blocked_shots_down = Button(newWindow, text="-", font=("digital numbers", 30),
                                           command=blocked_shots_team2_minus, relief='flat', borderwidth=0)
     btn_right_blocked_shots_down.place(x=635, y=315, width=28, height=28)
     statistics_widgets['lbl_stat_value_right_blocked_shots'] = lbl_stat_value_right_blocked_shots
-    lbl_stat_name_right_safety_factor = Label(newWindow, text="ОТРАЖЕННЫЕ", bg="#404040", fg="white",
+    lbl_stat_name_right_safety_factor = Label(newWindow, text="SAFETY", bg="#404040", fg="white",
                                               font=("square sans serif 7", 17))
     lbl_stat_name_right_safety_factor.place(x=360, y=375)
-    lbl_stat_name_right_safety_factor_2 = Label(newWindow, text="БРОСКИ %", bg="#404040", fg="white",
+    lbl_stat_name_right_safety_factor_2 = Label(newWindow, text="FACTOR %", bg="#404040", fg="white",
                                                 font=("square sans serif 7", 17))
     lbl_stat_name_right_safety_factor_2.place(x=360, y=397)
     lbl_stat_value_right_safety_factor = Label(newWindow, text=str(statistics_params['safety_factor_team2']),
@@ -1869,11 +1869,11 @@ def set_down_counter():
 
 chk_down_counter_state = BooleanVar()
 chk_down_counter_state.set(True)
-chk_down_counter_btn = Checkbutton(window, text=' обратный\n  отсчет ', var=chk_down_counter_state,
+chk_down_counter_btn = Checkbutton(window, text=' count\n down ', var=chk_down_counter_state,
                                          command=set_down_counter, bg="#404040", fg="#feba00",
                                          selectcolor='black', activebackground="#404040",
-                                         font=("square sans serif 7", 9))
-chk_down_counter_btn.place(x=155, y=180)
+                                         font=("square sans serif 7", 10))
+chk_down_counter_btn.place(x=160, y=180)
 
 lbl_timer = Label(window, text="00:00", bg="black", fg="#fe0000", font=("digital numbers", 60))
 lbl_timer.place(x=250, y=70, width=320, height=100)
